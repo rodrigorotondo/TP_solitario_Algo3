@@ -1,5 +1,5 @@
 public class Juego {
-    private Mesa mesa;
+    //private Mesa mesa; que la mesa este en Solitario
     private Solitario solitario;
     public void empezarJuego(){
     }

@@ -3,12 +3,16 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Mazo{
-    private LinkedList<Carta> cartas;
+    private Stack<Carta> cartas;
 
     public Mazo(){
-        this.cartas = new LinkedList<Carta>();
+        this.cartas = new Stack<>();
     }
     private void llenarMazo(){
+        //otra razon para que palo sea clase, no encuentro forma de llamar a los diferentes tipos de enum para rellenar las cartas
+        for (int i = 1; i < 14; i++) {
+            cartas.push(new Carta(i, Carta.Palo.CORAZONES);
+        }
     }
     private void robarDelMazo(){
     }

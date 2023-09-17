@@ -1,7 +1,10 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Mesa {
     private Mazo mazo;
-    private LinkedList<Carta> fundaciones;
-    private LinkedList<Carta> descarte;
+    private ArrayList<Stack<Carta>> fundaciones;
+    private Stack<Carta> descarte;
+    private ArrayList<ColumnaDeJuego> tablero;
 }

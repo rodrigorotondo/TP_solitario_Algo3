@@ -8,8 +8,6 @@ public class Carta {
     //me di cuenta que si abstraemos a un mazo real, empiezan todas las cartas dadas vuelta
     //es decir que somos incapaces de ver su valor
     //si este atributo es false, no podremos ver su num y palo, caso contrario si podremos
-
-
     public Carta(int numero, Palo palo){
         this.numero = numero;
         this.palo = palo;
