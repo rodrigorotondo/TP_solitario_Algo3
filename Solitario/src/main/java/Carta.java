@@ -1,8 +1,9 @@
 public class Carta {
-    private enum Palo {CORAZONES,PICAS,TREBOLES,DIAMANTES}
+    public enum Palo {CORAZONES,PICAS,TREBOLES,DIAMANTES}
     private final int numero;
     private final Palo palo;
-    public boolean dadaVuelta; //lo pongo publico para poder preguntar por el
+    public boolean bocaArriba; //lo pongo publico para poder preguntar por el
+    //atributos bocaArriba
 
     //puse el atributo dadaVuelta porque despues de jugar un rato largo
     //me di cuenta que si abstraemos a un mazo real, empiezan todas las cartas dadas vuelta
@@ -11,15 +12,15 @@ public class Carta {
     public Carta(int numero, Palo palo){
         this.numero = numero;
         this.palo = palo;
-        this.dadaVuelta = false;
+        this.bocaArriba = false;
     }
 
     public boolean esVisible(){
-        return dadaVuelta;
+        return bocaArriba;
     }
 
     public void DescubrirCarta(){
-        dadaVuelta = !dadaVuelta;
+        bocaArriba = !bocaArriba;
     }
 
     public String ObtenerColor(){
@@ -28,12 +29,4 @@ public class Carta {
             case TREBOLES, DIAMANTES -> "negro";
         };
     }
-
-    //metodos para comparar una carta con otra
-
-   public static void main(String[] args) {
-        Carta carta = new Carta(3, Palo.TREBOLES);
-        System.out.println(carta.numero + " - " + carta.palo + " color: " + carta.ObtenerColor());
-    }
-
 }
