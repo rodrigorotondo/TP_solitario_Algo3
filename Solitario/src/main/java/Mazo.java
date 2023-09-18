@@ -7,13 +7,16 @@ public class Mazo{
 
     public Mazo(){
         this.cartas = new Stack<>();
+        this.llenarMazo();
     }
-    private void llenarMazo(){
-        //otra razon para que palo sea clase, no encuentro forma de llamar a los diferentes tipos de enum para rellenar las cartas
-        for (int i = 1; i < 14; i++) {
-            cartas.push(new Carta(i, Carta.Palo.CORAZONES));
+    private void llenarMazo() {
+        for (Palos palo : Palos.values()) {
+            for (int numero = 1; numero < 14; numero++) {
+                cartas.push(new Carta(numero, palo));
+            }
         }
     }
-    private void robarDelMazo(){
+    public Carta robarDelMazo(){
+        return this.cartas.pop();
     }
 }

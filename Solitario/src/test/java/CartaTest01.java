@@ -6,6 +6,8 @@ public class CartaTest01 {
 
     @Test
     public void obtenerColor() {
-
+        //
+        //
+        //
     }
 }
