@@ -1,19 +1,14 @@
+import java.util.Objects;
+
 public class Carta {
     private final int numero;
     private final Palos palo;
-    public boolean bocaArriba; //lo pongo publico para poder preguntar por el
-    //atributos bocaArriba
-
-    //puse el atributo dadaVuelta porque despues de jugar un rato largo
-    //me di cuenta que si abstraemos a un mazo real, empiezan todas las cartas dadas vuelta
-    //es decir que somos incapaces de ver su valor
-    //si este atributo es false, no podremos ver su num y palo, caso contrario si podremos
+    public boolean bocaArriba;
     public Carta(int numero, Palos palo){
         this.numero = numero;
         this.palo = palo;
         this.bocaArriba = false;
     }
-
     public boolean esVisible(){
         return bocaArriba;
     }
@@ -28,12 +23,18 @@ public class Carta {
             case TREBOLES, DIAMANTES -> "negro";
         };
     }
-
-    private int ObtenerNumero(){
+    public int ObtenerNumero(){
         return this.numero;
     }
-
-    private Palos ObtenerPalos(){
+    public Palos ObtenerPalos(){
         return this.palo;
+    }
+    //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y
+    //si es mayor positivo :3
+    public int CompararConOtraCarta(Carta carta){
+        return numero - carta.ObtenerNumero();
+    }
+    public boolean MismoColorConOtraCarta(Carta carta){
+        return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
 }
