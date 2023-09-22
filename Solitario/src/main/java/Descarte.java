@@ -4,7 +4,6 @@ import java.util.Stack;
 public class Descarte{
     private Stack<Carta> cartas;
 
-
     public Descarte(){
         this.cartas = new Stack<>();
     }
@@ -17,4 +16,5 @@ public class Descarte{
     public Carta verUltimaCarta(){
         return this.cartas.peek();
     }
+
 }

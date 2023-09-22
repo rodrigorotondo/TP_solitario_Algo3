@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 import java.util.*;
 
 public class Mazo{
@@ -17,19 +20,11 @@ public class Mazo{
     public Carta robarDelMazo(){
         return this.cartas.pop();
     }
-
-    private void agregarCarta(int numero, Palos palo){
-        this.cartas.push(new Carta(numero, palo));
-    }
-
     public void mezclarMazo(){
         //mezcla completamente al azar el mazo
         Collections.shuffle(this.cartas);
     }
-
-    public void mezclarMazo(long semilla){
-        //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
-        Collections.shuffle(this.cartas, new Random(semilla));
+    private void agregarCarta(int numero, Palos palo){
+        this.cartas.push(new Carta(numero, palo));
     }
-
 }
