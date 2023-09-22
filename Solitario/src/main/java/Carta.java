@@ -10,9 +10,11 @@ public class Carta {
         this.bocaArriba = false;
     }
     public boolean esVisible(){
+
         return bocaArriba;
     }
     public void DescubrirCarta(){
+
         bocaArriba = !bocaArriba;
     }
 
