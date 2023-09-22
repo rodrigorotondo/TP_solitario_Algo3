@@ -9,7 +9,6 @@ public class Solitario{
     private Descarte descarte;
     private ArrayList<ColumnaDeJuego> tablero;
 
-    private void CrearFundaciones(int cantidadDeFundaciones) {
-        fundaciones = new Fundacion[cantidadDeFundaciones]; //NOOOOOO
-    }
+    //voy a empezar a implementar cositas a ver que onda (SUSPENSO) *.*
+    private void iniciarTablero()
 }

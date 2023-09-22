@@ -12,7 +12,6 @@ public class Carta {
     public boolean esVisible(){
         return bocaArriba;
     }
-
     public void DescubrirCarta(){
         bocaArriba = !bocaArriba;
     }
@@ -31,6 +30,7 @@ public class Carta {
     }
     //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y
     //si es mayor positivo :3
+    //IMPORTANTE SI QUIERO VER QUE LAS CARTAS SEAN CONSECUTIVAS ESTE METODO ME DEVUELVE 1 c;
     public int CompararConOtraCarta(Carta carta){
         return numero - carta.ObtenerNumero();
     }

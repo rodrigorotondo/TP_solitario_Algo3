@@ -1,4 +1,16 @@
+import java.util.Stack;
+
 abstract class Reglas {
+
+    public void AgregarCartaOPilaDeCartaAColumna(Stack<Carta> pilaDeCartas, ColumnaDeJuego columnaDeJuego){
+
+    }
+
+    public void AgregarCartaAFundacion(Carta carta, Fundacion fundacion){
+
+    }
+
+
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra

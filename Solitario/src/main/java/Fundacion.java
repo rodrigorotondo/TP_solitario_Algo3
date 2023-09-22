@@ -27,6 +27,6 @@ public class Fundacion {
     }
 
     public Carta SacarCarta() {
-        return;
+        return this.cartas.pop();
     }
 }
