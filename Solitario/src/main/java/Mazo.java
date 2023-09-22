@@ -10,12 +10,16 @@ public class Mazo{
     private void llenarMazo() {
         for (Palos palo : Palos.values()) {
             for (int numero = 1; numero < 14; numero++) {
-                cartas.push(new Carta(numero, palo));
+                this.agregarCarta(numero,palo);
             }
         }
     }
     public Carta robarDelMazo(){
         return this.cartas.pop();
+    }
+
+    private void agregarCarta(int numero, Palos palo){
+        this.cartas.push(new Carta(numero, palo));
     }
 
     public void mezclarMazo(){

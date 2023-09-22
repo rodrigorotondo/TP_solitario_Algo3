@@ -15,10 +15,12 @@ public class Carta {
     }
 
     public boolean esVisible(){
+
         return bocaArriba;
     }
 
     public void DescubrirCarta(){
+
         bocaArriba = !bocaArriba;
     }
 
@@ -29,11 +31,13 @@ public class Carta {
         };
     }
 
-    private int ObtenerNumero(){
+    public int ObtenerNumero(){
+
         return this.numero;
     }
 
-    private Palos ObtenerPalos(){
+    public Palos ObtenerPalo(){
+
         return this.palo;
     }
 }
