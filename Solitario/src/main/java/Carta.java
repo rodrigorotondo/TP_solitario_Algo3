@@ -27,7 +27,7 @@ public class Carta {
     public int ObtenerNumero(){
         return this.numero;
     }
-    public Palos ObtenerPalos(){
+    public Palos ObtenerPalo(){
         return this.palo;
     }
     //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y

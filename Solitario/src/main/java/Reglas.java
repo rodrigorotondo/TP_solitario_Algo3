@@ -6,8 +6,15 @@ abstract class Reglas {
 
     }
 
-    public void AgregarCartaAFundacion(Carta carta, Fundacion fundacion){
-
+    public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
+        if(carta.ObtenerNumero() == 1 && fundacion.estaVacia()){
+            return true;
+        } else if (carta.ObtenerPalo() == fundacion.robarUltimaCarta().ObtenerPalo() &&
+                    carta.ObtenerNumero() == (fundacion.robarUltimaCarta().ObtenerNumero() + 1)) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

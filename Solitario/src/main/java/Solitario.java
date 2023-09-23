@@ -10,5 +10,5 @@ public class Solitario{
     private ArrayList<ColumnaDeJuego> tablero;
 
     //voy a empezar a implementar cositas a ver que onda (SUSPENSO) *.*
-    private void iniciarTablero()
+    //private void iniciarTablero();
 }

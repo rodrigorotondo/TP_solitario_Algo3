@@ -1,7 +1,6 @@
 import java.util.Stack;
 
-public class Fundacion extends StackUltimaVisible{
-    private Stack<Carta> cartas;
+public class Fundacion extends StackDeCartas{
 
     public Fundacion(){
         this.cartas = new Stack<>();
@@ -19,7 +18,7 @@ public class Fundacion extends StackUltimaVisible{
                 cartas.push(carta);
             }
         } else {
-            if (carta.ObtenerPalos() == cartas.peek().ObtenerPalos() &&
+            if (carta.ObtenerPalo() == cartas.peek().ObtenerPalo() &&
                     carta.ObtenerNumero() == cartas.peek().ObtenerNumero() + 1){
                 cartas.push(carta);
             }
@@ -29,4 +28,5 @@ public class Fundacion extends StackUltimaVisible{
     public Carta SacarCarta() {
         return this.cartas.pop();
     }
+
 }
