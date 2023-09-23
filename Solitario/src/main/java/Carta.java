@@ -3,7 +3,7 @@ import java.util.Objects;
 public class Carta {
     private final int numero;
     private final Palos palo;
-    public boolean bocaArriba;
+    private boolean bocaArriba;
     public Carta(int numero, Palos palo){
         this.numero = numero;
         this.palo = palo;

@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Fundacion {
+public class Fundacion extends StackUltimaVisible{
     private Stack<Carta> cartas;
 
     public Fundacion(){
