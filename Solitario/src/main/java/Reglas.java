@@ -1,19 +1,18 @@
 import java.util.Stack;
 
-abstract class Reglas {
+public class Reglas {
 
     public void AgregarCartaOPilaDeCartaAColumna(Stack<Carta> pilaDeCartas, ColumnaDeJuego columnaDeJuego){
 
     }
 
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
-        if(carta.ObtenerNumero() == 1 && fundacion.estaVacia()){
-            return true;
-        } else if (carta.ObtenerPalo() == fundacion.robarUltimaCarta().ObtenerPalo() &&
-                    carta.ObtenerNumero() == (fundacion.robarUltimaCarta().ObtenerNumero() + 1)) {
-            return true;
-        }else{
-            return false;
+        if(fundacion.estaVacia()){
+            return carta.ObtenerNumero() == 1; // si la carta es igual a 1 devuelve true
+
+        } else {
+            return(carta.ObtenerNumero() == (fundacion.verUltimaCarta().ObtenerNumero() + 1) && carta.ObtenerPalo() == fundacion.verUltimaCarta().ObtenerPalo());
+
         }
     }
 

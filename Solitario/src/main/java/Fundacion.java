@@ -26,7 +26,14 @@ public class Fundacion extends StackDeCartas{
     }
 
     public Carta SacarCarta() {
+
         return this.cartas.pop();
     }
+
+    public Carta verUltimaCarta(){
+        return this.cartas.peek();
+    }
+
+
 
 }

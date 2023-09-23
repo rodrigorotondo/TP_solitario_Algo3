@@ -14,6 +14,6 @@ public class StackDeCartas{
     }
 
     public boolean estaVacia(){
-        return this.cartas.size() > 0;
+        return this.cartas.empty();
     }
 }
