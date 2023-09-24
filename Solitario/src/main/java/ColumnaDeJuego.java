@@ -26,7 +26,7 @@ public class ColumnaDeJuego {
         Carta aComparar = copia.pop();
         while (!copia.empty()){
             Carta actual = copia.pop();
-            if (actual.CompararConOtraCarta(aComparar) != 1 || !actual.MismoColorConOtraCarta(aComparar)){
+            if (actual.esPosterior(aComparar)|| !actual.MismoColorConOtraCarta(aComparar)){
                 return false;
             }
             aComparar = actual;

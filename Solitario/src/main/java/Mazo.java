@@ -11,7 +11,8 @@ public class Mazo extends StackDeCartas{
     private void llenarMazo() {
         for (Palos palo : Palos.values()) {
             for (int numero = 1; numero < 14; numero++) {
-                this.agregarCarta(numero,palo);
+                Carta carta = new Carta(numero, palo);
+                this.agregarCarta(carta);
             }
         }
     }
@@ -22,8 +23,5 @@ public class Mazo extends StackDeCartas{
     public void mezclarMazo(long semilla){
         //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
         Collections.shuffle(this.cartas, new Random(semilla));
-    }
-    private void agregarCarta(int numero, Palos palo){
-        this.cartas.push(new Carta(numero, palo));
     }
 }
