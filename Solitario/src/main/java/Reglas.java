@@ -13,6 +13,14 @@ public class Reglas {
 
         }
     }
+    public boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna){
+        if(columna.estaVacia()){
+            return carta.esUnRey(); // si la carta es igual a 13 devuelve true
+
+        } else {
+            return(carta.esAnterior(columna.verUltimaCarta()) && !(carta.EsMismoColorConOtraCarta(columna.verUltimaCarta())));
+        }
+    }
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra

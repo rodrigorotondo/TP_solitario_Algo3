@@ -35,14 +35,14 @@ public class Carta {
     // public int CompararConOtraCarta(Carta carta){
     //    return numero - carta.ObtenerNumero();
     //}
-    public boolean MismoColorConOtraCarta(Carta carta){
+    public boolean EsMismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
     public boolean esPosterior(Carta carta){
         return this.numero == (carta.numero + 1);
     }
     public boolean esAnterior(Carta carta){
-        return this.numero == (carta.numero - 1);
+        return (this.numero) == (carta.numero - 1);
     }
     public boolean esMismoPalo(Carta carta){
         return this.palo == carta.palo;
@@ -50,4 +50,8 @@ public class Carta {
     public boolean esUnAs(){
         return this.numero == 1;
     }
+    public boolean esUnRey(){
+        return this.numero == 13;
+    }
+
 }

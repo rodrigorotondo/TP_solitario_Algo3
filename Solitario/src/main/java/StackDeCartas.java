@@ -17,4 +17,7 @@ public class StackDeCartas{
     public boolean estaVacia(){
         return this.cartas.empty();
     }
+    public Carta verUltimaCarta(){
+        return this.cartas.peek();
+    }
 }
