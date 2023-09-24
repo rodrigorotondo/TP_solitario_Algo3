@@ -3,7 +3,6 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class ColumnaDeJuego extends StackDeCartas{
-    private Stack<Carta> cartas;
     public ColumnaDeJuego(){
         this.cartas = new Stack<>();
     }

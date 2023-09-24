@@ -47,7 +47,7 @@ public class Carta {
     }
 
     public boolean esAnterior(Carta carta){
-        return this.numero == (carta.numero - 1);
+        return (this.numero) == (carta.numero - 1);
     }
 
     public boolean esMismoPalo(Carta carta){

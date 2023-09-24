@@ -14,7 +14,7 @@ public class ReglasTestPuedoAgregarCartaColumna {
         Carta c2 = new Carta(12,Palos.PICAS);
         Carta c3 = new Carta(11,Palos.CORAZONES);
 
-       // columna.agregarCarta(c1);
+        columna.agregarCarta(c1);
         columna.agregarCarta(c2);
         columna.agregarCarta(c3);
         //act
