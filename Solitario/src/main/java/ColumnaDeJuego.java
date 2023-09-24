@@ -4,6 +4,8 @@ import java.util.Stack;
 
 public class ColumnaDeJuego {
     private Stack<Carta> columna;
+
+
     public ColumnaDeJuego(){
         this.columna = new Stack<>();
     }

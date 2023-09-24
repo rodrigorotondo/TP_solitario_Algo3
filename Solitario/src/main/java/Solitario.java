@@ -16,10 +16,13 @@ public class Solitario{
         }
     }
 //{1,2,3,4,5,6,7} hago los tama;os de las columnas con el
-    private void IniciarTablero(int CantidadDeColumnas, int[] CantidadDeCartasPorColumna){
+    private void IniciarTablero(int CantidadDeColumnas, int[] CantidadDeCartasPorColumna, StackDeCartas pilaDeCartas){
         tablero = new ColumnaDeJuego[CantidadDeColumnas];
         for (int i = 0; i < CantidadDeColumnas; i++){
-            tablero
+            tablero[i] = new ColumnaDeJuego();
+            for (int j = 0; j < CantidadDeCartasPorColumna[j]; j++){
+                //aca estaria agregar carta firma provisoria tablero[i].AgregarCarta()
+            }
         }
 
     }
