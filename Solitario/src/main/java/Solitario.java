@@ -7,7 +7,6 @@ public class Solitario{
     private Mazo mazo;
     private Fundacion[] fundaciones;
     private Descarte descarte;
-    private Deposito deposito;
     private ColumnaDeJuego[] tablero;
     private void IniciarFundaciones(int CantidadDeFundaciones){
         fundaciones = new Fundacion[CantidadDeFundaciones];
@@ -20,16 +19,10 @@ public class Solitario{
         for (int i = 0; i < CantidadDeColumnas; i++){
             tablero[i] = new ColumnaDeJuego();
             for (int j = 0; j < CantidadDeCartasPorColumna[j]; j++){
-                //supongo que vamos a usar la columna como stack de cartas asi que
-                //tablero[i].AgregarCarta(pilaDeCartas.pop())
+                tablero[i].agregarCarta(mazo.robarUltimaCarta());
             }
-           // tablero[i].VerUltimaCarta().DescubrirCarta();
+            tablero[i].verUltimaCarta().DescubrirCarta();
         }
-    }
-    private void IniciarDeposito(StackDeCartas mazoYaRepartido){
-        deposito = new Deposito();
-        deposito.llenarDeposito(mazoYaRepartido);
-
     }
     private void IniciarMesa(){
         mazo = new Mazo();

@@ -53,5 +53,4 @@ public class Carta {
     public boolean esUnRey(){
         return this.numero == 13;
     }
-
 }
