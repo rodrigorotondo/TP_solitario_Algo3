@@ -1,18 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.Stack;
 
-public class ColumnaDeJuego {
-    private Stack<Carta> columna;
-
-
+public class ColumnaDeJuego extends StackDeCartas{
+    private Stack<Carta> cartas;
     public ColumnaDeJuego(){
-        this.columna = new LinkedList<Carta>();
+        this.cartas = new Stack<>();
     }
-    public void agregarCarta(Carta carta){
-    }
-    public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
+   /* public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
         //si la  columna tiene 0 o 1 elemento TA ORDENADA
         if (this.columna.size() < 2){
             return true;
@@ -27,11 +22,11 @@ public class ColumnaDeJuego {
         Carta aComparar = copia.pop();
         while (!copia.empty()){
             Carta actual = copia.pop();
-            if (actual.CompararConOtraCarta(aComparar) != 1 || !actual.MismoColorConOtraCarta(aComparar)){
+            if (actual.CompararConOtraCarta(aComparar) != 1 || !actual.EsMismoColorConOtraCarta(aComparar)){
                 return false;
             }
             aComparar = actual;
         }
         return true;
-    }
+    }*/
 }

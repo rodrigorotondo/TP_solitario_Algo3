@@ -38,7 +38,7 @@ public class Carta {
     // public int CompararConOtraCarta(Carta carta){
     //    return numero - carta.ObtenerNumero();
     //}
-    public boolean MismoColorConOtraCarta(Carta carta){
+    public boolean EsMismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
 
@@ -56,6 +56,8 @@ public class Carta {
     public boolean esUnAs(){
         return this.numero == 1;
     }
-
+    public boolean esUnRey(){
+        return this.numero == 13;
+    }
 
 }

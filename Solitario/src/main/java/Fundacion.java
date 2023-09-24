@@ -12,16 +12,12 @@ public class Fundacion extends StackDeCartas{
     //otra cosita: para mi la fundacion puede extender Stack y podriamos hacerle Overrride al
     //push de la pila (en vez de UbicarCarta) xq la verdad no se me ocurre q otro metodo podria
     //tener fundacion ❤（っ＾▿＾）
-
-
     public Carta SacarCarta() {
 
         return this.cartas.pop();
     }
 
-    public Carta verUltimaCarta(){
-        return this.cartas.peek();
-    }
+
 
 
 
