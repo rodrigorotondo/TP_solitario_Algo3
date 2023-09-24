@@ -17,4 +17,14 @@ public class StackDeCartas{
     public boolean estaVacia(){
         return this.cartas.empty();
     }
+    public int tamanioPila(){
+        return this.cartas.size();
+    }
+
+    public void agregarPilaDeCartas(StackDeCartas stack){
+        for (int i=0; i < stack.tamanioPila(); i++){
+            this.cartas.add(stack.robarUltimaCarta());
+        }
+
+    }
 }

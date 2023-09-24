@@ -1,8 +1,13 @@
 import java.util.Stack;
 
 public class Reglas {
-    public void AgregarCartaOPilaDeCartaAColumna(Stack<Carta> pilaDeCartas, ColumnaDeJuego columnaDeJuego){
-
+    public boolean AgregarCartaOPilaDeCartaAColumna(StackDeCartas pilaDeCartas, ColumnaDeJuego columnaDeJuego){
+        if(columnaDeJuego.estaVacia()){
+            return pilaDeCartas.verUltimaCarta().esUnRey(); // si la carta es igual a 1 devuelve true
+        } else {
+            return(columnaDeJuego.verUltimaCarta().esPosterior(pilaDeCartas.verUltimaCarta()) &&
+            !columnaDeJuego.verUltimaCarta().esMismoPalo(pilaDeCartas.verUltimaCarta()));
+        }
     }
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){

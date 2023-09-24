@@ -43,4 +43,7 @@ public class Carta {
     public boolean esUnAs(){
         return this.numero == 1;
     }
+    public boolean esUnRey(){
+        return this.numero == 13;
+    }
 }
