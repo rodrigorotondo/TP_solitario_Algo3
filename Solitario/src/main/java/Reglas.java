@@ -8,10 +8,10 @@ public class Reglas {
 
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
-            return carta.ObtenerNumero() == 1; // si la carta es igual a 1 devuelve true
+            return carta.esUnAs(); // si la carta es igual a 1 devuelve true
 
         } else {
-            return(carta.ObtenerNumero() == (fundacion.verUltimaCarta().ObtenerNumero() + 1) && carta.ObtenerPalo() == fundacion.verUltimaCarta().ObtenerPalo());
+            return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
 
         }
     }

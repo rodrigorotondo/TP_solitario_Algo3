@@ -40,15 +40,20 @@ public class Carta {
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
 
-    public boolean esMayorNumero(Carta carta){
-        return this.numero < carta.numero;
+    public boolean esPosterior(Carta carta){
+        return this.numero == (carta.numero + 1);
     }
 
     public boolean esMenorNumero(Carta carta){
         return this.numero > carta.numero;
     }
 
-    public boolean esElMismoPalo(Carta carta){
+    public boolean esMismoPalo(Carta carta){
         return this.palo == carta.palo;
     }
+    public boolean esUnAs(){
+        return this.numero == 1;
+    }
+
+
 }
