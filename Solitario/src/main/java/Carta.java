@@ -39,4 +39,16 @@ public class Carta {
     public boolean MismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
+
+    public boolean esMayorNumero(Carta carta){
+        return this.numero < carta.numero;
+    }
+
+    public boolean esMenorNumero(Carta carta){
+        return this.numero > carta.numero;
+    }
+
+    public boolean esElMismoPalo(Carta carta){
+        return this.palo == carta.palo;
+    }
 }
