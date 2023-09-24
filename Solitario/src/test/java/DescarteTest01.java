@@ -16,9 +16,9 @@ public class DescarteTest01 {
         d.agregarCarta(c3);
         Carta esperada = c3;
         //act
-        Carta resultado = d.robarUltimaCarta();
+        Carta obtenida = d.robarUltimaCarta();
         //assert
-        assertEquals(resultado.ObtenerNumero(), esperada.ObtenerNumero());
-        assertEquals(resultado.ObtenerPalo(), esperada.ObtenerPalo());
+        assertTrue(!(obtenida.esPosterior(esperada)) && !(obtenida.esAnterior(esperada))); //si no es mayor ni menor es igual
+        assertTrue(obtenida.esMismoPalo(esperada));
     }
 }
