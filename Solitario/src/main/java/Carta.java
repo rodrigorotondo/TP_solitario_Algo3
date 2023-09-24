@@ -14,14 +14,11 @@ public class Carta {
         this.bocaArriba = false;
     }
     public boolean esVisible(){
-
         return bocaArriba;
     }
     public void DescubrirCarta(){
-
         bocaArriba = !bocaArriba;
     }
-
     public String ObtenerColor(){
         return switch (palo) {
             case CORAZONES, PICAS -> "rojo";
@@ -41,21 +38,16 @@ public class Carta {
     public boolean MismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
-
     public boolean esPosterior(Carta carta){
         return this.numero == (carta.numero + 1);
     }
-
     public boolean esAnterior(Carta carta){
         return this.numero == (carta.numero - 1);
     }
-
     public boolean esMismoPalo(Carta carta){
         return this.palo == carta.palo;
     }
     public boolean esUnAs(){
         return this.numero == 1;
     }
-
-
 }
