@@ -32,10 +32,6 @@ public class Carta {
         return this.numero;
     }
 
-
-
-
-
     //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y
     //si es mayor positivo :3
     //IMPORTANTE SI QUIERO VER QUE LAS CARTAS SEAN CONSECUTIVAS ESTE METODO ME DEVUELVE 1 c;

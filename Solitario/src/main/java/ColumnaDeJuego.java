@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class ColumnaDeJuego {
@@ -7,7 +8,7 @@ public class ColumnaDeJuego {
 
 
     public ColumnaDeJuego(){
-        this.columna = new Stack<>();
+        this.columna = new LinkedList<Carta>();
     }
     public void agregarCarta(Carta carta){
     }
