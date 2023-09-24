@@ -5,10 +5,22 @@ public class Solitario{
     private int puntos;
     private Reglas reglas;
     private Mazo mazo;
-    private ArrayList<Fundacion> fundaciones;
+    private Fundacion[] fundaciones;
     private Descarte descarte;
-    private ArrayList<ColumnaDeJuego> tablero;
+    private ColumnaDeJuego[] tablero;
 
-    //voy a empezar a implementar cositas a ver que onda (SUSPENSO) *.*
-    //private void iniciarTablero();
+    private void IniciarFundaciones(int CantidadDeFundaciones){
+        fundaciones = new Fundacion[CantidadDeFundaciones];
+        for (int i = 0; i < CantidadDeFundaciones; i++){
+            fundaciones[i] = new Fundacion();
+        }
+    }
+//{1,2,3,4,5,6,7} hago los tama;os de las columnas con el
+    private void IniciarTablero(int CantidadDeColumnas, int[] CantidadDeCartasPorColumna){
+        tablero = new ColumnaDeJuego[CantidadDeColumnas];
+        for (int i = 0; i < CantidadDeColumnas; i++){
+            tablero
+        }
+
+    }
 }
