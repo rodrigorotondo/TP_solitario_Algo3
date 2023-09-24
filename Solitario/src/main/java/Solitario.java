@@ -9,6 +9,8 @@ public class Solitario{
     private Descarte descarte;
     private ArrayList<ColumnaDeJuego> tablero;
 
+
+
     //voy a empezar a implementar cositas a ver que onda (SUSPENSO) *.*
     //private void iniciarTablero();
 }

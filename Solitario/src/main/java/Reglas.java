@@ -1,11 +1,9 @@
 import java.util.Stack;
 
 public class Reglas {
-
     public void AgregarCartaOPilaDeCartaAColumna(Stack<Carta> pilaDeCartas, ColumnaDeJuego columnaDeJuego){
 
     }
-
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
             return carta.esUnAs(); // si la carta es igual a 1 devuelve true
@@ -15,8 +13,6 @@ public class Reglas {
 
         }
     }
-
-
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra
