@@ -6,7 +6,7 @@ public class Reglas {
             return pilaDeCartas.verUltimaCarta().esUnRey(); // si la carta es igual a 1 devuelve true
         } else {
             return(columnaDeJuego.verUltimaCarta().esPosterior(pilaDeCartas.verUltimaCarta()) &&
-            !columnaDeJuego.verUltimaCarta().esMismoPalo(pilaDeCartas.verUltimaCarta()));
+            !columnaDeJuego.verUltimaCarta().MismoColorConOtraCarta(pilaDeCartas.verUltimaCarta()));
         }
     }
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){

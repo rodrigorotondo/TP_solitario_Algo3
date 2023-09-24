@@ -7,7 +7,6 @@ public class Solitario{
     private Mazo mazo;
     private Fundacion[] fundaciones;
     private Descarte descarte;
-    private Deposito deposito;
     private ColumnaDeJuego[] tablero;
     private void IniciarFundaciones(int CantidadDeFundaciones){
         fundaciones = new Fundacion[CantidadDeFundaciones];
@@ -24,11 +23,6 @@ public class Solitario{
             }
             tablero[i].verUltimaCarta().DescubrirCarta();
         }
-    }
-    private void IniciarDeposito(StackDeCartas mazoYaRepartido){
-        deposito = new Deposito();
-        deposito.llenarDeposito(mazoYaRepartido);
-
     }
     private void IniciarMesa(){
         mazo = new Mazo();

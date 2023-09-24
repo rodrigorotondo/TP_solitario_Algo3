@@ -25,6 +25,5 @@ public class StackDeCartas{
         for (int i=0; i < stack.tamanioPila(); i++){
             this.cartas.add(stack.robarUltimaCarta());
         }
-
     }
 }
