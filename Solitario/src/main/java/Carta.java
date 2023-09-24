@@ -1,9 +1,13 @@
 import java.util.Objects;
 
 public class Carta {
+
+    //-----------------------------------------------------Atributos---------------------------------------------------
     private final int numero;
     private final Palos palo;
     private boolean bocaArriba;
+
+    //-----------------------------------------------------Metodos---------------------------------------------------
     public Carta(int numero, Palos palo){
         this.numero = numero;
         this.palo = palo;
@@ -27,28 +31,35 @@ public class Carta {
     public int ObtenerNumero(){
         return this.numero;
     }
-    public Palos ObtenerPalo(){
-        return this.palo;
-    }
+
+
+
+
+
     //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y
     //si es mayor positivo :3
     //IMPORTANTE SI QUIERO VER QUE LAS CARTAS SEAN CONSECUTIVAS ESTE METODO ME DEVUELVE 1 c;
-    public int CompararConOtraCarta(Carta carta){
-        return numero - carta.ObtenerNumero();
-    }
+    // public int CompararConOtraCarta(Carta carta){
+    //    return numero - carta.ObtenerNumero();
+    //}
     public boolean MismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
 
-    public boolean esMayorNumero(Carta carta){
-        return this.numero < carta.numero;
+    public boolean esPosterior(Carta carta){
+        return this.numero == (carta.numero + 1);
     }
 
-    public boolean esMenorNumero(Carta carta){
-        return this.numero > carta.numero;
+    public boolean esAnterior(Carta carta){
+        return this.numero == (carta.numero - 1);
     }
 
-    public boolean esElMismoPalo(Carta carta){
+    public boolean esMismoPalo(Carta carta){
         return this.palo == carta.palo;
     }
+    public boolean esUnAs(){
+        return this.numero == 1;
+    }
+
+
 }

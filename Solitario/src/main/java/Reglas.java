@@ -1,22 +1,18 @@
 import java.util.Stack;
 
 public class Reglas {
-
     public void AgregarCartaOPilaDeCartaAColumna(Stack<Carta> pilaDeCartas, ColumnaDeJuego columnaDeJuego){
 
     }
-
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
-            return carta.ObtenerNumero() == 1; // si la carta es igual a 1 devuelve true
+            return carta.esUnAs(); // si la carta es igual a 1 devuelve true
 
         } else {
-            return(carta.ObtenerNumero() == (fundacion.verUltimaCarta().ObtenerNumero() + 1) && carta.ObtenerPalo() == fundacion.verUltimaCarta().ObtenerPalo());
+            return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
 
         }
     }
-
-
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra

@@ -12,18 +12,7 @@ public class Fundacion extends StackDeCartas{
     //otra cosita: para mi la fundacion puede extender Stack y podriamos hacerle Overrride al
     //push de la pila (en vez de UbicarCarta) xq la verdad no se me ocurre q otro metodo podria
     //tener fundacion ❤（っ＾▿＾）
-    public void UbicarCarta(Carta carta){
-        if (cartas.empty()){
-            if (carta.ObtenerNumero() == 1){
-                cartas.push(carta);
-            }
-        } else {
-            if (carta.ObtenerPalo() == cartas.peek().ObtenerPalo() &&
-                    carta.ObtenerNumero() == cartas.peek().ObtenerNumero() + 1){
-                cartas.push(carta);
-            }
-        }
-    }
+
 
     public Carta SacarCarta() {
 

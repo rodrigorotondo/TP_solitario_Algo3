@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 
 public class MazoTest02RobarDelMazo {
@@ -12,16 +13,15 @@ public class MazoTest02RobarDelMazo {
 
         Mazo mazo = new Mazo(); // no mezcle, entonces siempre devuelve la misma carta
 
-        Palos paloEsperado = Palos.DIAMANTES;
-        int numeroEsperado = 13;
+        Carta cartaEsperada = new Carta(13, Palos.DIAMANTES);
 
         Descarte descarte = new Descarte();
         descarte.agregarCarta(mazo.robarUltimaCarta());
         // act
-        Carta cartaObtenida =descarte.robarUltimaCarta();
+        Carta cartaObtenida = descarte.robarUltimaCarta();
         //assert
-        assertEquals(paloEsperado,cartaObtenida.ObtenerPalo());
-        assertEquals(numeroEsperado,cartaObtenida.ObtenerNumero());
+        assertTrue(cartaObtenida.esMismoPalo(cartaEsperada));
+        Assert.assertTrue(!(cartaObtenida.esPosterior(cartaEsperada)) && !(cartaObtenida.esAnterior(cartaEsperada)));
 
 
     }
@@ -33,7 +33,7 @@ public class MazoTest02RobarDelMazo {
         //act
         Carta resultado = mazo.robarUltimaCarta();
         //assert
-        Assert.assertEquals(resultado.ObtenerNumero(), esperada.ObtenerNumero());
-        Assert.assertEquals(resultado.ObtenerPalo(), esperada.ObtenerPalo());
+        Assert.assertTrue(!(resultado.esPosterior(esperada)) && !(resultado.esAnterior(esperada))); //si no es mayor ni menor es igual
+        Assert.assertTrue(resultado.esMismoPalo(esperada));
     }
 }
