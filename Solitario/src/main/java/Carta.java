@@ -28,14 +28,21 @@ public class Carta {
     public int ObtenerNumero(){
         return this.numero;
     }
-    public boolean MismoColorConOtraCarta(Carta carta){
+
+    //algo parecido al strcmp, si es menor me devuelve negativo, si son iguales 0 y
+    //si es mayor positivo :3
+    //IMPORTANTE SI QUIERO VER QUE LAS CARTAS SEAN CONSECUTIVAS ESTE METODO ME DEVUELVE 1 c;
+    // public int CompararConOtraCarta(Carta carta){
+    //    return numero - carta.ObtenerNumero();
+    //}
+    public boolean EsMismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
     }
     public boolean esPosterior(Carta carta){
         return this.numero == (carta.numero + 1);
     }
     public boolean esAnterior(Carta carta){
-        return this.numero == (carta.numero - 1);
+        return (this.numero) == (carta.numero - 1);
     }
     public boolean esMismoPalo(Carta carta){
         return this.palo == carta.palo;

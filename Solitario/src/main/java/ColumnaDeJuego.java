@@ -29,5 +29,5 @@ public class ColumnaDeJuego extends StackDeCartas{
             aComparar = actual;
         }
         return true;
-    }
+    }*/
 }

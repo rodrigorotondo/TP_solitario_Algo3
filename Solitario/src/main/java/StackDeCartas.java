@@ -26,4 +26,7 @@ public class StackDeCartas{
             this.cartas.add(stack.robarUltimaCarta());
         }
     }
+    public Carta verUltimaCarta(){
+        return this.cartas.peek();
+    }
 }
