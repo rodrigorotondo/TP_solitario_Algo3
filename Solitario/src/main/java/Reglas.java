@@ -1,7 +1,12 @@
-import java.util.Stack;
-
 public class Reglas {
-    public boolean AgregarCartaOPilaDeCartaAColumna(StackDeCartas pilaDeCartas, ColumnaDeJuego columnaDeJuego){
+
+    public boolean PuedoSacarCartaDelDeposito(Mazo mazo){
+        if (mazo.estaVacia()){
+            return false;
+        }
+        return true;
+    }
+    public boolean PuedoAgregarCartasAColumna(StackDeCartas pilaDeCartas, ColumnaDeJuego columnaDeJuego){
         if(columnaDeJuego.estaVacia()){
             return pilaDeCartas.verUltimaCarta().esUnRey(); // si la carta es igual a 1 devuelve true
         } else {
@@ -12,10 +17,8 @@ public class Reglas {
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
             return carta.esUnAs(); // si la carta es igual a 1 devuelve true
-
         } else {
             return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
-
         }
     }
 }
@@ -26,9 +29,3 @@ public class Reglas {
 //4. si hay alguna columna vacia, se puede ubicar una K o cualquier conjunto secuencial que comience con ella
 //5. si quiero mas cartas, pido en el deposito (puedo ver hasta 3 cartas). Si presiono nuevamente se da vuelta
 //al deposito y me entrega las cartas nuevamente
-
-//nombres de "partes" que me parecen mas acordes
-//1. fundacion (donde apilamos en orden)
-//2. tablero (en vez de columnas de juego)
-//3. deposito (el mazo de cartas que se encuentra en la parte sup. izquierda)
-//4. descarte (las cartas que van saliendo del deposito)

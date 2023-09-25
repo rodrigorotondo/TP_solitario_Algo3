@@ -10,11 +10,8 @@ public class MazoTest02RobarDelMazo {
     @Test
     public void robarCarta(){
         //arrange
-
         Mazo mazo = new Mazo(); // no mezcle, entonces siempre devuelve la misma carta
-
         Carta cartaEsperada = new Carta(13, Palos.DIAMANTES);
-
         Descarte descarte = new Descarte();
         descarte.agregarCarta(mazo.robarUltimaCarta());
         // act

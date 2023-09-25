@@ -3,11 +3,12 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.*;
 
-public class Mazo extends StackDeCartas{
-    public Mazo(){
+public class Mazo extends StackDeCartas {
+    public Mazo() {
         this.cartas = new Stack<>();
         this.llenarMazo();
     }
+
     private void llenarMazo() {
         for (Palos palo : Palos.values()) {
             for (int numero = 1; numero < 14; numero++) {
@@ -16,12 +17,15 @@ public class Mazo extends StackDeCartas{
             }
         }
     }
-    public void mezclarMazo(){
+
+    public void mezclarMazo() {
         //mezcla completamente al azar el mazo
         Collections.shuffle(this.cartas);
     }
-    public void mezclarMazo(long semilla){
+
+    public void mezclarMazo(long semilla) {
         //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
         Collections.shuffle(this.cartas, new Random(semilla));
     }
+
 }
