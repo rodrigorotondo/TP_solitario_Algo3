@@ -1,14 +1,49 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Stack;
 
 
-public class ColumnaDeJuego extends StackDeCartas{
+public class ColumnaDeJuego {
+    private ArrayList<Carta> cartas;
+
+    final private int TOPE = 0;
     public ColumnaDeJuego(){
-        this.cartas = new Stack<>();
+        this.cartas = new ArrayList<>();
     }
 
-    public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
+    public boolean estaVacia(){
+        return cartas.isEmpty();
+    }
+
+    public Color obtenerColorPrimeraCarta(){
+        return obtenerPrimeraCarta().ObtenerColor();
+    }
+
+    public int obtenerNumeroPrimeraCarta(){
+        return obtenerPrimeraCarta().ObtenerNumero();
+    }
+
+    public int obtenerNumeroUltimaCarta(){
+        return obtenerUltimaCarta().ObtenerNumero();
+    }
+
+    public Color obtenerColorUltimaCarta(){
+        return obtenerUltimaCarta().ObtenerColor();
+    }
+
+    private Carta obtenerPrimeraCarta(){
+        return cartas.get(TOPE);
+    }
+
+    private Carta obtenerUltimaCarta(){
+        return cartas.get(IndiceUltimaCarta());
+    }
+
+    private int IndiceUltimaCarta(){
+        return cartas.size();
+    }
+
+
+
+    /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
         //si la  columna tiene 0 o 1 elemento TA ORDENADA
         if (this.cartas.size() < 2){
             return true;

@@ -1,22 +1,25 @@
 public class Reglas {
 
+    final private int REY = 13;
+    final private int AS = 1;
+
     public boolean PuedoSacarCartaDelDeposito(Mazo mazo){
         if (mazo.estaVacia()){
             return false;
         }
         return true;
     }
-    public boolean PuedoAgregarCartasAColumna(StackDeCartas pilaDeCartas, ColumnaDeJuego columnaDeJuego){
-        if(columnaDeJuego.estaVacia()){
-            return pilaDeCartas.verUltimaCarta().esUnRey(); // si la carta es igual a 1 devuelve true
+    public boolean PuedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
+        if(columnaDepositar.estaVacia()){
+            return columnaExtraer.obtenerNumeroPrimeraCarta() == REY;
         } else {
-            return(columnaDeJuego.verUltimaCarta().esPosterior(pilaDeCartas.verUltimaCarta()) &&
-            !columnaDeJuego.verUltimaCarta().MismoColorConOtraCarta(pilaDeCartas.verUltimaCarta()));
+            return(columnaExtraer.obtenerNumeroPrimeraCarta() < columnaDepositar.obtenerNumeroUltimaCarta()) &&
+                    columnaExtraer.obtenerColorPrimeraCarta() != columnaDepositar.obtenerColorUltimaCarta();
         }
     }
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
-            return carta.esUnAs(); // si la carta es igual a 1 devuelve true
+            return carta.ObtenerNumero() == AS; // si la carta es igual a 1 devuelve true
         } else {
             return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
         }
@@ -26,7 +29,7 @@ public class Reglas {
             return carta.esUnRey(); // si la carta es igual a 13 devuelve true
 
         } else {
-            return(carta.esAnterior(columna.verUltimaCarta()) && !(carta.EsMismoColorConOtraCarta(columna.verUltimaCarta())));
+            return(carta.ObtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.ObtenerColor() != columna.obtenerColorUltimaCarta());
         }
     }
 }

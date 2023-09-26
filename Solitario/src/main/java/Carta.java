@@ -19,10 +19,10 @@ public class Carta {
     public void DescubrirCarta(){
         bocaArriba = !bocaArriba;
     }
-    public String ObtenerColor(){
+    public Color ObtenerColor(){
         return switch (palo) {
-            case CORAZONES, PICAS -> "rojo";
-            case TREBOLES, DIAMANTES -> "negro";
+            case CORAZONES, PICAS -> Color.NEGRO;
+            case TREBOLES, DIAMANTES -> Color.ROJO;
         };
     }
     public int ObtenerNumero(){

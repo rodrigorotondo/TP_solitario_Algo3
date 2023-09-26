@@ -11,9 +11,7 @@ public class StackDeCartas{
     public Carta robarUltimaCarta(){
         return this.cartas.pop();
     }
-    public Carta verUltimaCarta(){
-       return this.cartas.peek();
-    }
+
     public boolean estaVacia(){
         return this.cartas.empty();
     }
@@ -26,6 +24,7 @@ public class StackDeCartas{
             this.cartas.add(stack.robarUltimaCarta());
         }
     }
+
     public Carta verUltimaCarta(){
         return this.cartas.peek();
     }
