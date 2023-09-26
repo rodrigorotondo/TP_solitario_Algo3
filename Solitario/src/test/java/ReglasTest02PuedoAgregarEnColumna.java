@@ -8,14 +8,14 @@ public class ReglasTest02PuedoAgregarEnColumna {
     public void agregarCartaOPilaDeCartaAColumnaVacia() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
         Reglas reglas = new Reglas();
-        StackDeCartas cartasAAgregar= new StackDeCartas();
+        ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13,Palos.CORAZONES);
         Carta carta2 = new Carta(12,Palos.TREBOLES);
         Carta carta3 = new Carta(11,Palos.CORAZONES);
 
-        cartasAAgregar.agregarCarta(carta3);
-        cartasAAgregar.agregarCarta(carta2);
         cartasAAgregar.agregarCarta(carta1);
+        cartasAAgregar.agregarCarta(carta2);
+        cartasAAgregar.agregarCarta(carta3);
         //act
         boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert
@@ -25,7 +25,7 @@ public class ReglasTest02PuedoAgregarEnColumna {
     public void agregarCartaOPilaDeCartaAColumnaQueCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
         Reglas reglas = new Reglas();
-        StackDeCartas cartasAAgregar= new StackDeCartas();
+        ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13,Palos.CORAZONES);
         Carta carta2 = new Carta(12,Palos.TREBOLES);
         Carta carta3 = new Carta(11,Palos.CORAZONES);
@@ -37,9 +37,9 @@ public class ReglasTest02PuedoAgregarEnColumna {
         columna.agregarCarta(carta2);
         columna.agregarCarta(carta3);
 
-        cartasAAgregar.agregarCarta(carta6);
-        cartasAAgregar.agregarCarta(carta5);
         cartasAAgregar.agregarCarta(carta4);
+        cartasAAgregar.agregarCarta(carta5);
+        cartasAAgregar.agregarCarta(carta6);
         //act
         boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert
@@ -49,7 +49,7 @@ public class ReglasTest02PuedoAgregarEnColumna {
     public void agregarCartaOPilaDeCartaAColumnaQueNOCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
         Reglas reglas = new Reglas();
-        StackDeCartas cartasAAgregar= new StackDeCartas();
+        ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13,Palos.CORAZONES);
         Carta carta2 = new Carta(12,Palos.TREBOLES);
         Carta carta3 = new Carta(11,Palos.CORAZONES);
@@ -61,8 +61,8 @@ public class ReglasTest02PuedoAgregarEnColumna {
         columna.agregarCarta(carta2);
         columna.agregarCarta(carta3);
 
-        cartasAAgregar.agregarCarta(carta6);
         cartasAAgregar.agregarCarta(carta5);
+        cartasAAgregar.agregarCarta(carta6);
         //act
         boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert

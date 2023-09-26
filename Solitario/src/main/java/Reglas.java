@@ -4,10 +4,7 @@ public class Reglas {
     final private int AS = 1;
 
     public boolean PuedoSacarCartaDelDeposito(Mazo mazo){
-        if (mazo.estaVacia()){
-            return false;
-        }
-        return true;
+        return !mazo.estaVacia();
     }
     public boolean PuedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
         if(columnaDepositar.estaVacia()){
@@ -26,10 +23,10 @@ public class Reglas {
     }
     public boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna){
         if(columna.estaVacia()){
-            return carta.esUnRey(); // si la carta es igual a 13 devuelve true
+            return carta.ObtenerNumero() == REY; // si la carta es igual a 13 devuelve true
 
         } else {
-            return(carta.ObtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.ObtenerColor() != columna.obtenerColorUltimaCarta());
+            return(carta.ObtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.ObtenerColor() != columna.obtenerColorUltimaCarta()));
         }
     }
 }

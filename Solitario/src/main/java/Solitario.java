@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Solitario{
@@ -18,10 +19,10 @@ public class Solitario{
         tablero = new ColumnaDeJuego[CantidadDeColumnas];
         for (int i = 0; i < CantidadDeColumnas; i++){
             tablero[i] = new ColumnaDeJuego();
-            for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++){//PROBLEMA SOLUCIONADO ;)
+            for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++){
                 tablero[i].agregarCarta(mazo.robarUltimaCarta());
             }
-            tablero[i].verUltimaCarta().DescubrirCarta();
+            tablero[i].DarVueltaUltimaCarta();
         }
     }
     protected void IniciarMesa(){
@@ -37,5 +38,9 @@ public class Solitario{
         tablero = columnasEmpezadas;
         fundaciones = fundacionesEmpezadas;
         descarte = descarteEmpezado;
+    }
+
+    private boolean ganoSolitario(){
+        return true;
     }
 }

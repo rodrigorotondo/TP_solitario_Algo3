@@ -19,8 +19,6 @@ public class MazoTest02RobarDelMazo {
         //assert
         assertTrue(cartaObtenida.esMismoPalo(cartaEsperada));
         Assert.assertTrue(!(cartaObtenida.esPosterior(cartaEsperada)) && !(cartaObtenida.esAnterior(cartaEsperada)));
-
-
     }
     @Test
     public void CartaRobadaCorrecta() {

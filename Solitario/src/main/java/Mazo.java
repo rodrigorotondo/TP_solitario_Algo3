@@ -17,15 +17,12 @@ public class Mazo extends StackDeCartas {
             }
         }
     }
-
     public void mezclarMazo() {
         //mezcla completamente al azar el mazo
         Collections.shuffle(this.cartas);
     }
-
     public void mezclarMazo(long semilla) {
         //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
         Collections.shuffle(this.cartas, new Random(semilla));
     }
-
 }

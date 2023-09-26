@@ -3,16 +3,13 @@ import java.util.ArrayList;
 
 public class ColumnaDeJuego {
     private ArrayList<Carta> cartas;
-
     final private int TOPE = 0;
     public ColumnaDeJuego(){
         this.cartas = new ArrayList<>();
     }
-
     public boolean estaVacia(){
         return cartas.isEmpty();
     }
-
     public Color obtenerColorPrimeraCarta(){
         return obtenerPrimeraCarta().ObtenerColor();
     }
@@ -29,19 +26,25 @@ public class ColumnaDeJuego {
         return obtenerUltimaCarta().ObtenerColor();
     }
 
+    public void DarVueltaUltimaCarta(){
+        obtenerUltimaCarta().DescubrirCarta();
+    }
+
     private Carta obtenerPrimeraCarta(){
         return cartas.get(TOPE);
     }
-
     private Carta obtenerUltimaCarta(){
         return cartas.get(IndiceUltimaCarta());
     }
-
     private int IndiceUltimaCarta(){
-        return cartas.size();
+        return (cartas.size()-1);
     }
 
 
+
+    public void agregarCarta(Carta carta){
+        this.cartas.add(carta);
+    }
 
     /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
         //si la  columna tiene 0 o 1 elemento TA ORDENADA

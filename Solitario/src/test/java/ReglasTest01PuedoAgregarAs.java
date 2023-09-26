@@ -18,7 +18,6 @@ public class ReglasTest01PuedoAgregarAs {
         //assert
         assertTrue(valorObtenido);
     }
-
     @Test
     public void puedoAgregarCarta2() {
         //arrange
@@ -35,7 +34,6 @@ public class ReglasTest01PuedoAgregarAs {
         //assert
         assertFalse(valorObtenido);
     }
-
     @Test
     public void puedoAgregarCarta3() {
         //arrange
@@ -52,7 +50,6 @@ public class ReglasTest01PuedoAgregarAs {
         //assert
         assertTrue(valorObtenido);
     }
-
     @Test
     public void puedoAgregarCarta4() {
         //arrange
@@ -67,6 +64,4 @@ public class ReglasTest01PuedoAgregarAs {
         //assert
         assertFalse(valorObtenido);
     }
-
-
 }
