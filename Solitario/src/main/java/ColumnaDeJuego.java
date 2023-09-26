@@ -10,26 +10,30 @@ public class ColumnaDeJuego {
     public boolean estaVacia(){
         return cartas.isEmpty();
     }
+    public int obtenerTamanio(){
+        return cartas.size();
+    }
     public Color obtenerColorPrimeraCarta(){
-        return obtenerPrimeraCarta().ObtenerColor();
+        return obtenerPrimeraCarta().obtenerColor();
     }
 
     public int obtenerNumeroPrimeraCarta(){
-        return obtenerPrimeraCarta().ObtenerNumero();
+        return obtenerPrimeraCarta().obtenerNumero();
     }
 
     public int obtenerNumeroUltimaCarta(){
-        return obtenerUltimaCarta().ObtenerNumero();
+        return obtenerUltimaCarta().obtenerNumero();
     }
 
     public Color obtenerColorUltimaCarta(){
-        return obtenerUltimaCarta().ObtenerColor();
+        return obtenerUltimaCarta().obtenerColor();
     }
-
+    public Palos obtenerPaloUltimaCarta(){
+        return obtenerUltimaCarta().obtenerPalo();
+    }
     public void DarVueltaUltimaCarta(){
-        obtenerUltimaCarta().DescubrirCarta();
+        obtenerUltimaCarta().descubrirCarta();
     }
-
     private Carta obtenerPrimeraCarta(){
         return cartas.get(TOPE);
     }
@@ -39,11 +43,32 @@ public class ColumnaDeJuego {
     private int IndiceUltimaCarta(){
         return (cartas.size()-1);
     }
-
-
-
     public void agregarCarta(Carta carta){
         this.cartas.add(carta);
+    }
+    private void eliminarCarta(Carta carta){
+        this.cartas.remove(carta);
+    }
+    public void agregarCartas(ColumnaDeJuego cartasAAgregar){
+        for(Carta carta: cartasAAgregar.cartas ){
+            this.agregarCarta(carta);
+        }
+    }
+    private void eliminarCartas(ColumnaDeJuego cartasAEliminar){
+        for(Carta carta: cartasAEliminar.cartas ){
+            this.eliminarCarta(carta);
+        }
+    }
+    public void cambiarDeColumna(ColumnaDeJuego columnaDestino, Carta cartaTopeQueMuevo){ //osea a partir de la cual quiero mover
+        int indiceCartaTopeQueMuevo = this.cartas.indexOf(cartaTopeQueMuevo);
+        ColumnaDeJuego columnaAuxiliar = new ColumnaDeJuego();
+
+        for(int nroCartaActual = indiceCartaTopeQueMuevo ; nroCartaActual < this.obtenerTamanio() ; nroCartaActual++){
+            columnaAuxiliar.agregarCarta(this.cartas.get(nroCartaActual));
+        }
+
+        columnaDestino.agregarCartas(columnaAuxiliar);
+        this.eliminarCartas(columnaAuxiliar);
     }
 
     /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){

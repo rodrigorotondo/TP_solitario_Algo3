@@ -16,17 +16,17 @@ public class Reglas {
     }
     public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
         if(fundacion.estaVacia()){
-            return carta.ObtenerNumero() == AS; // si la carta es igual a 1 devuelve true
+            return carta.obtenerNumero() == AS; // si la carta es igual a 1 devuelve true
         } else {
             return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
         }
     }
     public boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna){
         if(columna.estaVacia()){
-            return carta.ObtenerNumero() == REY; // si la carta es igual a 13 devuelve true
+            return carta.obtenerNumero() == REY; // si la carta es igual a 13 devuelve true
 
         } else {
-            return(carta.ObtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.ObtenerColor() != columna.obtenerColorUltimaCarta()));
+            return(carta.obtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.obtenerColor() != columna.obtenerColorUltimaCarta()));
         }
     }
 }

@@ -16,20 +16,23 @@ public class Carta {
     public boolean esVisible(){
         return bocaArriba;
     }
-    public void DescubrirCarta(){
+    public void descubrirCarta(){
         bocaArriba = !bocaArriba;
     }
-    public Color ObtenerColor(){
+    public Color obtenerColor(){
         return switch (palo) {
             case CORAZONES, PICAS -> Color.NEGRO;
             case TREBOLES, DIAMANTES -> Color.ROJO;
         };
     }
-    public int ObtenerNumero(){
+    public Palos obtenerPalo(){
+        return this.palo;
+    }
+    public int obtenerNumero(){
         return this.numero;
     }
     public boolean EsMismoColorConOtraCarta(Carta carta){
-        return Objects.equals(this.ObtenerColor(), carta.ObtenerColor());
+        return Objects.equals(this.obtenerColor(), carta.obtenerColor());
     }
     public boolean esPosterior(Carta carta){
         return this.numero == (carta.numero + 1);
