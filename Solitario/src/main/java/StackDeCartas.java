@@ -14,9 +14,6 @@ public class StackDeCartas{
     public boolean estaVacia(){
         return this.cartas.empty();
     }
-    public int tamanioPila(){
-        return this.cartas.size();
-    }
     public Carta verUltimaCarta(){
         return this.cartas.peek();
     }

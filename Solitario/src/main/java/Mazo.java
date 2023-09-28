@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 import java.util.*;
 
@@ -8,9 +6,8 @@ public class Mazo extends StackDeCartas {
         this.cartas = new Stack<>();
         this.llenarMazo();
     }
-
     private void llenarMazo() {
-        for (Palos palo : Palos.values()) {
+        for (Palo palo : Palo.values()) {
             for (int numero = 1; numero < 14; numero++) {
                 Carta carta = new Carta(numero, palo);
                 this.agregarCarta(carta);

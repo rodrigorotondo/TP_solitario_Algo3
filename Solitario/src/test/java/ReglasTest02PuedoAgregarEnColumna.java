@@ -7,11 +7,11 @@ public class ReglasTest02PuedoAgregarEnColumna {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaVacia() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new Reglas();
+        Reglas reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
-        Carta carta1 = new Carta(13,Palos.CORAZONES);
-        Carta carta2 = new Carta(12,Palos.TREBOLES);
-        Carta carta3 = new Carta(11,Palos.CORAZONES);
+        Carta carta1 = new Carta(13, Palo.CORAZONES);
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
 
         cartasAAgregar.agregarCarta(carta1);
         cartasAAgregar.agregarCarta(carta2);
@@ -24,14 +24,14 @@ public class ReglasTest02PuedoAgregarEnColumna {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaQueCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new Reglas();
+        Reglas reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
-        Carta carta1 = new Carta(13,Palos.CORAZONES);
-        Carta carta2 = new Carta(12,Palos.TREBOLES);
-        Carta carta3 = new Carta(11,Palos.CORAZONES);
-        Carta carta4 = new Carta(10,Palos.TREBOLES);
-        Carta carta5 = new Carta(9,Palos.CORAZONES);
-        Carta carta6 = new Carta(8,Palos.TREBOLES);
+        Carta carta1 = new Carta(13, Palo.CORAZONES);
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
+        Carta carta4 = new Carta(10, Palo.TREBOLES);
+        Carta carta5 = new Carta(9, Palo.CORAZONES);
+        Carta carta6 = new Carta(8, Palo.TREBOLES);
 
         columna.agregarCarta(carta1);
         columna.agregarCarta(carta2);
@@ -48,14 +48,14 @@ public class ReglasTest02PuedoAgregarEnColumna {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaQueNOCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new Reglas();
+        Reglas reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
-        Carta carta1 = new Carta(13,Palos.CORAZONES);
-        Carta carta2 = new Carta(12,Palos.TREBOLES);
-        Carta carta3 = new Carta(11,Palos.CORAZONES);
-        Carta carta4 = new Carta(10,Palos.TREBOLES);
-        Carta carta5 = new Carta(9,Palos.CORAZONES);
-        Carta carta6 = new Carta(8,Palos.TREBOLES);
+        Carta carta1 = new Carta(13, Palo.CORAZONES);
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
+        Carta carta4 = new Carta(10, Palo.TREBOLES);
+        Carta carta5 = new Carta(9, Palo.CORAZONES);
+        Carta carta6 = new Carta(8, Palo.TREBOLES);
 
         columna.agregarCarta(carta1);
         columna.agregarCarta(carta2);

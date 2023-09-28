@@ -1,34 +1,11 @@
-public class Reglas {
-
-    final private int REY = 13;
-    final private int AS = 1;
-
-    public boolean PuedoSacarCartaDelDeposito(Mazo mazo){
-        return !mazo.estaVacia();
-    }
-    public boolean PuedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
-        if(columnaDepositar.estaVacia()){
-            return columnaExtraer.obtenerNumeroPrimeraCarta() == REY;
-        } else {
-            return(columnaExtraer.obtenerNumeroPrimeraCarta() < columnaDepositar.obtenerNumeroUltimaCarta()) &&
-                    columnaExtraer.obtenerColorPrimeraCarta() != columnaDepositar.obtenerColorUltimaCarta();
-        }
-    }
-    public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
-        if(fundacion.estaVacia()){
-            return carta.obtenerNumero() == AS; // si la carta es igual a 1 devuelve true
-        } else {
-            return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
-        }
-    }
-    public boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna){
-        if(columna.estaVacia()){
-            return carta.obtenerNumero() == REY; // si la carta es igual a 13 devuelve true
-
-        } else {
-            return(carta.obtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.obtenerColor() != columna.obtenerColorUltimaCarta()));
-        }
-    }
+public abstract class Reglas {
+    final protected int REY = 13;
+    final protected int AS = 1;
+    public abstract boolean PuedoSacarCartaDelMazo(Mazo mazo);
+    public abstract boolean PuedoSacarCartaDelDescarte(Descarte descarte);
+    public abstract boolean PuedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar);
+    public abstract boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion);
+    public abstract boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna);
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra

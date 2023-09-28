@@ -1,14 +1,13 @@
 import java.util.Objects;
-
 public class Carta {
 
     //-----------------------------------------------------Atributos---------------------------------------------------
     private final int numero;
-    private final Palos palo;
+    private final Palo palo;
     private boolean bocaArriba;
 
     //-----------------------------------------------------Metodos---------------------------------------------------
-    public Carta(int numero, Palos palo){
+    public Carta(int numero, Palo palo){
         this.numero = numero;
         this.palo = palo;
         this.bocaArriba = false;
@@ -25,7 +24,7 @@ public class Carta {
             case TREBOLES, DIAMANTES -> Color.ROJO;
         };
     }
-    public Palos obtenerPalo(){
+    public Palo obtenerPalo(){
         return this.palo;
     }
     public int obtenerNumero(){

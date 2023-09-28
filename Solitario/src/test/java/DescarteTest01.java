@@ -8,11 +8,11 @@ public class DescarteTest01 {
     public void robarCarta() {
         //arrange
         Descarte d = new Descarte();
-        Carta c = new Carta(1,Palos.DIAMANTES);
+        Carta c = new Carta(1, Palo.DIAMANTES);
         d.agregarCarta(c);
-        Carta c2 = new Carta(2,Palos.DIAMANTES);
+        Carta c2 = new Carta(2, Palo.DIAMANTES);
         d.agregarCarta(c2);
-        Carta c3 = new Carta(3,Palos.DIAMANTES);
+        Carta c3 = new Carta(3, Palo.DIAMANTES);
         d.agregarCarta(c3);
         Carta esperada = c3;
         //act

@@ -28,7 +28,7 @@ public class ColumnaDeJuego {
     public Color obtenerColorUltimaCarta(){
         return obtenerUltimaCarta().obtenerColor();
     }
-    public Palos obtenerPaloUltimaCarta(){
+    public Palo obtenerPaloUltimaCarta(){
         return obtenerUltimaCarta().obtenerPalo();
     }
     public void DarVueltaUltimaCarta(){

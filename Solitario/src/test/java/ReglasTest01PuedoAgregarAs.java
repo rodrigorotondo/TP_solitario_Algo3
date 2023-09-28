@@ -8,8 +8,8 @@ public class ReglasTest01PuedoAgregarAs {
     public void puedoAgregarCarta() {
         //arrange
         Fundacion fundacion = new Fundacion();
-        Reglas reglas = new Reglas();
-        Carta carta = new Carta(1,Palos.CORAZONES);
+        Reglas reglas = new ReglasKlondike();
+        Carta carta = new Carta(1, Palo.CORAZONES);
 
         //act
         boolean valorObtenido = reglas.PuedoAgregarCarta(carta,fundacion);
@@ -22,9 +22,9 @@ public class ReglasTest01PuedoAgregarAs {
     public void puedoAgregarCarta2() {
         //arrange
         Fundacion fundacion = new Fundacion();
-        Reglas reglas = new Reglas();
-        Carta carta1 = new Carta(1,Palos.CORAZONES);
-        Carta carta2 = new Carta(3,Palos.TREBOLES);
+        Reglas reglas = new ReglasKlondike();
+        Carta carta1 = new Carta(1, Palo.CORAZONES);
+        Carta carta2 = new Carta(3, Palo.TREBOLES);
         fundacion.agregarCarta(carta1);
 
         //act
@@ -38,9 +38,9 @@ public class ReglasTest01PuedoAgregarAs {
     public void puedoAgregarCarta3() {
         //arrange
         Fundacion fundacion = new Fundacion();
-        Reglas reglas = new Reglas();
-        Carta carta1 = new Carta(1,Palos.CORAZONES);
-        Carta carta2 = new Carta(2,Palos.CORAZONES);
+        Reglas reglas = new ReglasKlondike();
+        Carta carta1 = new Carta(1, Palo.CORAZONES);
+        Carta carta2 = new Carta(2, Palo.CORAZONES);
         fundacion.agregarCarta(carta1);
 
         //act
@@ -54,8 +54,8 @@ public class ReglasTest01PuedoAgregarAs {
     public void puedoAgregarCarta4() {
         //arrange
         Fundacion fundacion = new Fundacion();
-        Reglas reglas = new Reglas();
-        Carta carta = new Carta(6,Palos.CORAZONES);
+        Reglas reglas = new ReglasKlondike();
+        Carta carta = new Carta(6, Palo.CORAZONES);
 
         //act
         boolean valorObtenido = reglas.PuedoAgregarCarta(carta,fundacion);

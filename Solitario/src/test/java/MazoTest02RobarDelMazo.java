@@ -11,7 +11,7 @@ public class MazoTest02RobarDelMazo {
     public void robarCarta(){
         //arrange
         Mazo mazo = new Mazo(); // no mezcle, entonces siempre devuelve la misma carta
-        Carta cartaEsperada = new Carta(13, Palos.DIAMANTES);
+        Carta cartaEsperada = new Carta(13, Palo.DIAMANTES);
         Descarte descarte = new Descarte();
         descarte.agregarCarta(mazo.robarUltimaCarta());
         // act
@@ -24,7 +24,7 @@ public class MazoTest02RobarDelMazo {
     public void CartaRobadaCorrecta() {
         //arrange
         Mazo mazo = new Mazo();
-        Carta esperada = new Carta(13, Palos.DIAMANTES);
+        Carta esperada = new Carta(13, Palo.DIAMANTES);
         //act
         Carta resultado = mazo.robarUltimaCarta();
         //assert

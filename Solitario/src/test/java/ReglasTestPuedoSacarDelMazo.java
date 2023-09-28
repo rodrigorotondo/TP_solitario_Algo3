@@ -7,8 +7,8 @@ public class ReglasTestPuedoSacarDelMazo {
     @Test
     public void PuedoSacarCartaDelDeposito() {
         Mazo mazo = new Mazo();
-        Reglas reglas = new Reglas();
-        boolean resultado = reglas.PuedoSacarCartaDelDeposito(mazo);
+        Reglas reglas = new ReglasKlondike();
+        boolean resultado = reglas.PuedoSacarCartaDelMazo(mazo);
         assertTrue(resultado);
     }
 }

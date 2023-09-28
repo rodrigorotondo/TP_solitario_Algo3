@@ -10,12 +10,12 @@ public class ColumnaDeJuegoTest {
         ColumnaDeJuego ColQueMuevo = new ColumnaDeJuego();
         ColumnaDeJuego ColDestino = new ColumnaDeJuego();
 
-        Carta carta1 = new Carta(13,Palos.CORAZONES);
-        Carta carta2 = new Carta(12,Palos.TREBOLES);
-        Carta carta3 = new Carta(11,Palos.CORAZONES);
-        Carta carta4 = new Carta(10,Palos.TREBOLES);
-        Carta carta5 = new Carta(9,Palos.CORAZONES);
-        Carta carta6 = new Carta(8,Palos.TREBOLES);
+        Carta carta1 = new Carta(13, Palo.CORAZONES);
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
+        Carta carta4 = new Carta(10, Palo.TREBOLES);
+        Carta carta5 = new Carta(9, Palo.CORAZONES);
+        Carta carta6 = new Carta(8, Palo.TREBOLES);
 
         ColDestino.agregarCarta(carta1);
         ColDestino.agregarCarta(carta2);
@@ -37,21 +37,21 @@ public class ColumnaDeJuegoTest {
         ColumnaDeJuego colQueMuevo = new ColumnaDeJuego();
         ColumnaDeJuego colDestino = new ColumnaDeJuego();
 
-        Carta carta1 = new Carta(13,Palos.CORAZONES);
-        Carta carta2 = new Carta(12,Palos.TREBOLES);
-        Carta carta3 = new Carta(11,Palos.CORAZONES);
-        Carta carta4 = new Carta(10,Palos.TREBOLES);
-        Carta carta5 = new Carta(9,Palos.CORAZONES);
-        Carta carta6 = new Carta(8,Palos.TREBOLES);
+        Carta carta1 = new Carta(13, Palo.CORAZONES);
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
+        Carta carta4 = new Carta(10, Palo.TREBOLES);
+        Carta carta5 = new Carta(9, Palo.CORAZONES);
+        Carta carta6 = new Carta(8, Palo.TREBOLES);
 
-        Carta carta11 = new Carta(13,Palos.CORAZONES);
-        Carta carta22 = new Carta(12,Palos.TREBOLES);
-        Carta carta33 = new Carta(11,Palos.CORAZONES);
-        Carta carta44 = new Carta(10,Palos.TREBOLES);
-        Carta carta55 = new Carta(9,Palos.CORAZONES);
-        Carta carta66 = new Carta(8,Palos.TREBOLES);
-        Carta carta77 = new Carta(7,Palos.CORAZONES);
-        Carta carta88 = new Carta(6,Palos.TREBOLES);
+        Carta carta11 = new Carta(13, Palo.CORAZONES);
+        Carta carta22 = new Carta(12, Palo.TREBOLES);
+        Carta carta33 = new Carta(11, Palo.CORAZONES);
+        Carta carta44 = new Carta(10, Palo.TREBOLES);
+        Carta carta55 = new Carta(9, Palo.CORAZONES);
+        Carta carta66 = new Carta(8, Palo.TREBOLES);
+        Carta carta77 = new Carta(7, Palo.CORAZONES);
+        Carta carta88 = new Carta(6, Palo.TREBOLES);
 
         colDestino.agregarCarta(carta1);
         colDestino.agregarCarta(carta2);
