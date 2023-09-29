@@ -10,4 +10,5 @@ public class Descarte extends StackDeCartas{
             mazo.agregarCarta(this.robarUltimaCarta());
         }
     }
+
 }

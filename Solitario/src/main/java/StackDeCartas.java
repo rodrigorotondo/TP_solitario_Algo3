@@ -17,4 +17,12 @@ public class StackDeCartas{
     public Carta verUltimaCarta(){
         return this.cartas.peek();
     }
+    public void cambiarAColumna(ColumnaDeJuego columnaDestino){
+        Carta cartaCopia = this.robarUltimaCarta();
+        columnaDestino.agregarCarta(cartaCopia);
+    }
+    public void cambiarAStack(StackDeCartas stackDestino){
+        Carta cartaCopia = this.robarUltimaCarta();
+        stackDestino.agregarCarta(cartaCopia);
+    }
 }

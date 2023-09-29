@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-
-
 public class ColumnaDeJuego {
     private ArrayList<Carta> cartas;
     final private int TOPE = 0;
@@ -49,6 +47,12 @@ public class ColumnaDeJuego {
     private void eliminarCarta(Carta carta){
         this.cartas.remove(carta);
     }
+    private void eliminarUltimaCarta(){
+        int lastIndex = this.cartas.size() - 1;
+        if (lastIndex >= 0) {
+            this.cartas.remove(lastIndex);
+        }
+    }
     public void agregarCartas(ColumnaDeJuego cartasAAgregar){
         for(Carta carta: cartasAAgregar.cartas ){
             this.agregarCarta(carta);
@@ -66,9 +70,14 @@ public class ColumnaDeJuego {
         for(int nroCartaActual = indiceCartaTopeQueMuevo ; nroCartaActual < this.obtenerTamanio() ; nroCartaActual++){
             columnaAuxiliar.agregarCarta(this.cartas.get(nroCartaActual));
         }
-
         columnaDestino.agregarCartas(columnaAuxiliar);
         this.eliminarCartas(columnaAuxiliar);
+    }
+    public void cambiarAFundacion(Fundacion fundacionDestino){
+        Carta cartaCopia = this.obtenerUltimaCarta();
+        fundacionDestino.agregarCarta(cartaCopia);
+        this.eliminarUltimaCarta();
+
     }
 
     /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
