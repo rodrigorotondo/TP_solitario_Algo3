@@ -18,8 +18,8 @@ public class DescarteTest01 {
         //act
         Carta obtenida = d.robarUltimaCarta();
         //assert
-        assertTrue(!(obtenida.esPosterior(esperada)) && !(obtenida.esAnterior(esperada))); //si no es mayor ni menor es igual
-        assertTrue(obtenida.esMismoPalo(esperada));
+        assertTrue(!(obtenida.esPosterior(esperada.obtenerNumero())) && !(obtenida.esAnterior(esperada.obtenerNumero()))); //si no es mayor ni menor es igual
+        assertTrue(obtenida.esMismoPalo(esperada.obtenerPalo()));
     }
     @Test
     public void cambiarCartaAColumna() {

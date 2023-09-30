@@ -9,18 +9,18 @@ public class ReglasKlondike extends Reglas {
                     columnaExtraer.obtenerColorPrimeraCarta() != columnaDepositar.obtenerColorUltimaCarta();
         }
     }
-    public boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion){
+    public boolean PuedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
         if(fundacion.estaVacia()){
-            return carta.obtenerNumero() == AS; // si la carta es igual a 1 devuelve true
+            return numeroCarta == AS; // si la carta es igual a 1 devuelve true
         } else {
-            return(carta.esPosterior(fundacion.verUltimaCarta()) && carta.esMismoPalo(fundacion.verUltimaCarta()));
+            return(fundacion.verUltimaCarta().esAnterior(numeroCarta) && fundacion.verUltimaCarta().esMismoPalo(paloCarta));
         }
     }
-    public boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna){
+    public boolean PuedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna){//columna a columna
         if(columna.estaVacia()){
-            return carta.obtenerNumero() == REY; // si la carta es igual a 13 devuelve true
+            return numeroCarta == REY; // si la carta es igual a 13 devuelve true
         } else {
-            return(carta.obtenerNumero() < columna.obtenerNumeroUltimaCarta() && (carta.obtenerColor() != columna.obtenerColorUltimaCarta()));
+            return(numeroCarta < columna.obtenerNumeroUltimaCarta() && (paloCarta.obtenerColor() != columna.obtenerColorUltimaCarta()));
         }
     }
 }

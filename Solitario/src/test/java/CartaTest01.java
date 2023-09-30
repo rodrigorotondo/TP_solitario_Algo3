@@ -10,7 +10,7 @@ public class CartaTest01 {
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
         //
-        boolean resultado = carta1.esPosterior(carta2);
+        boolean resultado = carta1.esPosterior(carta2.obtenerNumero());
         //
         assertTrue(resultado);
     }
@@ -20,7 +20,7 @@ public class CartaTest01 {
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
         //
-        boolean resultado = carta2.esAnterior(carta1);
+        boolean resultado = carta2.esAnterior(carta1.obtenerNumero());
         //
         assertTrue(resultado);
     }

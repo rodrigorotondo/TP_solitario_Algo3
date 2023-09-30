@@ -23,4 +23,39 @@ public class Klondike extends Solitario{
         mazo.mezclarMazo();
         iniciarTablero(new int[]{1, 2, 3, 4, 5, 6, 7}, mazo);
     }
+    public void jugadaColumnaAFundacion(int indiceColumna, int indiceFundacion){
+
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
+        int numeroCartaAAgregar = this.tablero[indiceColumna].obtenerNumeroUltimaCarta();
+        Palo paloCartaAAgregar = this.tablero[indiceColumna].obtenerPaloUltimaCarta();
+
+        if (this.reglas.PuedoAgregarCarta(numeroCartaAAgregar,paloCartaAAgregar,fundacionDestino )){
+            this.tablero[indiceColumna].cambiarAFundacion(fundacionDestino);
+        }
+    }
+    public void jugadaFundacionAColumna(int indiceColumna, int indiceFundacion){
+
+        ColumnaDeJuego columnaDestino = this.tablero[indiceColumna];
+        int numeroCartaAAgregar = this.fundaciones[indiceFundacion].verUltimaCarta().obtenerNumero();
+        Palo paloCartaAAgregar = this.fundaciones[indiceFundacion].verUltimaCarta().obtenerPalo();
+
+        if (this.reglas.PuedoAgregarCarta(numeroCartaAAgregar,paloCartaAAgregar,columnaDestino)){
+            this.fundaciones[indiceFundacion].cambiarAColumna(columnaDestino);
+        }
+    }
+    public void jugadaDescarteFundacion(int indiceFundacion){
+
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
+        int numeroCartaAAgregar = this.descarte.verUltimaCarta().obtenerNumero();
+        Palo paloCartaAAgregar = this.descarte.verUltimaCarta().obtenerPalo();
+
+        if (this.reglas.PuedoAgregarCarta(numeroCartaAAgregar,paloCartaAAgregar,fundacionDestino)){
+            this.descarte.cambiarAStack(fundacionDestino);
+        }
+    }
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen){
+
+       
+        }
+    }
 }

@@ -4,8 +4,9 @@ public abstract class Reglas {
     public abstract boolean PuedoSacarCartaDelMazo(Mazo mazo);
     public abstract boolean PuedoSacarCartaDelDescarte(Descarte descarte);
     public abstract boolean PuedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar);
-    public abstract boolean PuedoAgregarCarta(Carta carta, Fundacion fundacion);
-    public abstract boolean PuedoAgregarCarta(Carta carta, ColumnaDeJuego columna);
+    public abstract boolean PuedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion);
+    public abstract boolean PuedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna);
+
 }
 //REGLAS en solitario Klondike
 //1. en la columna de juego podemos mover cartas de 1 columna hacia otra

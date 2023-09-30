@@ -33,13 +33,13 @@ public class Carta {
     public boolean EsMismoColorConOtraCarta(Carta carta){
         return Objects.equals(this.obtenerColor(), carta.obtenerColor());
     }
-    public boolean esPosterior(Carta carta){
-        return this.numero == (carta.numero + 1);
+    public boolean esPosterior(int numeroCarta){
+        return this.numero == (numeroCarta + 1);
     }
-    public boolean esAnterior(Carta carta){
-        return (this.numero) == (carta.numero - 1);
+    public boolean esAnterior(int numeroCarta){
+        return (this.numero) == (numeroCarta - 1);
     }
-    public boolean esMismoPalo(Carta carta){
-        return this.palo == carta.palo;
+    public boolean esMismoPalo(Palo paloCarta){
+        return this.palo == paloCarta;
     }
 }

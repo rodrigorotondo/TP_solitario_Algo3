@@ -17,8 +17,8 @@ public class MazoTest {
         // act
         Carta cartaObtenida = descarte.robarUltimaCarta();
         //assert
-        assertTrue(cartaObtenida.esMismoPalo(cartaEsperada));
-        Assert.assertTrue(!(cartaObtenida.esPosterior(cartaEsperada)) && !(cartaObtenida.esAnterior(cartaEsperada)));
+        assertTrue(cartaObtenida.esMismoPalo(cartaEsperada.obtenerPalo()));
+        Assert.assertTrue(!(cartaObtenida.esPosterior(cartaEsperada.obtenerNumero())) && !(cartaObtenida.esAnterior(cartaEsperada.obtenerNumero())));
     }
     @Test
     public void CartaRobadaCorrecta() {
@@ -28,7 +28,7 @@ public class MazoTest {
         //act
         Carta resultado = mazo.robarUltimaCarta();
         //assert
-        Assert.assertTrue(!(resultado.esPosterior(esperada)) && !(resultado.esAnterior(esperada))); //si no es mayor ni menor es igual
-        Assert.assertTrue(resultado.esMismoPalo(esperada));
+        Assert.assertTrue(!(resultado.esPosterior(esperada.obtenerNumero())) && !(resultado.esAnterior(esperada.obtenerNumero()))); //si no es mayor ni menor es igual
+        Assert.assertTrue(resultado.esMismoPalo(esperada.obtenerPalo()));
     }
 }

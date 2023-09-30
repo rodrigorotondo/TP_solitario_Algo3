@@ -10,7 +10,7 @@ public class ReglasTest {
         Reglas reglas = new ReglasKlondike();
         Carta carta = new Carta(1, Palo.CORAZONES);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta,fundacion);
+        boolean valorObtenido = reglas.PuedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
         //preguntamos si podemos agregar un as que puede estar en la fundacion
         //assert
         assertTrue(valorObtenido);
@@ -24,7 +24,7 @@ public class ReglasTest {
         Carta carta2 = new Carta(3, Palo.TREBOLES);
         fundacion.agregarCarta(carta1);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2,fundacion);
+        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
         //preguntamos si podemos agregar una carta que no puede estar ahi
 
         //assert
@@ -40,7 +40,7 @@ public class ReglasTest {
         fundacion.agregarCarta(carta1);
 
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2,fundacion);
+        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
         //preguntamos si puedo agregarle una carta correcta a la fundacion
 
         //assert
@@ -54,7 +54,7 @@ public class ReglasTest {
         Carta carta = new Carta(6, Palo.CORAZONES);
 
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta,fundacion);
+        boolean valorObtenido = reglas.PuedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
         //preguntamos si puedo agregarle una carta incorrecta a la fundacion
 
         //assert
