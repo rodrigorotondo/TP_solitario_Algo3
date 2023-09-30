@@ -5,7 +5,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 
-public class MazoTest02RobarDelMazo {
+public class MazoTest {
 
     @Test
     public void robarCarta(){
