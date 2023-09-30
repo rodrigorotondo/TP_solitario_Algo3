@@ -69,7 +69,8 @@ public class ColumnaDeJuegoTest {
         colQueMuevo.agregarCarta(carta77);
         colQueMuevo.agregarCarta(carta88);
 
-        colQueMuevo.cambiarDeColumna(colDestino,carta77);
+        colQueMuevo.cambiarDeColumna(colDestino,6);
+
 
         assertTrue(colQueMuevo.obtenerTamanio() == 6);
         assertTrue(colDestino.obtenerTamanio() == 8);

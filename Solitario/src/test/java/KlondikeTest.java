@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 public class KlondikeTest {
 
-   /* @Test
-    public void jugadaColumnaAFundacion() {
+   @Test
+    public void klondikeInicializacion() {
 
         Klondike klondike = new Klondike();
 
-    }*/
+    }
 }

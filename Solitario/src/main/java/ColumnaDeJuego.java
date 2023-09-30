@@ -63,8 +63,7 @@ public class ColumnaDeJuego {
             this.eliminarCarta(carta);
         }
     }
-    public void cambiarDeColumna(ColumnaDeJuego columnaDestino, Carta cartaTopeQueMuevo){ //osea a partir de la cual quiero mover
-        int indiceCartaTopeQueMuevo = this.cartas.indexOf(cartaTopeQueMuevo);
+    public void cambiarDeColumna(ColumnaDeJuego columnaDestino, int indiceCartaTopeQueMuevo){ //osea a partir de la cual quiero mover
         ColumnaDeJuego columnaAuxiliar = new ColumnaDeJuego();
 
         for(int nroCartaActual = indiceCartaTopeQueMuevo ; nroCartaActual < this.obtenerTamanio() ; nroCartaActual++){

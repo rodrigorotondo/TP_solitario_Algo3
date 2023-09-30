@@ -53,9 +53,13 @@ public class Klondike extends Solitario{
             this.descarte.cambiarAStack(fundacionDestino);
         }
     }
-    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen){
 
-       
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen){
+        ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
+        ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
+
+        if (this.reglas.PuedoAgregarCartasAColumna(columnaOrigen, columnaDestino)){
+            columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
         }
     }
 }

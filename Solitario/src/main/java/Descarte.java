@@ -10,5 +10,11 @@ public class Descarte extends StackDeCartas{
             mazo.agregarCarta(this.robarUltimaCarta());
         }
     }
+    @Override
+    public void agregarCarta(Carta carta){
+        carta.descubrirCarta();
+        this.cartas.push(carta);
+    }
+
 
 }
