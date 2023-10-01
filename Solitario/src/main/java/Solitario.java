@@ -6,6 +6,10 @@ public abstract class Solitario{
     protected Descarte descarte;
     protected ColumnaDeJuego[] tablero;
 
-    public abstract void juegoAPuntoDeGanar();
+    public abstract void juegoAPuntoDeGanarConCartaEnColumna();
+
+    public abstract void juegoAPuntoDeGanarConCartaEnDescarte();
+
+
 
 }
