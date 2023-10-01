@@ -5,4 +5,7 @@ public abstract class Solitario{
     protected Fundacion[] fundaciones;
     protected Descarte descarte;
     protected ColumnaDeJuego[] tablero;
+
+    public abstract void juegoAPuntoDeGanar();
+
 }

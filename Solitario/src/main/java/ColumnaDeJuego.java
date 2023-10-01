@@ -29,16 +29,16 @@ public class ColumnaDeJuego {
     public Palo obtenerPaloUltimaCarta(){
         return obtenerUltimaCarta().obtenerPalo();
     }
-    public void DarVueltaUltimaCarta(){
+    public void darVueltaUltimaCarta(){
         obtenerUltimaCarta().descubrirCarta();
     }
     private Carta obtenerPrimeraCarta(){
         return cartas.get(TOPE);
     }
     private Carta obtenerUltimaCarta(){
-        return cartas.get(IndiceUltimaCarta());
+        return cartas.get(indiceUltimaCarta());
     }
-    private int IndiceUltimaCarta(){
+    private int indiceUltimaCarta(){
         return (cartas.size()-1);
     }
     public void agregarCarta(Carta carta){
@@ -76,7 +76,9 @@ public class ColumnaDeJuego {
         Carta cartaCopia = this.obtenerUltimaCarta();
         fundacionDestino.agregarCarta(cartaCopia);
         this.eliminarUltimaCarta();
-
+    }
+    public boolean esCartaVisible(int indiceCarta){
+        return this.cartas.get(indiceCarta).esVisible();
     }
 
     /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){

@@ -10,7 +10,7 @@ public class ReglasTest {
         Reglas reglas = new ReglasKlondike();
         Carta carta = new Carta(1, Palo.CORAZONES);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
+        boolean valorObtenido = reglas.puedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
         //preguntamos si podemos agregar un as que puede estar en la fundacion
         //assert
         assertTrue(valorObtenido);
@@ -24,7 +24,7 @@ public class ReglasTest {
         Carta carta2 = new Carta(3, Palo.TREBOLES);
         fundacion.agregarCarta(carta1);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
+        boolean valorObtenido = reglas.puedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
         //preguntamos si podemos agregar una carta que no puede estar ahi
 
         //assert
@@ -40,7 +40,7 @@ public class ReglasTest {
         fundacion.agregarCarta(carta1);
 
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
+        boolean valorObtenido = reglas.puedoAgregarCarta(carta2.obtenerNumero(),carta2.obtenerPalo(),fundacion);
         //preguntamos si puedo agregarle una carta correcta a la fundacion
 
         //assert
@@ -54,7 +54,7 @@ public class ReglasTest {
         Carta carta = new Carta(6, Palo.CORAZONES);
 
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
+        boolean valorObtenido = reglas.puedoAgregarCarta(carta.obtenerNumero(),carta.obtenerPalo(),fundacion);
         //preguntamos si puedo agregarle una carta incorrecta a la fundacion
 
         //assert
@@ -73,7 +73,7 @@ public class ReglasTest {
         cartasAAgregar.agregarCarta(carta2);
         cartasAAgregar.agregarCarta(carta3);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
+        boolean valorObtenido = reglas.puedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert
         assertTrue(valorObtenido);
     }
@@ -97,7 +97,7 @@ public class ReglasTest {
         cartasAAgregar.agregarCarta(carta5);
         cartasAAgregar.agregarCarta(carta6);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
+        boolean valorObtenido = reglas.puedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert
         assertTrue(valorObtenido);
     }
@@ -120,7 +120,7 @@ public class ReglasTest {
         cartasAAgregar.agregarCarta(carta5);
         cartasAAgregar.agregarCarta(carta6);
         //act
-        boolean valorObtenido = reglas.PuedoAgregarCartasAColumna(cartasAAgregar,columna);
+        boolean valorObtenido = reglas.puedoAgregarCartasAColumna(cartasAAgregar,columna);
         //assert
         assertFalse(valorObtenido);
     }
@@ -128,7 +128,7 @@ public class ReglasTest {
     public void PuedoSacarCartaDelDeposito() {
         Mazo mazo = new Mazo();
         Reglas reglas = new ReglasKlondike();
-        boolean resultado = reglas.PuedoSacarCartaDelMazo(mazo);
+        boolean resultado = reglas.puedoSacarCartaDelMazo(mazo);
         assertTrue(resultado);
     }
 }
