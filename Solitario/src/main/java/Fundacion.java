@@ -9,4 +9,6 @@ public class Fundacion extends StackDeCartas{
     public boolean estaCompleta(){
         return this.cartas.size() == FUNDACIONCOMPLETA;
     }
+
+
 }

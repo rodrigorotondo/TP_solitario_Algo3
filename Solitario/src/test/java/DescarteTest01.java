@@ -59,8 +59,8 @@ public class DescarteTest01 {
 
         descarteQueMuevo.cambiarAColumna(colDestino);
 
-        assertTrue(colDestino.obtenerNumeroUltimaCarta()== carta13.obtenerNumero());
-        assertTrue(colDestino.obtenerPaloUltimaCarta()== carta13.obtenerPalo());
+        assertEquals(colDestino.obtenerNumeroUltimaCarta(), carta13.obtenerNumero());
+        assertSame(colDestino.obtenerPaloUltimaCarta(), carta13.obtenerPalo());
         assertTrue(descarteQueMuevo.estaVacia());
 
     }
@@ -84,9 +84,30 @@ public class DescarteTest01 {
 
         descarteQueMuevo.cambiarAStack(fundacionDestino);
 
-        assertTrue(fundacionDestino.verUltimaCarta().obtenerNumero() == carta12.obtenerNumero());
-        assertTrue(fundacionDestino.verUltimaCarta().obtenerPalo()== carta12.obtenerPalo());
-        assertTrue(descarteQueMuevo.verUltimaCarta().obtenerNumero() == carta11.obtenerNumero());
-        assertTrue(descarteQueMuevo.verUltimaCarta().obtenerPalo() == carta11.obtenerPalo());
+        assertEquals(fundacionDestino.verUltimaCarta().obtenerNumero(), carta12.obtenerNumero());
+        assertSame(fundacionDestino.verUltimaCarta().obtenerPalo(), carta12.obtenerPalo());
+        assertEquals(descarteQueMuevo.verUltimaCarta().obtenerNumero(), carta11.obtenerNumero());
+        assertSame(descarteQueMuevo.verUltimaCarta().obtenerPalo(), carta11.obtenerPalo());
+    }
+
+
+    @Test
+    public void vaciarDescarte(){
+        //arrange
+        Descarte descarte = new Descarte();
+        Mazo mazo = new Mazo();
+
+        while(!mazo.estaVacia()){
+            mazo.pasarCartaADescarte(descarte);
+        }
+
+        //act
+
+        descarte.vaciarDescarte(mazo);
+
+        //assert
+        assertTrue(descarte.estaVacia());
+        assertFalse(mazo.estaVacia());
+
     }
 }

@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class KlondikeTest01 {
+public class KlondikeTest01{
 
    @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar() {

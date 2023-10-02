@@ -1,8 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 
 public class MazoTest {
@@ -30,5 +29,20 @@ public class MazoTest {
         //assert
         Assert.assertTrue(!(resultado.esPosterior(esperada.obtenerNumero())) && !(resultado.esAnterior(esperada.obtenerNumero()))); //si no es mayor ni menor es igual
         Assert.assertTrue(resultado.esMismoPalo(esperada.obtenerPalo()));
+    }
+
+    @Test
+    public void pasarCartaADescarte(){
+        //arrange
+        Mazo mazo = new Mazo();
+        Descarte descarte = new Descarte();  //aqui el descarte se encuentra vacio
+
+        //act
+        mazo.pasarCartaADescarte(descarte);
+
+        //assert
+        assertFalse(descarte.estaVacia());
+
+
     }
 }

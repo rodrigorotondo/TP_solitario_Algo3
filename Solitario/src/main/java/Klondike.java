@@ -62,6 +62,20 @@ public class Klondike extends Solitario {
         }
     }
 
+    public void jugadaDescarteColumna(int indiceColumna){
+        if(reglas.puedoSacarCartaDelDescarte(descarte)) {
+
+            Carta cartaDescarte = this.descarte.verUltimaCarta();
+            Palo paloCartaDescarte = cartaDescarte.obtenerPalo();
+            int numeroCartaDescarte = cartaDescarte.obtenerNumero();
+
+            if (reglas.puedoAgregarCarta(numeroCartaDescarte, paloCartaDescarte, this.tablero[indiceColumna])) {
+                this.descarte.cambiarAColumna(this.tablero[indiceColumna]);
+            }
+
+        }
+    }
+
     public void jugadaDescarteFundacion(int indiceFundacion) {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
         if (this.reglas.puedoSacarCartaDelDescarte(this.descarte)) {

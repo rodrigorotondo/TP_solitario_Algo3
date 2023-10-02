@@ -20,5 +20,14 @@ public class KlondikeTest02 {
         assertTrue(klondike.juegoTerminado());
     }
 
+    @Test
+    public void klondikeJugadaDescarteAColumna(){
+        Klondike klondike = new Klondike();
+        klondike.juegoAPuntoDeGanarConCartaEnDescarte();
+        klondike.jugadaDescarteColumna(0);
+        assertTrue(klondike.descarte.estaVacia());
+        assertFalse(klondike.tablero[0].estaVacia());
+    }
+
 
 }
