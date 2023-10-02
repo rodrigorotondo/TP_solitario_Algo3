@@ -1,7 +1,7 @@
 public class Klondike extends Solitario {
     final private int CANTIDADDEFUNDACIONES = 4;
     final private int CANTIDADDECOLUMNAS = 7;
-    final private int PUNTOSINICIALES = 0;
+
 
     public Klondike() {
         this.mazo = new Mazo();
@@ -11,7 +11,7 @@ public class Klondike extends Solitario {
         this.iniciarColumnas();
         this.descarte = new Descarte();
         this.reglas = new ReglasKlondike();
-        this.puntos = PUNTOSINICIALES;
+
     }
     private void iniciarFundaciones(){
         for (int i = 0; i < CANTIDADDEFUNDACIONES; i++){
@@ -114,7 +114,7 @@ public class Klondike extends Solitario {
             this.fundaciones[3].agregarCarta(carta);
         }
         Carta ultimaCarta = new Carta(13, Palo.PICAS);
-        ultimaCarta.descubrirCarta();
+        ultimaCarta.cambiarVisibilidad();
         this.tablero[0].agregarCarta(ultimaCarta);
         }
 
@@ -140,7 +140,7 @@ public class Klondike extends Solitario {
             this.fundaciones[3].agregarCarta(carta);
         }
         Carta ultimaCarta = new Carta(13, Palo.PICAS);
-        ultimaCarta.descubrirCarta();
+        ultimaCarta.cambiarVisibilidad();
         this.descarte.agregarCarta(ultimaCarta);
     }
 

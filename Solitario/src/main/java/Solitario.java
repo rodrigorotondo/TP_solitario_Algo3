@@ -1,5 +1,4 @@
 public abstract class Solitario{
-    protected int puntos;
     protected Reglas reglas;
     protected Mazo mazo;
     protected Fundacion[] fundaciones;

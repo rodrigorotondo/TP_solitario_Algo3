@@ -1,12 +1,12 @@
 import java.util.Objects;
 public class Carta {
 
-    //-----------------------------------------------------Atributos---------------------------------------------------
+    //-----------------------------------------------------Atributos---------------------------------------------------//
     private final int numero;
     private final Palo palo;
     private boolean bocaArriba;
 
-    //-----------------------------------------------------Metodos---------------------------------------------------
+    //-----------------------------------------------------Metodos---------------------------------------------------//
     public Carta(int numero, Palo palo){
         this.numero = numero;
         this.palo = palo;
@@ -15,7 +15,7 @@ public class Carta {
     public boolean esVisible(){
         return bocaArriba;
     }
-    public void descubrirCarta(){
+    public void cambiarVisibilidad(){
         bocaArriba = !bocaArriba;
     }
     public Color obtenerColor(){

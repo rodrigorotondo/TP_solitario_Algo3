@@ -12,7 +12,7 @@ public class Descarte extends StackDeCartas{
     }
     @Override
     public void agregarCarta(Carta carta){
-        carta.descubrirCarta();
+        carta.cambiarVisibilidad();
         this.cartas.push(carta);
     }
 

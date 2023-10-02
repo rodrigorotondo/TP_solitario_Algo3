@@ -72,7 +72,7 @@ public class ColumnaDeJuegoTest {
         colQueMuevo.cambiarDeColumna(colDestino,6);
 
 
-        assertTrue(colQueMuevo.obtenerTamanio() == 6);
+        assertEquals(6, colQueMuevo.obtenerTamanio());
         assertTrue(colDestino.obtenerTamanio() == 8);
         assertEquals(colDestino.obtenerNumeroUltimaCarta(),carta88.obtenerNumero());
         assertEquals(colDestino.obtenerPaloUltimaCarta(),carta88.obtenerPalo());
@@ -115,9 +115,85 @@ public class ColumnaDeJuegoTest {
 
         colDeLaQueMuevo.cambiarAFundacion(fundacionDestino);
 
-        assertTrue(colDeLaQueMuevo.obtenerNumeroUltimaCarta()== carta12.obtenerNumero());
-        assertTrue(colDeLaQueMuevo.obtenerPaloUltimaCarta()== carta12.obtenerPalo());
-        assertTrue(fundacionDestino.verUltimaCarta().obtenerNumero() == carta13.obtenerNumero());
-        assertTrue(fundacionDestino.verUltimaCarta().obtenerPalo() == carta13.obtenerPalo());
+        assertEquals(colDeLaQueMuevo.obtenerNumeroUltimaCarta(), carta12.obtenerNumero());
+        assertSame(colDeLaQueMuevo.obtenerPaloUltimaCarta(), carta12.obtenerPalo());
+        assertEquals(fundacionDestino.verUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
+        assertSame(fundacionDestino.verUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
+    }
+
+
+    @Test
+    public void ultimaCartaQuedaDescubierta(){
+
+        ColumnaDeJuego columnaOrigen = new ColumnaDeJuego();
+        ColumnaDeJuego columnaDestino= new ColumnaDeJuego();
+
+        Carta carta1 = new Carta(13, Palo.CORAZONES); // esta carta no esta visible
+        Carta carta2 = new Carta(12, Palo.TREBOLES);
+        carta2.cambiarVisibilidad();
+        Carta carta3 = new Carta(11, Palo.CORAZONES);
+        carta3.cambiarVisibilidad();
+        Carta carta4 = new Carta(10, Palo.TREBOLES);
+        carta4.cambiarVisibilidad();
+
+
+        Carta carta5 = new Carta(13, Palo.DIAMANTES);
+        carta5.cambiarVisibilidad();
+        Carta carta6 = new Carta(12, Palo.PICAS);
+        carta6.cambiarVisibilidad();
+        Carta carta7 = new Carta(11, Palo.DIAMANTES);
+        carta7.cambiarVisibilidad();
+
+        columnaOrigen.agregarCarta(carta1);
+        columnaOrigen.agregarCarta(carta2);
+        columnaOrigen.agregarCarta(carta3);
+        columnaOrigen.agregarCarta(carta4);
+
+
+
+        columnaDestino.agregarCarta(carta5);
+
+
+
+        columnaOrigen.cambiarDeColumna(columnaDestino,1);
+
+        boolean esCartaVisible = columnaOrigen.esCartaVisible(0);
+
+        assertTrue(esCartaVisible);
+
+
+
+    }
+    @Test
+    public void seCambianTodasLasCartasDeColumna(){
+
+        ColumnaDeJuego columnaOrigen = new ColumnaDeJuego();
+        ColumnaDeJuego columnaDestino= new ColumnaDeJuego();
+
+
+        Carta carta1 = new Carta(12, Palo.TREBOLES);
+        carta1.cambiarVisibilidad();
+        Carta carta2 = new Carta(11, Palo.CORAZONES);
+        carta2.cambiarVisibilidad();
+        Carta carta3 = new Carta(10, Palo.TREBOLES);
+        carta3.cambiarVisibilidad();
+
+
+        Carta carta4 = new Carta(13, Palo.DIAMANTES);
+        carta4.cambiarVisibilidad();
+
+
+        columnaOrigen.agregarCarta(carta1);
+        columnaOrigen.agregarCarta(carta2);
+        columnaOrigen.agregarCarta(carta3);
+
+
+        columnaDestino.agregarCarta(carta4);
+
+
+        columnaOrigen.cambiarDeColumna(columnaDestino,0);
+
+
+        assertTrue(columnaOrigen.estaVacia());
     }
 }

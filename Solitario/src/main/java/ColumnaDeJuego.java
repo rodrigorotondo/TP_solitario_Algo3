@@ -30,7 +30,7 @@ public class ColumnaDeJuego {
         return obtenerUltimaCarta().obtenerPalo();
     }
     public void darVueltaUltimaCarta(){
-        obtenerUltimaCarta().descubrirCarta();
+        obtenerUltimaCarta().cambiarVisibilidad();
     }
     private Carta obtenerPrimeraCarta(){
         return cartas.get(TOPE);
@@ -71,6 +71,17 @@ public class ColumnaDeJuego {
         }
         columnaDestino.agregarCartas(columnaAuxiliar);
         this.eliminarCartas(columnaAuxiliar);
+
+        this.cambiarVisibilidadUltimaCarta();
+
+    }
+
+    private void cambiarVisibilidadUltimaCarta(){
+        if(!this.estaVacia()){
+            if(!this.obtenerUltimaCarta().esVisible()){
+                this.obtenerUltimaCarta().cambiarVisibilidad();
+            }
+        }
     }
     public void cambiarAFundacion(Fundacion fundacionDestino){
         Carta cartaCopia = this.obtenerUltimaCarta();
