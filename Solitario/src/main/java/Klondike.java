@@ -75,7 +75,6 @@ public class Klondike extends Solitario {
 
         }
     }
-
     public void jugadaDescarteFundacion(int indiceFundacion) {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
         if (this.reglas.puedoSacarCartaDelDescarte(this.descarte)) {

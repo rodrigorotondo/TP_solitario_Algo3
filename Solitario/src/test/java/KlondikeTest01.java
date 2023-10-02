@@ -46,4 +46,5 @@ public class KlondikeTest01{
         klondike.jugadaDescarteFundacion(3);
         assertFalse(klondike.juegoTerminado());
     }
+
 }
