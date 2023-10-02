@@ -45,45 +45,44 @@ public class Klondike extends Solitario {
         }
     }
 
-    protected void iniciarMesa() {
-        mazo = new Mazo();
-        mazo.mezclarMazo();
+    public void iniciarMesa() {
+        this.mazo.mezclarMazo();
         iniciarTablero(new int[]{1, 2, 3, 4, 5, 6, 7}, mazo);
     }
 
-    public void jugadaColumnaAFundacion(int indiceColumna, int indiceFundacion) {
+    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
 
-        Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
-        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumna])) {
-            int numeroCartaAAgregar = this.tablero[indiceColumna].obtenerNumeroUltimaCarta();
-            Palo paloCartaAAgregar = this.tablero[indiceColumna].obtenerPaloUltimaCarta();
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
+        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
+            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerNumeroUltimaCarta();
+            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerPaloUltimaCarta();
 
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
-                this.tablero[indiceColumna].cambiarAFundacion(fundacionDestino);
+                this.tablero[indiceColumnaOrigen].cambiarAFundacion(fundacionDestino);
             }
         }
     }
 
-    public void jugadaFundacionAColumna(int indiceColumna, int indiceFundacion) {
+    public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) {
 
-        ColumnaDeJuego columnaDestino = this.tablero[indiceColumna];
-        int numeroCartaAAgregar = this.fundaciones[indiceFundacion].verUltimaCarta().obtenerNumero();
-        Palo paloCartaAAgregar = this.fundaciones[indiceFundacion].verUltimaCarta().obtenerPalo();
+        ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
+        int numeroCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerNumero();
+        Palo paloCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerPalo();
 
         if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, columnaDestino)) {
-            this.fundaciones[indiceFundacion].cambiarAColumna(columnaDestino);
+            this.fundaciones[indiceFundacionOrigen].cambiarAColumna(columnaDestino);
         }
     }
 
-    public void jugadaDescarteColumna(int indiceColumna){
+    public void jugadaDescarteColumna(int indiceColumnaDestino){
         if(reglas.puedoSacarCartaDelDescarte(descarte)) {
 
             Carta cartaDescarte = this.descarte.verUltimaCarta();
             Palo paloCartaDescarte = cartaDescarte.obtenerPalo();
             int numeroCartaDescarte = cartaDescarte.obtenerNumero();
 
-            if (reglas.puedoAgregarCarta(numeroCartaDescarte, paloCartaDescarte, this.tablero[indiceColumna])) {
-                this.descarte.cambiarAColumna(this.tablero[indiceColumna]);
+            if (reglas.puedoAgregarCarta(numeroCartaDescarte, paloCartaDescarte, this.tablero[indiceColumnaDestino])) {
+                this.descarte.cambiarAColumna(this.tablero[indiceColumnaDestino]);
             }
 
         }

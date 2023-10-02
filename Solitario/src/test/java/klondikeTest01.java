@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class KlondikeTest01{
+public class klondikeTest01 {
 
    @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar() {
@@ -40,5 +40,7 @@ public class KlondikeTest01{
         klondike.jugadaDescarteFundacion(3);
         assertFalse(klondike.juegoTerminado());
     }
+
+
 
 }

@@ -17,7 +17,9 @@ public class Descarte extends StackDeCartas {
 
     public void vaciarDescarte(Mazo mazo) {
         while (!this.estaVacia()){
-            mazo.agregarCarta(this.robarUltimaCarta());
+            Carta cartaAAgregar = this.robarUltimaCarta();
+            cartaAAgregar.cambiarVisibilidad();
+            mazo.agregarCarta(cartaAAgregar);
         }
     }
     @Override

@@ -34,10 +34,5 @@ public class Mazo extends StackDeCartas {
         descarte.agregarCarta(this.robarUltimaCarta());
     }
 
-    @Override
-    public Carta robarUltimaCarta(){
-        Carta carta = this.cartas.pop();
-        carta.cambiarVisibilidad();
-        return carta;
-    }
+
 }
