@@ -1,4 +1,9 @@
+package StackDeCartas;
+
 import java.util.Stack;
+import Carta.*;
+import Columna.ColumnaDeJuego;
+
 
 public class StackDeCartas{
     protected Stack<Carta> cartas;

@@ -1,8 +1,21 @@
+package Solitario;
+
+import Carta.*;
+import Columna.*;
+import Reglas.*;
+import StackDeCartas.*;
+
+
+
 public class Klondike extends Solitario {
+
+    //-----------------------------------------------------Atributos---------------------------------------------------//
+
     final private int CANTIDADDEFUNDACIONES = 4;
     final private int CANTIDADDECOLUMNAS = 7;
 
 
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public Klondike() {
         this.mazo = new Mazo();
         this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];

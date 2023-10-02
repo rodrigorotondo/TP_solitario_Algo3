@@ -1,3 +1,8 @@
+import Carta.*;
+import Columna.*;
+import Reglas.*;
+import StackDeCartas.*;
+import Solitario.*;
 import org.junit.Assert;
 import org.junit.Test;
 

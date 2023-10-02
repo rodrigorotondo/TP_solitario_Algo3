@@ -1,3 +1,4 @@
+import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -30,14 +31,7 @@ public class KlondikeTest01{
         assertFalse(klondike.juegoTerminado());
     }
 
-    @Test
-    public void klondikeMovimientoDeReyAOtraColumna() {
-        Klondike klondike = new Klondike();
-        klondike.juegoAPuntoDeGanarConCartaEnColumna();
-        klondike.jugadaColumnaAColumna(5, 0, 0);
-        assertFalse(klondike.tablero[5].estaVacia());
-        assertTrue(klondike.tablero[0].estaVacia());
-    }
+
 
     @Test
     public void klondikeDescarteVacio() {

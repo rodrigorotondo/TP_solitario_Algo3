@@ -1,7 +1,19 @@
+package Columna;
+
+import Carta.*;
+import StackDeCartas.*;
+
+
 import java.util.ArrayList;
 public class ColumnaDeJuego {
+
+
+    //-----------------------------------------------------Atributos---------------------------------------------------//
+
     private ArrayList<Carta> cartas;
     final private int TOPE = 0;
+
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public ColumnaDeJuego(){
         this.cartas = new ArrayList<>();
     }
@@ -92,26 +104,5 @@ public class ColumnaDeJuego {
         return this.cartas.get(indiceCarta).esVisible();
     }
 
-    /*public boolean columnaEnSecuenciaNumericaDescendenteAlternada(){
-        //si la  columna tiene 0 o 1 elemento TA ORDENADA
-        if (this.cartas.size() < 2){
-            return true;
-        }
-        //sino me hago una copia y la vacio y voy comparando entre pares de cartas:3
-        Stack<Carta> copia = new Stack<>();
-        ArrayList<Carta> listaAuxiliar = new ArrayList<>(this.cartas);
-        Collections.reverse(listaAuxiliar);
-        copia.addAll(listaAuxiliar);
-        //tengo mi copia de la columna (q feo queda >c)
-        //esto termino siendo un ejercicio de algo2 (feo)
-        Carta aComparar = copia.pop();
-        while (!copia.empty()){
-            Carta actual = copia.pop();
-            if (actual.esPosterior(aComparar)|| !actual.MismoColorConOtraCarta(aComparar)){
-                return false;
-            }
-            aComparar = actual;
-        }
-        return true;
-    }*/
+
 }

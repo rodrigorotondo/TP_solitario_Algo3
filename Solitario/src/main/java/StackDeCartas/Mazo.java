@@ -1,7 +1,14 @@
+package StackDeCartas;
+
+import StackDeCartas.StackDeCartas;
+
 import java.util.Stack;
 import java.util.*;
+import Carta.*;
 
 public class Mazo extends StackDeCartas {
+
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public Mazo() {
         this.cartas = new Stack<>();
         this.llenarMazo();

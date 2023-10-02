@@ -1,6 +1,16 @@
+package StackDeCartas;
+
+import Carta.*;
+
+
 import java.util.Stack;
 
-public class Descarte extends StackDeCartas{
+
+
+public class Descarte extends StackDeCartas {
+
+
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public Descarte(){
         this.cartas = new Stack<>();
     }

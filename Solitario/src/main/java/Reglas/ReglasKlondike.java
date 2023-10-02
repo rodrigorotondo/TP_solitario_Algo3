@@ -1,4 +1,14 @@
+package Reglas;
+
+import Carta.*;
+import Columna.*;
+import Reglas.*;
+import StackDeCartas.*;
+import Solitario.*;
+
 public class ReglasKlondike extends Reglas {
+
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public boolean esCartaVisible(ColumnaDeJuego columnaOrigen, int indiceCartaOrigen){
         return columnaOrigen.esCartaVisible(indiceCartaOrigen);
     }

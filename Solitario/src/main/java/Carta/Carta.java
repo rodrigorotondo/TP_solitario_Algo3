@@ -1,3 +1,5 @@
+package Carta;
+
 import java.util.Objects;
 public class Carta {
 
@@ -19,10 +21,8 @@ public class Carta {
         bocaArriba = !bocaArriba;
     }
     public Color obtenerColor(){
-        return switch (palo) {
-            case CORAZONES, PICAS -> Color.NEGRO;
-            case TREBOLES, DIAMANTES -> Color.ROJO;
-        };
+        return this.palo.obtenerColor();
+
     }
     public Palo obtenerPalo(){
         return this.palo;
@@ -30,9 +30,7 @@ public class Carta {
     public int obtenerNumero(){
         return this.numero;
     }
-    public boolean EsMismoColorConOtraCarta(Carta carta){
-        return Objects.equals(this.obtenerColor(), carta.obtenerColor());
-    }
+
     public boolean esPosterior(int numeroCarta){
         return this.numero == (numeroCarta + 1);
     }
