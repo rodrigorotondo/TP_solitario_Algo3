@@ -19,10 +19,12 @@ public class ReglasKlondike extends Reglas {
     public boolean puedoSacarCartaDelDescarte(Descarte descarte){return !descarte.estaVacia();}
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
         if(columnaDepositar.estaVacia()){
-            return columnaExtraer.obtenerNumeroPrimeraCarta() == REY;
+            return columnaExtraer.obtenerPrimeraCarta().obtenerNumero() == REY;
         } else {
-            return(columnaExtraer.obtenerNumeroPrimeraCarta() < columnaDepositar.obtenerNumeroUltimaCarta()) &&
-                    columnaExtraer.obtenerColorPrimeraCarta() != columnaDepositar.obtenerColorUltimaCarta();
+            Carta primeraCartaExtraer = columnaExtraer.obtenerPrimeraCarta();
+            Carta ultimaCartaDepositar = columnaDepositar.obtenerUltimaCarta();
+            return(primeraCartaExtraer.obtenerNumero() < ultimaCartaDepositar.obtenerNumero()) &&
+                    primeraCartaExtraer.obtenerColor() != ultimaCartaDepositar.obtenerColor();
         }
     }
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
@@ -36,7 +38,8 @@ public class ReglasKlondike extends Reglas {
         if(columna.estaVacia()){
             return numeroCarta == REY; // si la carta es igual a 13 devuelve true
         } else {
-            return(numeroCarta < columna.obtenerNumeroUltimaCarta() && (paloCarta.obtenerColor() != columna.obtenerColorUltimaCarta()));
+            return(numeroCarta < columna.obtenerUltimaCarta().obtenerNumero() &&
+                    (paloCarta.obtenerColor() != columna.obtenerUltimaCarta().obtenerColor()));
         }
     }
     public boolean juegoGanado(Fundacion[] fundaciones) {

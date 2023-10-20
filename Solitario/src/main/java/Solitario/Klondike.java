@@ -41,7 +41,7 @@ public class Klondike extends Solitario {
             for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++) {
                 tablero[i].agregarCarta(mazo.robarUltimaCarta());
             }
-            tablero[i].darVueltaUltimaCarta();
+            tablero[i].obtenerUltimaCarta().cambiarVisibilidad();
         }
     }
 
@@ -54,8 +54,8 @@ public class Klondike extends Solitario {
 
         Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
         if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
-            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerNumeroUltimaCarta();
-            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerPaloUltimaCarta();
+            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerUltimaCarta().obtenerNumero();
+            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerUltimaCarta().obtenerPalo();
 
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.tablero[indiceColumnaOrigen].cambiarAFundacion(fundacionDestino);

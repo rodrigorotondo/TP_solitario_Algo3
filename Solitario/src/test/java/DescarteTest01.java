@@ -64,8 +64,8 @@ public class DescarteTest01 {
 
         descarteQueMuevo.cambiarAColumna(colDestino);
 
-        assertEquals(colDestino.obtenerNumeroUltimaCarta(), carta13.obtenerNumero());
-        assertSame(colDestino.obtenerPaloUltimaCarta(), carta13.obtenerPalo());
+        assertEquals(colDestino.obtenerUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
+        assertSame(colDestino.obtenerUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
         assertTrue(descarteQueMuevo.estaVacia());
 
     }

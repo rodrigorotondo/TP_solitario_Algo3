@@ -23,31 +23,11 @@ public class ColumnaDeJuego {
     public int obtenerTamanio(){
         return cartas.size();
     }
-    public Color obtenerColorPrimeraCarta(){
-        return obtenerPrimeraCarta().obtenerColor();
-    }
 
-    public int obtenerNumeroPrimeraCarta(){
-        return obtenerPrimeraCarta().obtenerNumero();
-    }
-
-    public int obtenerNumeroUltimaCarta(){
-        return obtenerUltimaCarta().obtenerNumero();
-    }
-
-    public Color obtenerColorUltimaCarta(){
-        return obtenerUltimaCarta().obtenerColor();
-    }
-    public Palo obtenerPaloUltimaCarta(){
-        return obtenerUltimaCarta().obtenerPalo();
-    }
-    public void darVueltaUltimaCarta(){
-        obtenerUltimaCarta().cambiarVisibilidad();
-    }
-    private Carta obtenerPrimeraCarta(){
+    public Carta obtenerPrimeraCarta(){
         return cartas.get(TOPE);
     }
-    private Carta obtenerUltimaCarta(){
+    public Carta obtenerUltimaCarta(){
         return cartas.get(indiceUltimaCarta());
     }
     private int indiceUltimaCarta(){

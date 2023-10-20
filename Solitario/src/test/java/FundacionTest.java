@@ -47,7 +47,7 @@ public class FundacionTest {
         fundacionDeLaQueMuevo.cambiarAColumna(columnaDestino);
 
         assertTrue(fundacionDeLaQueMuevo.estaVacia());
-        assertSame(columnaDestino.obtenerPaloUltimaCarta(), carta13.obtenerPalo());
-        assertEquals(columnaDestino.obtenerNumeroUltimaCarta(), carta13.obtenerNumero());
+        assertSame(columnaDestino.obtenerUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
+        assertEquals(columnaDestino.obtenerUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
     }
 }

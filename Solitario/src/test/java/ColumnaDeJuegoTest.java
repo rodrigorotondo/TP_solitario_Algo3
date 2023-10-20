@@ -32,8 +32,8 @@ public class ColumnaDeJuegoTest {
 
         ColDestino.agregarCartas(ColQueMuevo);
 
-        assertEquals(carta6.obtenerNumero(),ColDestino.obtenerNumeroUltimaCarta());
-        assertEquals(carta6.obtenerPalo(),ColDestino.obtenerPaloUltimaCarta());
+        assertEquals(carta6.obtenerNumero(),ColDestino.obtenerUltimaCarta().obtenerNumero());
+        assertEquals(carta6.obtenerPalo(),ColDestino.obtenerUltimaCarta().obtenerPalo());
 
     }
     @Test
@@ -78,9 +78,9 @@ public class ColumnaDeJuegoTest {
 
 
         assertEquals(6, colQueMuevo.obtenerTamanio());
-        assertTrue(colDestino.obtenerTamanio() == 8);
-        assertEquals(colDestino.obtenerNumeroUltimaCarta(),carta88.obtenerNumero());
-        assertEquals(colDestino.obtenerPaloUltimaCarta(),carta88.obtenerPalo());
+        assertEquals(8, colDestino.obtenerTamanio());
+        assertEquals(colDestino.obtenerUltimaCarta().obtenerNumero(),carta88.obtenerNumero());
+        assertEquals(colDestino.obtenerUltimaCarta().obtenerPalo(),carta88.obtenerPalo());
 
     }
     @Test
@@ -120,8 +120,8 @@ public class ColumnaDeJuegoTest {
 
         colDeLaQueMuevo.cambiarAFundacion(fundacionDestino);
 
-        assertEquals(colDeLaQueMuevo.obtenerNumeroUltimaCarta(), carta12.obtenerNumero());
-        assertSame(colDeLaQueMuevo.obtenerPaloUltimaCarta(), carta12.obtenerPalo());
+        assertEquals(colDeLaQueMuevo.obtenerUltimaCarta().obtenerNumero(), carta12.obtenerNumero());
+        assertSame(colDeLaQueMuevo.obtenerUltimaCarta().obtenerPalo(), carta12.obtenerPalo());
         assertEquals(fundacionDestino.verUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
         assertSame(fundacionDestino.verUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
     }
