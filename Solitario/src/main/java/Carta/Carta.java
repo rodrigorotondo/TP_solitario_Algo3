@@ -1,7 +1,8 @@
 package Carta;
 
+import java.io.Serializable;
 import java.util.Objects;
-public class Carta {
+public class Carta implements Serializable {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
     private final int numero;

@@ -1,11 +1,12 @@
 package StackDeCartas;
 
+import java.io.Serializable;
 import java.util.Stack;
 import Carta.*;
 import Columna.ColumnaDeJuego;
 
 
-public class StackDeCartas{
+public class StackDeCartas implements Serializable {
     protected Stack<Carta> cartas;
     public StackDeCartas(){
         this.cartas = new Stack<>();

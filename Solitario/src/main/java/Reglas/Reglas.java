@@ -6,7 +6,9 @@ import Reglas.*;
 import StackDeCartas.*;
 import Solitario.*;
 
-public abstract class Reglas {
+import java.io.Serializable;
+
+public abstract class Reglas implements Serializable {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
     final protected int REY = 13;

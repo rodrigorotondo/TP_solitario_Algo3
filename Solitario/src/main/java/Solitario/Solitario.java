@@ -4,8 +4,10 @@ import Columna.ColumnaDeJuego;
 import StackDeCartas.*;
 import Reglas.*;
 
+import java.io.*;
 
-public abstract class Solitario{
+
+public abstract class Solitario implements Serializable {
 
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
@@ -20,6 +22,24 @@ public abstract class Solitario{
 
     public abstract void juegoAPuntoDeGanarConCartaEnDescarte();
 
+    public void guardarEstado(String nombreArchivo) throws IOException {
 
+        ObjectOutputStream solitarioSalida = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nombreArchivo)));
+        solitarioSalida.writeObject(this);
+        solitarioSalida.close();
+
+    }
+
+    public static Solitario cargarEstado(String nombreArchivo) throws IOException, ClassNotFoundException{
+        ObjectInputStream solitarioEntrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(nombreArchivo)));
+        Solitario solitario = (Solitario) solitarioEntrada.readObject();
+        solitarioEntrada.close();
+        return solitario;
+    }
+
+
+    public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino);
+
+    public abstract boolean juegoTerminado();
 
 }
