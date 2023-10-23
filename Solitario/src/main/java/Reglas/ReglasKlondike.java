@@ -27,13 +27,7 @@ public class ReglasKlondike extends Reglas {
                     primeraCartaExtraer.obtenerColor() != ultimaCartaDepositar.obtenerColor();
         }
     }
-    public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
-        if(fundacion.estaVacia()){
-            return numeroCarta == AS; // si la carta es igual a 1 devuelve true
-        } else {
-            return(fundacion.verUltimaCarta().esAnterior(numeroCarta) && fundacion.verUltimaCarta().esMismoPalo(paloCarta));
-        }
-    }
+
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna){//columna a columna
         if(columna.estaVacia()){
             return numeroCarta == REY; // si la carta es igual a 13 devuelve true

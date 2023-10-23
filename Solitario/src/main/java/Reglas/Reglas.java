@@ -20,7 +20,14 @@ public abstract class Reglas implements Serializable {
     public abstract boolean puedoSacarCartaDelMazo(Mazo mazo);
     public abstract boolean puedoSacarCartaDelDescarte(Descarte descarte);
     public abstract boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar);
-    public abstract boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion);
+
+    public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
+        if(fundacion.estaVacia()){
+            return numeroCarta == AS; // si la carta es igual a 1 devuelve true
+        } else {
+            return(fundacion.verUltimaCarta().esAnterior(numeroCarta) && fundacion.verUltimaCarta().esMismoPalo(paloCarta));
+        }
+    }
     public abstract boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna);
     public abstract boolean juegoGanado(Fundacion[] fundaciones);
 

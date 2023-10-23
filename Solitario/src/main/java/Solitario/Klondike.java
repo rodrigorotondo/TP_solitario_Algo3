@@ -12,12 +12,13 @@ public class Klondike extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
 
-    final private int CANTIDADDEFUNDACIONES = 4;
-    final private int CANTIDADDECOLUMNAS = 7;
+    protected Descarte descarte;
 
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Klondike() {
+        CANTIDADDEFUNDACIONES = 4;
+        CANTIDADDECOLUMNAS = 7;
         this.mazo = new Mazo();
         this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
         this.iniciarFundaciones();
@@ -27,16 +28,8 @@ public class Klondike extends Solitario {
         this.reglas = new ReglasKlondike();
 
     }
-    private void iniciarFundaciones(){
-        for (int i = 0; i < CANTIDADDEFUNDACIONES; i++){
-            fundaciones[i] = new Fundacion();
-        }
-    }
-    private void iniciarColumnas(){
-        for (int i = 0; i < CANTIDADDECOLUMNAS; i++){
-            tablero[i] = new ColumnaDeJuego();
-        }
-    }
+
+
     private void iniciarTablero(int[] CantidadDeCartasPorColumna, StackDeCartas mazo) {
         for (int i = 0; i < CANTIDADDECOLUMNAS; i++) {
             for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++) {
@@ -51,18 +44,7 @@ public class Klondike extends Solitario {
         iniciarTablero(new int[]{1, 2, 3, 4, 5, 6, 7}, mazo);
     }
 
-    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
 
-        Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
-        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
-            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerUltimaCarta().obtenerNumero();
-            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].obtenerUltimaCarta().obtenerPalo();
-
-            if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
-                this.tablero[indiceColumnaOrigen].cambiarAFundacion(fundacionDestino);
-            }
-        }
-    }
 
     public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) {
 
