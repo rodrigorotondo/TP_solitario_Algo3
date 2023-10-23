@@ -28,14 +28,15 @@ public class KlondikeTest02 {
     @Test
     public void klondikeCargarJuego() throws IOException, ClassNotFoundException {
         //arrange
-        Solitario klondike = new Klondike();
+        Klondike klondike = new Klondike();
+        SerializadorSolitario serializadorSolitario = new SerializadorSolitario();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         //act
         //aca sabemos que si movemos una carta ganamos el juego, lo guardamos
-        klondike.guardarEstado("JuegoPrueba");
+        klondike.guardarEstado("JuegoPrueba",serializadorSolitario);
 
-        Solitario  klondikeCargado;
-        klondikeCargado = Solitario.cargarEstado("JuegoPrueba");
+        Solitario klondikeCargado;
+        klondikeCargado = Klondike.cargarEstado("JuegoPrueba",serializadorSolitario);
         klondikeCargado.jugadaColumnaAFundacion(0, 3);
         //assert
         assertTrue(klondikeCargado.juegoTerminado());

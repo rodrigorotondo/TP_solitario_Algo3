@@ -5,6 +5,7 @@ import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
 
+import java.io.IOException;
 
 
 public class Klondike extends Solitario {
@@ -169,7 +170,9 @@ public class Klondike extends Solitario {
         this.descarte.agregarCarta(ultimaCarta);
     }
 
-
+    public static Klondike cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
+        return visitorSerializador.cargarEstadoKlondike(nombreArchivo);
+    }
 
 }
 

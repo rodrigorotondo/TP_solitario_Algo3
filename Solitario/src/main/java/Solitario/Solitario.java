@@ -22,20 +22,13 @@ public abstract class Solitario implements Serializable {
 
     public abstract void juegoAPuntoDeGanarConCartaEnDescarte();
 
-    public void guardarEstado(String nombreArchivo) throws IOException {
+    public void guardarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException {
 
-        ObjectOutputStream solitarioSalida = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nombreArchivo)));
-        solitarioSalida.writeObject(this);
-        solitarioSalida.close();
+        visitorSerializador.guardarEstado(this, nombreArchivo);
 
     }
 
-    public static Solitario cargarEstado(String nombreArchivo) throws IOException, ClassNotFoundException{
-        ObjectInputStream solitarioEntrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(nombreArchivo)));
-        Solitario solitario = (Solitario) solitarioEntrada.readObject();
-        solitarioEntrada.close();
-        return solitario;
-    }
+
 
 
     public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino);
