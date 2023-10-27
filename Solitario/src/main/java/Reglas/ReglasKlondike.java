@@ -2,9 +2,7 @@ package Reglas;
 
 import Carta.*;
 import Columna.*;
-import Reglas.*;
 import StackDeCartas.*;
-import Solitario.*;
 
 public class ReglasKlondike extends Reglas {
 
@@ -19,29 +17,20 @@ public class ReglasKlondike extends Reglas {
     public boolean puedoSacarCartaDelDescarte(Descarte descarte){return !descarte.estaVacia();}
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
         if(columnaDepositar.estaVacia()){
-            return columnaExtraer.obtenerPrimeraCarta().obtenerNumero() == REY;
+            return columnaExtraer.verPrimeraCarta().obtenerNumero() == REY;
         } else {
-            Carta primeraCartaExtraer = columnaExtraer.obtenerPrimeraCarta();
-            Carta ultimaCartaDepositar = columnaDepositar.obtenerUltimaCarta();
+            Carta primeraCartaExtraer = columnaExtraer.verPrimeraCarta();
+            Carta ultimaCartaDepositar = columnaDepositar.verUltimaCarta();
             return(primeraCartaExtraer.obtenerNumero() < ultimaCartaDepositar.obtenerNumero()) &&
                     primeraCartaExtraer.obtenerColor() != ultimaCartaDepositar.obtenerColor();
         }
     }
-
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna){//columna a columna
         if(columna.estaVacia()){
             return numeroCarta == REY; // si la carta es igual a 13 devuelve true
         } else {
-            return(numeroCarta < columna.obtenerUltimaCarta().obtenerNumero() &&
-                    (paloCarta.obtenerColor() != columna.obtenerUltimaCarta().obtenerColor()));
+            return(numeroCarta < columna.verUltimaCarta().obtenerNumero() &&
+                    (paloCarta.obtenerColor() != columna.verUltimaCarta().obtenerColor()));
         }
-    }
-    public boolean juegoGanado(Fundacion[] fundaciones) {
-        for (Fundacion i : fundaciones) {
-            if (!i.estaCompleta()){
-                return false;
-            }
-        }
-        return true;
     }
 }

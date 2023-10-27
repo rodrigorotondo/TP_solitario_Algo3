@@ -1,8 +1,6 @@
 import Carta.*;
 import Columna.*;
-import Reglas.*;
 import StackDeCartas.*;
-import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -47,7 +45,7 @@ public class FundacionTest {
         fundacionDeLaQueMuevo.cambiarAColumna(columnaDestino);
 
         assertTrue(fundacionDeLaQueMuevo.estaVacia());
-        assertSame(columnaDestino.obtenerUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
-        assertEquals(columnaDestino.obtenerUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
+        assertSame(columnaDestino.verUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
+        assertEquals(columnaDestino.verUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
     }
 }

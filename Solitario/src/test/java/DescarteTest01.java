@@ -1,8 +1,6 @@
 import Carta.*;
 import Columna.*;
-import Reglas.*;
 import StackDeCartas.*;
-import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -64,8 +62,8 @@ public class DescarteTest01 {
 
         descarteQueMuevo.cambiarAColumna(colDestino);
 
-        assertEquals(colDestino.obtenerUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
-        assertSame(colDestino.obtenerUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
+        assertEquals(colDestino.verUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
+        assertSame(colDestino.verUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
         assertTrue(descarteQueMuevo.estaVacia());
 
     }

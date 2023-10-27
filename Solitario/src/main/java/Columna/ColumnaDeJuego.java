@@ -8,9 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 public class ColumnaDeJuego implements Serializable {
 
-
     //-----------------------------------------------------Atributos---------------------------------------------------//
-
     private ArrayList<Carta> cartas;
     final private int TOPE = 0;
 
@@ -25,10 +23,10 @@ public class ColumnaDeJuego implements Serializable {
         return cartas.size();
     }
 
-    public Carta obtenerPrimeraCarta(){
+    public Carta verPrimeraCarta(){
         return cartas.get(TOPE);
     }
-    public Carta obtenerUltimaCarta(){
+    public Carta verUltimaCarta(){
         return cartas.get(indiceUltimaCarta());
     }
     private int indiceUltimaCarta(){
@@ -71,14 +69,14 @@ public class ColumnaDeJuego implements Serializable {
 
     private void cambiarVisibilidadUltimaCarta(){
         if(!this.estaVacia()){
-            if(!this.obtenerUltimaCarta().esVisible()){
-                this.obtenerUltimaCarta().cambiarVisibilidad();
+            if(!this.verUltimaCarta().esVisible()){
+                this.verUltimaCarta().cambiarVisibilidad();
             }
         }
     }
-    public void cambiarAFundacion(Fundacion fundacionDestino){
-        Carta cartaCopia = this.obtenerUltimaCarta();
-        fundacionDestino.agregarCarta(cartaCopia);
+    public void cambiarAStackDeCartas(StackDeCartas stack){
+        Carta cartaCopia = this.verUltimaCarta();
+        stack.agregarCarta(cartaCopia);
         this.eliminarUltimaCarta();
     }
     public boolean esCartaVisible(int indiceCarta){

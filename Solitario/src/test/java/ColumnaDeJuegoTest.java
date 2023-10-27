@@ -1,8 +1,6 @@
 import Carta.*;
 import Columna.*;
-import Reglas.*;
 import StackDeCartas.*;
-import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -32,8 +30,8 @@ public class ColumnaDeJuegoTest {
 
         ColDestino.agregarCartas(ColQueMuevo);
 
-        assertEquals(carta6.obtenerNumero(),ColDestino.obtenerUltimaCarta().obtenerNumero());
-        assertEquals(carta6.obtenerPalo(),ColDestino.obtenerUltimaCarta().obtenerPalo());
+        assertEquals(carta6.obtenerNumero(),ColDestino.verUltimaCarta().obtenerNumero());
+        assertEquals(carta6.obtenerPalo(),ColDestino.verUltimaCarta().obtenerPalo());
 
     }
     @Test
@@ -79,8 +77,8 @@ public class ColumnaDeJuegoTest {
 
         assertEquals(6, colQueMuevo.obtenerTamanio());
         assertEquals(8, colDestino.obtenerTamanio());
-        assertEquals(colDestino.obtenerUltimaCarta().obtenerNumero(),carta88.obtenerNumero());
-        assertEquals(colDestino.obtenerUltimaCarta().obtenerPalo(),carta88.obtenerPalo());
+        assertEquals(colDestino.verUltimaCarta().obtenerNumero(),carta88.obtenerNumero());
+        assertEquals(colDestino.verUltimaCarta().obtenerPalo(),carta88.obtenerPalo());
 
     }
     @Test
@@ -118,10 +116,10 @@ public class ColumnaDeJuegoTest {
         colDeLaQueMuevo.agregarCarta(carta12);
         colDeLaQueMuevo.agregarCarta(carta13);
 
-        colDeLaQueMuevo.cambiarAFundacion(fundacionDestino);
+        colDeLaQueMuevo.cambiarAStackDeCartas(fundacionDestino);
 
-        assertEquals(colDeLaQueMuevo.obtenerUltimaCarta().obtenerNumero(), carta12.obtenerNumero());
-        assertSame(colDeLaQueMuevo.obtenerUltimaCarta().obtenerPalo(), carta12.obtenerPalo());
+        assertEquals(colDeLaQueMuevo.verUltimaCarta().obtenerNumero(), carta12.obtenerNumero());
+        assertSame(colDeLaQueMuevo.verUltimaCarta().obtenerPalo(), carta12.obtenerPalo());
         assertEquals(fundacionDestino.verUltimaCarta().obtenerNumero(), carta13.obtenerNumero());
         assertSame(fundacionDestino.verUltimaCarta().obtenerPalo(), carta13.obtenerPalo());
     }

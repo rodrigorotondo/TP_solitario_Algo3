@@ -29,13 +29,12 @@ public class Klondike extends Solitario {
 
     }
 
-
     private void iniciarTablero(int[] CantidadDeCartasPorColumna, StackDeCartas mazo) {
         for (int i = 0; i < CANTIDADDECOLUMNAS; i++) {
             for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++) {
                 tablero[i].agregarCarta(mazo.robarUltimaCarta());
             }
-            tablero[i].obtenerUltimaCarta().cambiarVisibilidad();
+            tablero[i].verUltimaCarta().cambiarVisibilidad();
         }
     }
 
@@ -126,7 +125,6 @@ public class Klondike extends Solitario {
         this.tablero[0].agregarCarta(ultimaCarta);
         }
 
-    @Override
     public void juegoAPuntoDeGanarConCartaEnDescarte() {
         while (!mazo.estaVacia()) {//tener mazo vacio
             mazo.robarUltimaCarta();

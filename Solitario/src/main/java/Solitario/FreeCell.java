@@ -1,14 +1,11 @@
 package Solitario;
-
 import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
 public class FreeCell extends Solitario {
-
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
-
     public FreeCell(){
         CANTIDADDEFUNDACIONES = 4;
         CANTIDADDECOLUMNAS = 8;
@@ -19,48 +16,105 @@ public class FreeCell extends Solitario {
         this.iniciarColumnas();
         this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
         this.reglas = new ReglasFreeCell();
-
     }
-
     protected void iniciarAuxiliares(){
         for (int i = 0; i < CANTIDADDEAUXILIARES; i++){
             auxiliares[i] = new StackDeCartas();
         }
     }
-
     private void repartirCartas(){
         while(!this.mazo.estaVacia()){
-            for(int i = 0; i < CANTIDADDEAUXILIARES; i++){
+            for(int i = 0; i < CANTIDADDECOLUMNAS; i++){
                 Carta cartaAAgregar = this.mazo.robarUltimaCarta();
-                this.auxiliares[i].agregarCarta(cartaAAgregar);
+                this.tablero[i].agregarCarta(cartaAAgregar);
+                this.tablero[i].verUltimaCarta().cambiarVisibilidad();
             }
         }
     }
-
-
     @Override
     protected void iniciarMesa() {
         this.mazo.mezclarMazo();
+        this.iniciarAuxiliares();
         this.repartirCartas();
-
     }
-
+    public void jugadaColumnaAColumna(){
+    }
+    public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
+        Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
+        Palo paloCarta = cartaAuxiliar.obtenerPalo();
+        int numeroCarta = cartaAuxiliar.obtenerNumero();
+        if (reglas.puedoAgregarCarta(numeroCarta, paloCarta, this.tablero[indiceColumnaDestino])) {
+            this.auxiliares[indiceAuxiliar].cambiarAColumna(this.tablero[indiceColumnaDestino]);
+        }
+    }
+    public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar){
+        Carta cartaAuxiliar = this.tablero[indiceColumnaOrigen].verUltimaCarta();
+        Palo paloCarta = cartaAuxiliar.obtenerPalo();
+        int numeroCarta = cartaAuxiliar.obtenerNumero();
+        if (!auxiliares[indiceAuxiliar].estaVacia()) { //HAY QUE IMPLEMENTAR LA REGLA
+            this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
+        }
+    }
+    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion){
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
+        Carta carta = auxiliares[indiceAuxiliar].verUltimaCarta();
+        int numeroCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerNumero();
+        Palo paloCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerPalo();
+            if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
+                this.auxiliares[indiceAuxiliar].cambiarAStack(fundacionDestino);
+            }
+        }
     @Override
     public void juegoAPuntoDeGanarConCartaEnColumna() {
-
+        while (!mazo.estaVacia()) {//tener mazo vacio
+            mazo.robarUltimaCarta();
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 0 llena
+            Carta carta = new Carta(numero, Palo.CORAZONES);
+            this.fundaciones[0].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 1 llebna
+            Carta carta = new Carta(numero, Palo.DIAMANTES);
+            this.fundaciones[1].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 2 llena
+            Carta carta = new Carta(numero, Palo.TREBOLES);
+            this.fundaciones[2].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 13; numero++) {//en la fundacion 3 tenemos 12 y solamente falta el rey
+            Carta carta = new Carta(numero, Palo.PICAS);
+            this.fundaciones[3].agregarCarta(carta);
+        }
+        Carta ultimaCarta = new Carta(13, Palo.PICAS);
+        ultimaCarta.cambiarVisibilidad();
+        this.tablero[0].agregarCarta(ultimaCarta);
     }
-
-    @Override
-    public void juegoAPuntoDeGanarConCartaEnDescarte() {
-
+    public void juegoAPuntoDeGanarConCartaEnAuxiliar() {
+        while (!mazo.estaVacia()) {//tener mazo vacio
+            mazo.robarUltimaCarta();
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 0 llena
+            Carta carta = new Carta(numero, Palo.CORAZONES);
+            this.fundaciones[0].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 1 llebna
+            Carta carta = new Carta(numero, Palo.DIAMANTES);
+            this.fundaciones[1].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 14; numero++) {//tener fundacion 2 llena
+            Carta carta = new Carta(numero, Palo.TREBOLES);
+            this.fundaciones[2].agregarCarta(carta);
+        }
+        for (int numero = 1; numero < 13; numero++) {//en la fundacion 3 tenemos 12 y solamente falta el rey
+            Carta carta = new Carta(numero, Palo.PICAS);
+            this.fundaciones[3].agregarCarta(carta);
+        }
+        Carta ultimaCarta = new Carta(13, Palo.PICAS);
+        ultimaCarta.cambiarVisibilidad();
+        this.auxiliares[0].agregarCarta(ultimaCarta);
     }
-
-
-
     @Override
     public boolean juegoTerminado() {
-        return false;
+        return this.reglas.juegoGanado(this.fundaciones);
     }
-
-
 }
