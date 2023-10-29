@@ -1,7 +1,4 @@
 package Carta;
-
-import Carta.Color;
-
 public enum Palo {CORAZONES,PICAS,TREBOLES,DIAMANTES;
 
     private Color color;

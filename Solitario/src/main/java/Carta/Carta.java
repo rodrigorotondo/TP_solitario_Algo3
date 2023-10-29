@@ -1,7 +1,6 @@
 package Carta;
 
 import java.io.Serializable;
-import java.util.Objects;
 public class Carta implements Serializable {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//

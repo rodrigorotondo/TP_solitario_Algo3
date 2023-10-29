@@ -1,10 +1,11 @@
 package StackDeCartas;
 
-import StackDeCartas.StackDeCartas;
+import Carta.Carta;
+import Carta.Palo;
 
+import java.util.Collections;
+import java.util.Random;
 import java.util.Stack;
-import java.util.*;
-import Carta.*;
 
 public class Mazo extends StackDeCartas {
 

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DescarteTest01 {
+public class DescarteTest {
 
     @Test
     public void robarCarta() {

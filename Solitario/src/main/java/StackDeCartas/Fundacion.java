@@ -1,7 +1,5 @@
 package StackDeCartas;
 
-import StackDeCartas.StackDeCartas;
-
 import java.util.Stack;
 
 public class Fundacion extends StackDeCartas {

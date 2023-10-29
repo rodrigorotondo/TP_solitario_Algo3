@@ -2,12 +2,11 @@ import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
-import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ReglasTest {
+public class ReglasKlondikeTest {
     @Test
     public void puedoAgregarCarta() {
         //arrange
@@ -66,7 +65,7 @@ public class ReglasTest {
         assertFalse(valorObtenido);
     }
     @Test
-    public void agregarCartaOPilaDeCartaAColumnaVacia() {
+    public void agregarCartaOPilaDeCartaAColumnaVacia() throws Exception {
         ColumnaDeJuego columna = new ColumnaDeJuego();
         ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
@@ -83,7 +82,7 @@ public class ReglasTest {
         assertTrue(valorObtenido);
     }
     @Test
-    public void agregarCartaOPilaDeCartaAColumnaQueCorresponde() {
+    public void agregarCartaOPilaDeCartaAColumnaQueCorresponde() throws Exception{
         ColumnaDeJuego columna = new ColumnaDeJuego();
         ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
@@ -107,7 +106,7 @@ public class ReglasTest {
         assertTrue(valorObtenido);
     }
     @Test
-    public void agregarCartaOPilaDeCartaAColumnaQueNOCorresponde() {
+    public void agregarCartaOPilaDeCartaAColumnaQueNOCorresponde() throws Exception{
         ColumnaDeJuego columna = new ColumnaDeJuego();
         ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();

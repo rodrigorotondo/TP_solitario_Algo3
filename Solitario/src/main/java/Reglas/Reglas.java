@@ -1,10 +1,8 @@
 package Reglas;
 
-import Carta.*;
-import Columna.*;
-import Reglas.*;
-import StackDeCartas.*;
-import Solitario.*;
+import Carta.Palo;
+import Columna.ColumnaDeJuego;
+import StackDeCartas.Fundacion;
 
 import java.io.Serializable;
 

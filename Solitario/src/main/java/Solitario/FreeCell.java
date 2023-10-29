@@ -9,7 +9,6 @@ import java.io.IOException;
 public class FreeCell extends Solitario {
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
-
     private ReglasFreeCell reglas = new ReglasFreeCell();
     public FreeCell(){
         CANTIDADDEFUNDACIONES = 4;
@@ -51,7 +50,6 @@ public class FreeCell extends Solitario {
         }
     }
 
-
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
@@ -63,10 +61,7 @@ public class FreeCell extends Solitario {
         }
     }
     public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar){
-        Carta cartaAuxiliar = this.tablero[indiceColumnaOrigen].verUltimaCarta();
-        Palo paloCarta = cartaAuxiliar.obtenerPalo();
-        int numeroCarta = cartaAuxiliar.obtenerNumero();
-        if (reglas.puedoAgregarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
+        if (reglas.puedoAgregarCartaAlAuxiliar(auxiliares[indiceAuxiliar])) {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
         }
     }
@@ -74,8 +69,8 @@ public class FreeCell extends Solitario {
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
             Carta carta = auxiliares[indiceAuxiliar].verUltimaCarta();
-            int numeroCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerNumero();
-            Palo paloCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerPalo();
+            int numeroCartaAAgregar = carta.obtenerNumero();
+            Palo paloCartaAAgregar = carta.obtenerPalo();
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.auxiliares[indiceAuxiliar].cambiarAStack(fundacionDestino);
             }

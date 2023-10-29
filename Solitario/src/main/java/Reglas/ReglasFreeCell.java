@@ -11,7 +11,6 @@ public class ReglasFreeCell extends Reglas{
         return !columna.estaVacia();
     }
 
-
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar, int espaciosVacios) throws Exception {
         if(columnaExtraer.estaVacia()){
             throw new Exception("No podes mover una columna vacia…");
@@ -19,7 +18,6 @@ public class ReglasFreeCell extends Reglas{
         if(columnaDepositar.estaVacia()){ // si esta vacia y
             return columnaExtraer.obtenerTamanio() < espaciosVacios;
         }
-
         else if(columnaExtraer.obtenerTamanio() <= (espaciosVacios + 1)){ // la primer carta siempre tiene lugar
             Carta primeraCartaExtraer = columnaExtraer.verPrimeraCarta();
             Carta ultimaCartaDepositar = columnaDepositar.verUltimaCarta();
@@ -38,7 +36,7 @@ public class ReglasFreeCell extends Reglas{
         }
     }
 
-    public boolean puedoAgregarCartaDelAuxiliar(StackDeCartas auxiliar) {
+    public boolean puedoAgregarCartaAlAuxiliar(StackDeCartas auxiliar) {
         return auxiliar.estaVacia();
     }
 

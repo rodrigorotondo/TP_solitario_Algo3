@@ -1,5 +1,5 @@
-package Reglas;
 import Carta.*;
+import Reglas.ReglasFreeCell;
 import StackDeCartas.StackDeCartas;
 import org.junit.Test;
 import Columna.ColumnaDeJuego;
@@ -72,7 +72,7 @@ public class ReglasFreeCellTest {
         ReglasFreeCell reglas = new ReglasFreeCell();
         StackDeCartas auxiliar = new StackDeCartas();
         //act
-        boolean valorObtenido = reglas.puedoAgregarCartaDelAuxiliar(auxiliar);
+        boolean valorObtenido = reglas.puedoAgregarCartaAlAuxiliar(auxiliar);
         //assert
         assertTrue(valorObtenido);
     }
@@ -85,7 +85,7 @@ public class ReglasFreeCellTest {
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         auxiliar.agregarCarta(carta1);
         //act
-        boolean valorObtenido = reglas.puedoAgregarCartaDelAuxiliar(auxiliar);
+        boolean valorObtenido = reglas.puedoAgregarCartaAlAuxiliar(auxiliar);
         //assert
         assertFalse(valorObtenido);
     }
@@ -206,7 +206,7 @@ public class ReglasFreeCellTest {
         }
     }
     @Test
-    public void NoPuedoAgregarColACol3()throws Exception {
+    public void NoPuedoAgregarColACol3() throws Exception {
         ColumnaDeJuego colOrigen = new ColumnaDeJuego();
         ColumnaDeJuego colDestino = new ColumnaDeJuego();
 

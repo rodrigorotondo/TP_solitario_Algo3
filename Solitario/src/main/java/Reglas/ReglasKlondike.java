@@ -15,7 +15,10 @@ public class ReglasKlondike extends Reglas {
     }
     public boolean puedoSacarCartaDelMazo(Mazo mazo){return !mazo.estaVacia();}
     public boolean puedoSacarCartaDelDescarte(Descarte descarte){return !descarte.estaVacia();}
-    public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar){
+    public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar) throws Exception{
+        if(columnaExtraer.estaVacia()){
+            throw new Exception("No podes mover una columna vacia…");
+        }
         if(columnaDepositar.estaVacia()){
             return columnaExtraer.verPrimeraCarta().obtenerNumero() == REY;
         } else {
