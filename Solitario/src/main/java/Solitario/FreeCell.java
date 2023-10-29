@@ -20,6 +20,7 @@ public class FreeCell extends Solitario {
         this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
         this.iniciarColumnas();
         this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
+        this.iniciarAuxiliares();
         this.reglas = new ReglasFreeCell();
     }
     protected void iniciarAuxiliares(){
@@ -39,7 +40,6 @@ public class FreeCell extends Solitario {
     @Override
     protected void iniciarMesa() {
         this.mazo.mezclarMazo();
-        this.iniciarAuxiliares();
         this.repartirCartas();
     }
     public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen){
@@ -53,11 +53,13 @@ public class FreeCell extends Solitario {
 
 
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
-        Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
-        Palo paloCarta = cartaAuxiliar.obtenerPalo();
-        int numeroCarta = cartaAuxiliar.obtenerNumero();
-        if (reglas.puedoAgregarCarta(numeroCarta, paloCarta, this.tablero[indiceColumnaDestino])) {
-            this.auxiliares[indiceAuxiliar].cambiarAColumna(this.tablero[indiceColumnaDestino]);
+        if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
+            Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
+            Palo paloCarta = cartaAuxiliar.obtenerPalo();
+            int numeroCarta = cartaAuxiliar.obtenerNumero();
+            if (reglas.puedoAgregarCarta(numeroCarta, paloCarta, this.tablero[indiceColumnaDestino])) {
+                this.auxiliares[indiceAuxiliar].cambiarAColumna(this.tablero[indiceColumnaDestino]);
+            }
         }
     }
     public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar){
@@ -68,15 +70,17 @@ public class FreeCell extends Solitario {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
         }
     }
-    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion){
-        Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
-        Carta carta = auxiliares[indiceAuxiliar].verUltimaCarta();
-        int numeroCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerNumero();
-        Palo paloCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerPalo();
+    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) {
+        if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
+            Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
+            Carta carta = auxiliares[indiceAuxiliar].verUltimaCarta();
+            int numeroCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerNumero();
+            Palo paloCartaAAgregar = this.auxiliares[indiceAuxiliar].verUltimaCarta().obtenerPalo();
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.auxiliares[indiceAuxiliar].cambiarAStack(fundacionDestino);
             }
         }
+    }
 
     private int cantidadEspaciosVacios(){
         int espaciosVacios = 0;
