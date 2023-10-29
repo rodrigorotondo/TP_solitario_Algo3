@@ -3,6 +3,9 @@ import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
+
+import java.io.IOException;
+
 public class FreeCell extends Solitario {
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
@@ -159,5 +162,9 @@ public class FreeCell extends Solitario {
     @Override
     public boolean juegoTerminado() {
         return this.reglas.juegoGanado(this.fundaciones);
+    }
+
+    public static FreeCell cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
+        return visitorSerializador.cargarEstadoFreeCell(nombreArchivo);
     }
 }
