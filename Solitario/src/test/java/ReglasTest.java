@@ -68,7 +68,7 @@ public class ReglasTest {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaVacia() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new ReglasKlondike();
+        ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
@@ -85,7 +85,7 @@ public class ReglasTest {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaQueCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new ReglasKlondike();
+        ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
@@ -109,7 +109,7 @@ public class ReglasTest {
     @Test
     public void agregarCartaOPilaDeCartaAColumnaQueNOCorresponde() {
         ColumnaDeJuego columna = new ColumnaDeJuego();
-        Reglas reglas = new ReglasKlondike();
+        ReglasKlondike reglas = new ReglasKlondike();
         ColumnaDeJuego cartasAAgregar= new ColumnaDeJuego();
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
