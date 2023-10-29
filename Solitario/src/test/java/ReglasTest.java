@@ -132,7 +132,7 @@ public class ReglasTest {
     @Test
     public void PuedoSacarCartaDelDeposito() {
         Mazo mazo = new Mazo();
-        Reglas reglas = new ReglasKlondike();
+        ReglasKlondike reglas = new ReglasKlondike();
         boolean resultado = reglas.puedoSacarCartaDelMazo(mazo);
         assertTrue(resultado);
     }

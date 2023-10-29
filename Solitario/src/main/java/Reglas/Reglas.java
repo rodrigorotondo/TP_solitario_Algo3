@@ -16,9 +16,6 @@ public abstract class Reglas implements Serializable {
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public abstract boolean puedoExtraerDeColumna(ColumnaDeJuego columna);
-    public abstract boolean esCartaVisible(ColumnaDeJuego columaOrigen, int indiceCartaOrigen);
-    public abstract boolean puedoSacarCartaDelMazo(Mazo mazo);
-    public abstract boolean puedoSacarCartaDelDescarte(Descarte descarte);
     public abstract boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar);
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
         if(fundacion.estaVacia()){

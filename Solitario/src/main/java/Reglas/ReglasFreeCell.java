@@ -2,8 +2,6 @@ package Reglas;
 
 import Carta.Palo;
 import Columna.ColumnaDeJuego;
-import StackDeCartas.Descarte;
-import StackDeCartas.Mazo;
 import StackDeCartas.StackDeCartas;
 
 public class ReglasFreeCell extends Reglas{
@@ -12,24 +10,11 @@ public class ReglasFreeCell extends Reglas{
         return !columna.estaVacia();
     }
 
-    @Override //se descarta, todas las cartas son siempre visibles
-    public boolean esCartaVisible(ColumnaDeJuego columaOrigen, int indiceCartaOrigen) {
-        return false;
-    }
 
-    @Override //se descarta
-    public boolean puedoSacarCartaDelDescarte(Descarte descarte) {
-        return false;
-    }
 
-    @Override //se descarta
-    public boolean puedoSacarCartaDelMazo(Mazo mazo) {
-        return false;
-    }
-
-    @Override //se puede descartar si solo hace el movimiento 1 sola carta -> columna
+    @Override
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar) {
-        return false;
+        return true; //provisoriamente dejamos que siempre se pasen las cartas
     }
     
     @Override //si la columna no esta vacia se agregan de forma descendente y alternada en color
@@ -42,7 +27,11 @@ public class ReglasFreeCell extends Reglas{
         }
     }
 
-    public boolean puedoAgregarCartaAlAuxiliar(StackDeCartas auxiliar) {
+    public boolean puedoAgregarCartaDelAuxiliar(StackDeCartas auxiliar) {
         return auxiliar.estaVacia();
+    }
+
+    public boolean puedoSacarCartaDelAuxiliar(StackDeCartas auxiliar){
+        return !auxiliar.estaVacia();
     }
 }

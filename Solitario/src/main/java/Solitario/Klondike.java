@@ -13,6 +13,7 @@ public class Klondike extends Solitario {
     //-----------------------------------------------------Atributos---------------------------------------------------//
 
     protected Descarte descarte;
+    private ReglasKlondike reglas = new ReglasKlondike();
 
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
@@ -152,6 +153,19 @@ public class Klondike extends Solitario {
 
     public static Klondike cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
         return visitorSerializador.cargarEstadoKlondike(nombreArchivo);
+    }
+
+    @Override
+    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
+        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
+            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerNumero();
+            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerPalo();
+
+            if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
+                this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
+            }
+        }
     }
 
 }

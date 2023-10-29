@@ -6,6 +6,8 @@ import StackDeCartas.*;
 public class FreeCell extends Solitario {
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
+
+    private ReglasFreeCell reglas = new ReglasFreeCell();
     public FreeCell(){
         CANTIDADDEFUNDACIONES = 4;
         CANTIDADDECOLUMNAS = 8;
@@ -37,7 +39,7 @@ public class FreeCell extends Solitario {
         this.iniciarAuxiliares();
         this.repartirCartas();
     }
-    public void jugadaColumnaAColumna(){
+    public void jugadaColumnaAColumna(){ // hay que implementarla de otra manera para freecell
     }
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
         Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
@@ -51,7 +53,7 @@ public class FreeCell extends Solitario {
         Carta cartaAuxiliar = this.tablero[indiceColumnaOrigen].verUltimaCarta();
         Palo paloCarta = cartaAuxiliar.obtenerPalo();
         int numeroCarta = cartaAuxiliar.obtenerNumero();
-        if (!auxiliares[indiceAuxiliar].estaVacia()) { //HAY QUE IMPLEMENTAR LA REGLA
+        if (reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
         }
     }
@@ -89,6 +91,21 @@ public class FreeCell extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.tablero[0].agregarCarta(ultimaCarta);
     }
+
+    @Override
+    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
+        Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
+        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
+            int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerNumero();
+            Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerPalo();
+
+            if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
+                this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
+            }
+        }
+
+    }
+
     public void juegoAPuntoDeGanarConCartaEnAuxiliar() {
         while (!mazo.estaVacia()) {//tener mazo vacio
             mazo.robarUltimaCarta();
