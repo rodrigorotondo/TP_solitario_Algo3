@@ -10,8 +10,6 @@ public class ReglasFreeCell extends Reglas{
         return !columna.estaVacia();
     }
 
-
-
     @Override
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar) {
         return true; //provisoriamente dejamos que siempre se pasen las cartas
