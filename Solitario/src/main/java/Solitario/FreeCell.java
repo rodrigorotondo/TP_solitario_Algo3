@@ -7,9 +7,13 @@ import StackDeCartas.*;
 import java.io.IOException;
 
 public class FreeCell extends Solitario {
+
+    //-----------------------------------------------------Atributos---------------------------------------------------//
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
     private ReglasFreeCell reglas = new ReglasFreeCell();
+
+    //-----------------------------------------------------Métodos----------------------------------------------------//
     public FreeCell(){
         CANTIDADDEFUNDACIONES = 4;
         CANTIDADDECOLUMNAS = 8;
@@ -36,18 +40,41 @@ public class FreeCell extends Solitario {
             }
         }
     }
+
+    @Override
+    public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception {
+        throw new Exception("No se puede mover una carta de una fundacion en una partida FreeCell");
+    }
+
+    @Override
+    public void jugadaDescarteColumna(int indiceColumnaDestino) throws Exception {
+        throw new Exception("No existen descartes en una partida FreeCell");
+    }
+
+    @Override
+    public void jugadaDescarteFundacion(int indiceFundacion) throws Exception {
+        throw new Exception("No existen descartes en una partida FreeCell");
+    }
+
+
     @Override
     protected void iniciarMesa() {
         this.mazo.mezclarMazo();
         this.repartirCartas();
     }
-    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception{
+
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception {
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
         int espaciosVacios = cantidadEspaciosVacios();
         if(this.reglas.puedoAgregarCartasAColumna(columnaOrigen, columnaDestino, espaciosVacios)){
             columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
         }
+    }
+
+    @Override
+    public void jugadaSacarCartaDelMazo() throws Exception {
+        throw new Exception("Las cartas ya fueron repartidas");
     }
 
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
@@ -65,6 +92,7 @@ public class FreeCell extends Solitario {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
         }
     }
+
     public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) {
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
@@ -133,6 +161,7 @@ public class FreeCell extends Solitario {
         }
 
     }
+
 
     public void juegoAPuntoDeGanarConCartaEnAuxiliar() {
         while (!mazo.estaVacia()) {//tener mazo vacio

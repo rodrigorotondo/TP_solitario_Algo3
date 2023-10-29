@@ -26,7 +26,7 @@ public class Klondike extends Solitario {
         this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
         this.iniciarColumnas();
         this.descarte = new Descarte();
-        this.reglas = new ReglasKlondike();
+
 
     }
 
@@ -97,7 +97,23 @@ public class Klondike extends Solitario {
             this.descarte.vaciarDescarte(this.mazo);
         }
 
-        public boolean juegoTerminado(){
+    @Override
+    public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws Exception {
+        throw new Exception("No existen auxiliares en una partida Klondike");
+    }
+
+    @Override
+    public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino) throws Exception {
+        throw new Exception("No existen auxiliares en una partida Klondike");
+    }
+
+    @Override
+    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) throws Exception {
+        throw new Exception("No existen auxiliares en una partida Klondike");
+    }
+
+
+    public boolean juegoTerminado(){
             return this.reglas.juegoGanado(this.fundaciones);
         }
     @Override
