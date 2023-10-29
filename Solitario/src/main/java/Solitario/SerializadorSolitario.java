@@ -18,5 +18,13 @@ public class SerializadorSolitario implements VisitorSerializador{
         return klondike;
     }
 
+    @Override
+    public FreeCell cargarEstadoFreeCell(String nombreArchivo) throws IOException, ClassNotFoundException {
+        ObjectInputStream Entrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(nombreArchivo)));
+        FreeCell freeCell = (FreeCell) Entrada.readObject();
+        Entrada.close();
+        return freeCell;
+    }
+
 
 }

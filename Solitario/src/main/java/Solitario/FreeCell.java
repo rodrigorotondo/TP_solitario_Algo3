@@ -3,6 +3,9 @@ import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
+
+import java.io.IOException;
+
 public class FreeCell extends Solitario {
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
@@ -39,8 +42,16 @@ public class FreeCell extends Solitario {
         this.iniciarAuxiliares();
         this.repartirCartas();
     }
-    public void jugadaColumnaAColumna(){ // hay que implementarla de otra manera para freecell
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen){
+        ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
+        ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
+        int espaciosVacios = cantidadEspaciosVacios();
+        if(this.reglas.puedoAgregarCartasAColumna(columnaOrigen, columnaDestino, espaciosVacios)){
+            columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
+        }
     }
+
+
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
         Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
         Palo paloCarta = cartaAuxiliar.obtenerPalo();
@@ -66,6 +77,24 @@ public class FreeCell extends Solitario {
                 this.auxiliares[indiceAuxiliar].cambiarAStack(fundacionDestino);
             }
         }
+
+    private int cantidadEspaciosVacios(){
+        int espaciosVacios = 0;
+        for(int i = 0; i < this.CANTIDADDEAUXILIARES; i++){
+            if(auxiliares[i].estaVacia()){
+                espaciosVacios++;
+            }
+        }
+        for(int i = 0; i < this.CANTIDADDECOLUMNAS; i++){
+            if(tablero[i].estaVacia()){
+                espaciosVacios++;
+            }
+        }
+
+        return espaciosVacios;
+
+    }
+
     @Override
     public void juegoAPuntoDeGanarConCartaEnColumna() {
         while (!mazo.estaVacia()) {//tener mazo vacio
@@ -133,5 +162,9 @@ public class FreeCell extends Solitario {
     @Override
     public boolean juegoTerminado() {
         return this.reglas.juegoGanado(this.fundaciones);
+    }
+
+    public static FreeCell cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
+        return visitorSerializador.cargarEstadoFreeCell(nombreArchivo);
     }
 }
