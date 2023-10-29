@@ -82,7 +82,7 @@ public class Klondike extends Solitario {
         }
     }
 
-        public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen){
+        public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception{
             ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
             ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
 

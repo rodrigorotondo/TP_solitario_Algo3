@@ -37,11 +37,8 @@ public class FreeCellTest {
         freeCell.juegoCasiGanado();
         freeCell.jugadaColumnaAColumna(6, 0, 1);
         freeCell.jugadaColumnaAAuxiliar(6, 2);
-<<<<<<< HEAD
         freeCell.jugadaAuxiliarAColumna(2, 6);
         freeCell.jugadaColumnaAAuxiliar(6, 2);
-=======
->>>>>>> Etapa2
         freeCell.jugadaColumnaAFundacion(0,3);
         freeCell.jugadaAuxiliarAFundacion(2, 3);
         assertTrue(freeCell.juegoTerminado());
