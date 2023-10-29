@@ -1,5 +1,4 @@
 import Solitario.FreeCell;
-import Solitario.Klondike;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,32 +6,24 @@ import static org.junit.Assert.*;
 public class FreeCellTest {
     @Test
     public void freeCellInicializacionEnEstadoAPuntoDeGanar() {
-
         FreeCell freeCell = new FreeCell();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(freeCell.juegoTerminado());
     }
-
     @Test
     public void freeCellJuegoGanado() {
-
         FreeCell freeCell = new FreeCell();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         freeCell.jugadaColumnaAFundacion(0, 3);
         assertTrue(freeCell.juegoTerminado());
     }
-
     @Test
     public void freeCellMovimientoDesdeColumnaVacia() {
-
         FreeCell freeCell = new FreeCell();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         freeCell.jugadaColumnaAFundacion(4, 3);
         assertFalse(freeCell.juegoTerminado());
     }
-
-
-
     @Test
     public void freeCellMovimientoDesdeAuxiliar() {
         FreeCell freeCell = new FreeCell();
@@ -40,5 +31,14 @@ public class FreeCellTest {
         freeCell.jugadaAuxiliarAFundacion(0, 3);
         assertTrue(freeCell.juegoTerminado());
     }
-
+    @Test
+    public void freeCellVariosMovimientos() throws Exception {
+        FreeCell freeCell = new FreeCell();
+        freeCell.juegoCasiGanado();
+        freeCell.jugadaColumnaAColumna(6, 0, 1);
+        freeCell.jugadaColumnaAAuxiliar(6, 2);
+        freeCell.jugadaColumnaAFundacion(0,3);
+        freeCell.jugadaAuxiliarAFundacion(2, 3);
+        assertTrue(freeCell.juegoTerminado());
+    }
 }
