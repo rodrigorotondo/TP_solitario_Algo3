@@ -12,8 +12,10 @@ public class ReglasFreeCell extends Reglas{
     }
 
 
-    public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar, int espaciosVacios) {
-
+    public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar, int espaciosVacios) throws Exception {
+        if(columnaExtraer.estaVacia()){
+            throw new Exception("No podes mover una columna vacia…");
+        }
         if(columnaDepositar.estaVacia()){ // si esta vacia y
             return columnaExtraer.obtenerTamanio() < espaciosVacios;
         }
@@ -21,14 +23,11 @@ public class ReglasFreeCell extends Reglas{
         else if(columnaExtraer.obtenerTamanio() <= (espaciosVacios + 1)){ // la primer carta siempre tiene lugar
             Carta primeraCartaExtraer = columnaExtraer.verPrimeraCarta();
             Carta ultimaCartaDepositar = columnaDepositar.verUltimaCarta();
-            return primeraCartaExtraer.obtenerNumero() < ultimaCartaDepositar.obtenerNumero() &&
+            return primeraCartaExtraer.obtenerNumero() == (ultimaCartaDepositar.obtenerNumero()-1) &&
                     primeraCartaExtraer.obtenerColor() != ultimaCartaDepositar.obtenerColor();
         }
-
         return false;
-
     }
-    
     @Override //si la columna no esta vacia se agregan de forma descendente y alternada en color
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna) {
         if(columna.estaVacia()){
