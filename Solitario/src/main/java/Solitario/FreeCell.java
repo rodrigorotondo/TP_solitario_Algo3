@@ -11,7 +11,7 @@ public class FreeCell extends Solitario {
     //-----------------------------------------------------Atributos---------------------------------------------------//
     final private int CANTIDADDEAUXILIARES = 4;
     private StackDeCartas[] auxiliares;
-    private ReglasFreeCell reglas = new ReglasFreeCell();
+    private ReglasFreeCell reglas;
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public FreeCell(){
@@ -25,6 +25,21 @@ public class FreeCell extends Solitario {
         this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
         this.iniciarAuxiliares();
         this.reglas = new ReglasFreeCell();
+    }
+
+    public FreeCell(Mazo mazo, ReglasFreeCell reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS){
+        asignarMazo(mazo);
+        this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
+        this.iniciarFundaciones();
+        this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
+        this.iniciarColumnas();
+        this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
+        this.iniciarAuxiliares();
+        asignarReglas(reglas);
+    }
+
+    public void asignarReglas(ReglasFreeCell reglas){
+        this.reglas = reglas;
     }
     protected void iniciarAuxiliares(){
         for (int i = 0; i < CANTIDADDEAUXILIARES; i++){

@@ -13,7 +13,7 @@ public class Klondike extends Solitario {
     //-----------------------------------------------------Atributos---------------------------------------------------//
 
     protected Descarte descarte;
-    private ReglasKlondike reglas = new ReglasKlondike();
+    private ReglasKlondike reglas;
 
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
@@ -26,8 +26,26 @@ public class Klondike extends Solitario {
         this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
         this.iniciarColumnas();
         this.descarte = new Descarte();
+        this.reglas = new ReglasKlondike();
 
 
+    }
+
+    public Klondike(Mazo mazo, ReglasKlondike reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS) {
+        CANTIDADDEFUNDACIONES = 4;
+        CANTIDADDECOLUMNAS = 7;
+        asignarMazo(mazo);
+        this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
+        this.iniciarFundaciones();
+        this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
+        this.iniciarColumnas();
+        this.descarte = new Descarte();
+        asignarReglas(reglas);
+
+    }
+
+    public void asignarReglas(ReglasKlondike reglas){
+        this.reglas = reglas;
     }
 
     private void iniciarTablero(int[] CantidadDeCartasPorColumna, StackDeCartas mazo) {

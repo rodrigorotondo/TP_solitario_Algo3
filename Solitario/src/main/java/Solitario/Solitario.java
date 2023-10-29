@@ -48,6 +48,10 @@ public abstract class Solitario implements Serializable {
     public void guardarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException {
         visitorSerializador.guardarEstado(this, nombreArchivo);
     }
+
+    public void asignarMazo(Mazo mazo){
+        this.mazo = mazo;
+    }
     public abstract boolean juegoTerminado();
 
 }
