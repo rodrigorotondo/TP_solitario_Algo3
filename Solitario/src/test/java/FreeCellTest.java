@@ -1,5 +1,5 @@
-import Solitario.FabricaDeSolitarios;
-import Solitario.FreeCell;
+import Reglas.*;
+import Solitario.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 public class FreeCellTest {
     @Test
     public void freeCellInicializacionEnEstadoAPuntoDeGanar() {
-        FreeCell freeCell = FabricaDeSolitarios.crearFreecell();
+        FabricaDeSolitarios fabricaFreecell = new FabricaDeSolitariosFreeCell();
+
+        Solitario freeCell = fabricaFreecell.crearSolitario();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(freeCell.juegoTerminado());
     }
@@ -43,5 +45,30 @@ public class FreeCellTest {
         freeCell.jugadaColumnaAFundacion(0,3);
         freeCell.jugadaAuxiliarAFundacion(2, 3);
         assertTrue(freeCell.juegoTerminado());
+    }
+
+    @Test
+    public void freeCellGuardarYCargarEstado() throws Exception {
+        //arrange
+        FabricaDeSolitariosFreeCell fabricaFreeCell = new FabricaDeSolitariosFreeCell();
+        FreeCell freeCell = fabricaFreeCell.crearSolitario();
+        VisitorSerializador serializador = new SerializadorSolitario();
+        freeCell.juegoAPuntoDeGanarConCartaEnAuxiliar();
+        freeCell.jugadaAuxiliarAColumna(0,0);
+
+        Solitario freeCellCargado;
+        //act
+        freeCell.guardarEstado("testGuardadoFreecell",serializador);
+
+        freeCellCargado = FreeCell.cargarEstado("testGuardadoFreecell",serializador);
+
+        freeCellCargado.jugadaColumnaAFundacion(0,3);
+
+        //assert
+        assertTrue(freeCellCargado.juegoTerminado());
+
+
+
+
     }
 }

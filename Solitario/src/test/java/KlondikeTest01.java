@@ -7,8 +7,8 @@ public class KlondikeTest01 {
 
    @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar() {
-
-        Klondike klondike = FabricaDeSolitarios.CrearKlondike();
+        FabricaDeSolitarios FabricaKlondike = new FabricaDeSolitariosKlondike();
+        Solitario klondike = FabricaKlondike.crearSolitario();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(klondike.juegoTerminado());
     }
