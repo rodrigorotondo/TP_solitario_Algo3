@@ -32,8 +32,8 @@ public class Klondike extends Solitario {
     }
 
     public Klondike(Mazo mazo, ReglasKlondike reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS) {
-        CANTIDADDEFUNDACIONES = 4;
-        CANTIDADDECOLUMNAS = 7;
+        this.CANTIDADDEFUNDACIONES = CANTIDADDEFUNDACIONES;
+        this.CANTIDADDECOLUMNAS = CANTIDADDECOLUMNAS;
         asignarMazo(mazo);
         this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
         this.iniciarFundaciones();

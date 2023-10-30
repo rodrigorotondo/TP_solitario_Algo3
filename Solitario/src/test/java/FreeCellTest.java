@@ -1,3 +1,4 @@
+import Solitario.FabricaDeSolitarios;
 import Solitario.FreeCell;
 import org.junit.Test;
 
@@ -6,7 +7,7 @@ import static org.junit.Assert.*;
 public class FreeCellTest {
     @Test
     public void freeCellInicializacionEnEstadoAPuntoDeGanar() {
-        FreeCell freeCell = new FreeCell();
+        FreeCell freeCell = FabricaDeSolitarios.crearFreecell();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(freeCell.juegoTerminado());
     }

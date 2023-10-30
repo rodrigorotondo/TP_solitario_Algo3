@@ -28,6 +28,8 @@ public class FreeCell extends Solitario {
     }
 
     public FreeCell(Mazo mazo, ReglasFreeCell reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS){
+        this.CANTIDADDECOLUMNAS = CANTIDADDECOLUMNAS;
+        this.CANTIDADDEFUNDACIONES = CANTIDADDEFUNDACIONES;
         asignarMazo(mazo);
         this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
         this.iniciarFundaciones();
