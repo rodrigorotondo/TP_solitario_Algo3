@@ -10,7 +10,7 @@ public class FreeCell extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
     final private int CANTIDADDEAUXILIARES = 4;
-    private StackDeCartas[] auxiliares;
+    private final StackDeCartas[] auxiliares;
     private ReglasFreeCell reglas;
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
@@ -26,7 +26,6 @@ public class FreeCell extends Solitario {
         this.iniciarAuxiliares();
         this.reglas = new ReglasFreeCell();
     }
-
     public FreeCell(Mazo mazo, ReglasFreeCell reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS){
         this.CANTIDADDECOLUMNAS = CANTIDADDECOLUMNAS;
         this.CANTIDADDEFUNDACIONES = CANTIDADDEFUNDACIONES;
@@ -39,7 +38,6 @@ public class FreeCell extends Solitario {
         this.iniciarAuxiliares();
         asignarReglas(reglas);
     }
-
     public void asignarReglas(ReglasFreeCell reglas){
         this.reglas = reglas;
     }
@@ -57,29 +55,23 @@ public class FreeCell extends Solitario {
             }
         }
     }
-
     @Override
     public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception {
         throw new Exception("No se puede mover una carta de una fundacion en una partida FreeCell");
     }
-
     @Override
     public void jugadaDescarteColumna(int indiceColumnaDestino) throws Exception {
         throw new Exception("No existen descartes en una partida FreeCell");
     }
-
     @Override
     public void jugadaDescarteFundacion(int indiceFundacion) throws Exception {
         throw new Exception("No existen descartes en una partida FreeCell");
     }
-
-
     @Override
     protected void iniciarMesa() {
         this.mazo.mezclarMazo();
         this.repartirCartas();
     }
-
     public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception {
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
@@ -88,12 +80,10 @@ public class FreeCell extends Solitario {
             columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
         }
     }
-
     @Override
     public void jugadaSacarCartaDelMazo() throws Exception {
         throw new Exception("Las cartas ya fueron repartidas");
     }
-
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
@@ -109,7 +99,6 @@ public class FreeCell extends Solitario {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
         }
     }
-
     public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) {
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
@@ -121,7 +110,6 @@ public class FreeCell extends Solitario {
             }
         }
     }
-
     private int cantidadEspaciosVacios(){
         int espaciosVacios = 0;
         for(int i = 0; i < this.CANTIDADDEAUXILIARES; i++){
@@ -134,11 +122,8 @@ public class FreeCell extends Solitario {
                 espaciosVacios++;
             }
         }
-
         return espaciosVacios;
-
     }
-
     @Override
     public void juegoAPuntoDeGanarConCartaEnColumna() {
         while (!mazo.estaVacia()) {//tener mazo vacio
@@ -164,7 +149,6 @@ public class FreeCell extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.tablero[0].agregarCarta(ultimaCarta);
     }
-
     @Override
     public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
@@ -178,8 +162,6 @@ public class FreeCell extends Solitario {
         }
 
     }
-
-
     public void juegoAPuntoDeGanarConCartaEnAuxiliar() {
         while (!mazo.estaVacia()) {//tener mazo vacio
             mazo.robarUltimaCarta();
@@ -204,7 +186,6 @@ public class FreeCell extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.auxiliares[0].agregarCarta(ultimaCarta);
     }
-
     public void juegoCasiGanado() {
         while (!mazo.estaVacia()) {//tener mazo vacio
             mazo.robarUltimaCarta();
@@ -236,7 +217,6 @@ public class FreeCell extends Solitario {
     public boolean juegoTerminado() {
         return this.reglas.juegoGanado(this.fundaciones);
     }
-
     public static FreeCell cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
         return visitorSerializador.cargarEstadoFreeCell(nombreArchivo);
     }

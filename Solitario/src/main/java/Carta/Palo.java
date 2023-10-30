@@ -1,6 +1,5 @@
 package Carta;
 public enum Palo {CORAZONES,PICAS,TREBOLES,DIAMANTES;
-
     private Color color;
     static {
         CORAZONES.color = Color.ROJO;
@@ -11,5 +10,4 @@ public enum Palo {CORAZONES,PICAS,TREBOLES,DIAMANTES;
     public Color obtenerColor(){
         return this.color;
     }
-
 }

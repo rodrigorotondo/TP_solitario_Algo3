@@ -1,4 +1,3 @@
-
 import Solitario.*;
 import org.junit.Test;
 
@@ -7,24 +6,20 @@ import java.io.IOException;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class KlondikeTest02 {
+public class klondiketest02 {
     @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar() {
-
         Klondike klondike = new Klondike();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         assertFalse(klondike.juegoTerminado());
     }
     @Test
     public void klondikeJuegoGanado() {
-
         Klondike klondike = new Klondike();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         klondike.jugadaDescarteFundacion(3);
         assertTrue(klondike.juegoTerminado());
     }
-
-
     @Test
     public void klondikeCargarJuego() throws IOException, ClassNotFoundException {
         //arrange
@@ -40,7 +35,5 @@ public class KlondikeTest02 {
         klondikeCargado.jugadaColumnaAFundacion(0, 3);
         //assert
         assertTrue(klondikeCargado.juegoTerminado());
-
     }
-
 }

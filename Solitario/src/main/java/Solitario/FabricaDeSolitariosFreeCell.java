@@ -2,7 +2,6 @@ package Solitario;
 
 import Reglas.ReglasFreeCell;
 import StackDeCartas.Mazo;
-
 public class FabricaDeSolitariosFreeCell implements FabricaDeSolitarios {
     public FreeCell crearSolitario(){
         final int CANTIDADDEFUNDACIONES = 4;

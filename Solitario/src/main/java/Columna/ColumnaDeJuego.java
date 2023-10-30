@@ -22,7 +22,6 @@ public class ColumnaDeJuego implements Serializable {
     public int obtenerTamanio(){
         return cartas.size();
     }
-
     public Carta verPrimeraCarta(){
         return cartas.get(TOPE);
     }
@@ -64,9 +63,7 @@ public class ColumnaDeJuego implements Serializable {
         this.eliminarCartas(columnaAuxiliar);
 
         this.cambiarVisibilidadUltimaCarta();
-
     }
-
     private void cambiarVisibilidadUltimaCarta(){
         if(!this.estaVacia()){
             if(!this.verUltimaCarta().esVisible()){
@@ -82,6 +79,4 @@ public class ColumnaDeJuego implements Serializable {
     public boolean esCartaVisible(int indiceCarta){
         return this.cartas.get(indiceCarta).esVisible();
     }
-
-
 }

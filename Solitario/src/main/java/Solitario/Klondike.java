@@ -6,16 +6,11 @@ import Reglas.*;
 import StackDeCartas.*;
 
 import java.io.IOException;
-
-
 public class Klondike extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
-
     protected Descarte descarte;
     private ReglasKlondike reglas;
-
-
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Klondike() {
         CANTIDADDEFUNDACIONES = 4;
@@ -27,10 +22,7 @@ public class Klondike extends Solitario {
         this.iniciarColumnas();
         this.descarte = new Descarte();
         this.reglas = new ReglasKlondike();
-
-
     }
-
     public Klondike(Mazo mazo, ReglasKlondike reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS) {
         this.CANTIDADDEFUNDACIONES = CANTIDADDEFUNDACIONES;
         this.CANTIDADDECOLUMNAS = CANTIDADDECOLUMNAS;
@@ -41,13 +33,10 @@ public class Klondike extends Solitario {
         this.iniciarColumnas();
         this.descarte = new Descarte();
         asignarReglas(reglas);
-
     }
-
     public void asignarReglas(ReglasKlondike reglas){
         this.reglas = reglas;
     }
-
     private void iniciarTablero(int[] CantidadDeCartasPorColumna, StackDeCartas mazo) {
         for (int i = 0; i < CANTIDADDECOLUMNAS; i++) {
             for (int j = 0; j < CantidadDeCartasPorColumna[i]; j++) {
@@ -56,16 +45,11 @@ public class Klondike extends Solitario {
             tablero[i].verUltimaCarta().cambiarVisibilidad();
         }
     }
-
     public void iniciarMesa() {
         this.mazo.mezclarMazo();
         iniciarTablero(new int[]{1, 2, 3, 4, 5, 6, 7}, mazo);
     }
-
-
-
     public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) {
-
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         int numeroCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerNumero();
         Palo paloCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerPalo();
@@ -74,7 +58,6 @@ public class Klondike extends Solitario {
             this.fundaciones[indiceFundacionOrigen].cambiarAColumna(columnaDestino);
         }
     }
-
     public void jugadaDescarteColumna(int indiceColumnaDestino){
         if(reglas.puedoSacarCartaDelDescarte(descarte)) {
 
@@ -85,7 +68,6 @@ public class Klondike extends Solitario {
             if (reglas.puedoAgregarCarta(numeroCartaDescarte, paloCartaDescarte, this.tablero[indiceColumnaDestino])) {
                 this.descarte.cambiarAColumna(this.tablero[indiceColumnaDestino]);
             }
-
         }
     }
     public void jugadaDescarteFundacion(int indiceFundacion) {
@@ -99,38 +81,32 @@ public class Klondike extends Solitario {
             }
         }
     }
-
-        public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception{
+    public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception{
             ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
             ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
 
             if (this.reglas.esCartaVisible(columnaOrigen, indiceCartaOrigen) && this.reglas.puedoAgregarCartasAColumna(columnaOrigen, columnaDestino)) {
                 columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
             }
-        }
-        public void jugadaSacarCartaDelMazo() {
+    }
+    public void jugadaSacarCartaDelMazo() {
             if (this.reglas.puedoSacarCartaDelMazo(this.mazo)) {
                 this.mazo.pasarCartaADescarte(this.descarte);
             }
             this.descarte.vaciarDescarte(this.mazo);
-        }
-
+    }
     @Override
     public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws Exception {
         throw new Exception("No existen auxiliares en una partida Klondike");
     }
-
     @Override
     public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino) throws Exception {
         throw new Exception("No existen auxiliares en una partida Klondike");
     }
-
     @Override
     public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) throws Exception {
         throw new Exception("No existen auxiliares en una partida Klondike");
     }
-
-
     public boolean juegoTerminado(){
             return this.reglas.juegoGanado(this.fundaciones);
         }
@@ -159,7 +135,6 @@ public class Klondike extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.tablero[0].agregarCarta(ultimaCarta);
         }
-
     public void juegoAPuntoDeGanarConCartaEnDescarte() {
         while (!mazo.estaVacia()) {//tener mazo vacio
             mazo.robarUltimaCarta();
@@ -184,11 +159,9 @@ public class Klondike extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.descarte.agregarCarta(ultimaCarta);
     }
-
     public static Klondike cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
         return visitorSerializador.cargarEstadoKlondike(nombreArchivo);
     }
-
     @Override
     public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
@@ -201,6 +174,5 @@ public class Klondike extends Solitario {
             }
         }
     }
-
 }
 

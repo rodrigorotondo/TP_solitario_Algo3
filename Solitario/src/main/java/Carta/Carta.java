@@ -22,7 +22,6 @@ public class Carta implements Serializable {
     }
     public Color obtenerColor(){
         return this.palo.obtenerColor();
-
     }
     public Palo obtenerPalo(){
         return this.palo;
@@ -30,7 +29,6 @@ public class Carta implements Serializable {
     public int obtenerNumero(){
         return this.numero;
     }
-
     public boolean esPosterior(int numeroCarta){
         return this.numero == (numeroCarta + 1);
     }

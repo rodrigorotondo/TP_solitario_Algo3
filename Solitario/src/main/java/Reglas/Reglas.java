@@ -14,7 +14,6 @@ public abstract class Reglas implements Serializable {
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public abstract boolean puedoExtraerDeColumna(ColumnaDeJuego columna);
-
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, Fundacion fundacion){
         if(fundacion.estaVacia()){
             return numeroCarta == AS; // si la carta es igual a 1 devuelve true
@@ -22,7 +21,6 @@ public abstract class Reglas implements Serializable {
             return(fundacion.verUltimaCarta().esAnterior(numeroCarta) && fundacion.verUltimaCarta().esMismoPalo(paloCarta));
         }
     }
-
     public boolean juegoGanado(Fundacion[] fundaciones) {
         for (Fundacion i : fundaciones) {
             if (!i.estaCompleta()){
@@ -32,6 +30,5 @@ public abstract class Reglas implements Serializable {
         return true;
     }
     public abstract boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna);
-
 }
 

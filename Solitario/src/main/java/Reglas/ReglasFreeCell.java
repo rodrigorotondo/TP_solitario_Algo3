@@ -5,12 +5,10 @@ import Columna.ColumnaDeJuego;
 import StackDeCartas.StackDeCartas;
 
 public class ReglasFreeCell extends Reglas{
-
     @Override
     public boolean puedoExtraerDeColumna(ColumnaDeJuego columna) {
         return !columna.estaVacia();
     }
-
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar, int espaciosVacios) throws Exception {
         if(columnaExtraer.estaVacia()){
             throw new Exception("No podes mover una columna vacia…");
@@ -35,11 +33,9 @@ public class ReglasFreeCell extends Reglas{
                     (paloCarta.obtenerColor() != columna.verUltimaCarta().obtenerColor()));
         }
     }
-
     public boolean puedoAgregarCartaAlAuxiliar(StackDeCartas auxiliar) {
         return auxiliar.estaVacia();
     }
-
     public boolean puedoSacarCartaDelAuxiliar(StackDeCartas auxiliar){
         return !auxiliar.estaVacia();
     }

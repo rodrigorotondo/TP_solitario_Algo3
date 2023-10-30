@@ -6,9 +6,7 @@ import Carta.Palo;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Stack;
-
 public class Mazo extends StackDeCartas {
-
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Mazo() {
         this.cartas = new Stack<>();
@@ -30,10 +28,7 @@ public class Mazo extends StackDeCartas {
         //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
         Collections.shuffle(this.cartas, new Random(semilla));
     }
-
     public void pasarCartaADescarte(Descarte descarte){
         descarte.agregarCarta(this.robarUltimaCarta());
     }
-
-
 }

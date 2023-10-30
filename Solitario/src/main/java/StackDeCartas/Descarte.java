@@ -1,20 +1,13 @@
 package StackDeCartas;
-
 import Carta.*;
 
 
 import java.util.Stack;
-
-
-
 public class Descarte extends StackDeCartas {
-
-
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Descarte(){
         this.cartas = new Stack<>();
     }
-
     public void vaciarDescarte(Mazo mazo) {
         while (!this.estaVacia()){
             Carta cartaAAgregar = this.robarUltimaCarta();
@@ -27,6 +20,4 @@ public class Descarte extends StackDeCartas {
         carta.cambiarVisibilidad();
         this.cartas.push(carta);
     }
-
-
 }

@@ -1,4 +1,3 @@
-import Reglas.*;
 import Solitario.*;
 import org.junit.Test;
 
@@ -8,21 +7,22 @@ public class FreeCellTest {
     @Test
     public void freeCellInicializacionEnEstadoAPuntoDeGanar() {
         FabricaDeSolitarios fabricaFreecell = new FabricaDeSolitariosFreeCell();
-
         Solitario freeCell = fabricaFreecell.crearSolitario();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(freeCell.juegoTerminado());
     }
     @Test
     public void freeCellJuegoGanado() {
-        FreeCell freeCell = new FreeCell();
+        FabricaDeSolitarios fabricaFreecell = new FabricaDeSolitariosFreeCell();
+        Solitario freeCell = fabricaFreecell.crearSolitario();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         freeCell.jugadaColumnaAFundacion(0, 3);
         assertTrue(freeCell.juegoTerminado());
     }
     @Test
     public void freeCellMovimientoDesdeColumnaVacia() {
-        FreeCell freeCell = new FreeCell();
+        FabricaDeSolitarios fabricaFreecell = new FabricaDeSolitariosFreeCell();
+        Solitario freeCell = fabricaFreecell.crearSolitario();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         freeCell.jugadaColumnaAFundacion(4, 3);
         assertFalse(freeCell.juegoTerminado());

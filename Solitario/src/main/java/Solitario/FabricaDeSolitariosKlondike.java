@@ -2,7 +2,6 @@ package Solitario;
 
 import Reglas.ReglasKlondike;
 import StackDeCartas.Mazo;
-
 public class FabricaDeSolitariosKlondike implements FabricaDeSolitarios {
     public Klondike crearSolitario(){
         final int CANTIDADDEFUNDACIONES = 4;
