@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Klondike extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
-    protected Descarte descarte;
+    private Descarte descarte;
     private ReglasKlondike reglas;
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Klondike() {
