@@ -24,10 +24,7 @@ public class Mazo extends StackDeCartas {
         //mezcla completamente al azar el mazo
         Collections.shuffle(this.cartas);
     }
-    public void mezclarMazo(long semilla) {
-        //mezcla al azar, pero usando una semilla, lo que permite replicar el mazo mezclado
-        Collections.shuffle(this.cartas, new Random(semilla));
-    }
+
     public void pasarCartaADescarte(Descarte descarte){
         descarte.agregarCarta(this.robarUltimaCarta());
     }
