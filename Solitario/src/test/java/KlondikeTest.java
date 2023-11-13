@@ -1,5 +1,6 @@
 import Solitario.*;
 import org.junit.Test;
+import utils.KlondikeTestingUtils;
 
 import java.io.IOException;
 
@@ -8,21 +9,20 @@ import static org.junit.Assert.*;
 public class KlondikeTest {
    @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar1() {
-        FabricaDeSolitarios FabricaKlondike = new FabricaDeSolitariosKlondike();
-        Solitario klondike = FabricaKlondike.crearSolitario();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         assertFalse(klondike.juegoTerminado());
     }
     @Test
     public void klondikeJuegoGanado1() {
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         klondike.jugadaColumnaAFundacion(0, 3);
         assertTrue(klondike.juegoTerminado());
     }
     @Test
     public void klondikeMovimientoDesdeColumnaVacia() {
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         klondike.jugadaColumnaAFundacion(4, 3);
         assertFalse(klondike.juegoTerminado());
@@ -36,7 +36,7 @@ public class KlondikeTest {
     }
     @Test
     public void klondikeVariasJugadas() {
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         klondike.jugadaDescarteColumna(3);
         klondike.jugadaFundacionAColumna(3, 3);
@@ -48,13 +48,13 @@ public class KlondikeTest {
 
     @Test
     public void klondikeInicializacionEnEstadoAPuntoDeGanar2() {
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         assertFalse(klondike.juegoTerminado());
     }
     @Test
     public void klondikeJuegoGanado2() {
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         klondike.jugadaDescarteFundacion(3);
         assertTrue(klondike.juegoTerminado());
@@ -62,7 +62,7 @@ public class KlondikeTest {
     @Test
     public void klondikeCargarJuego() throws IOException, ClassNotFoundException {
         //arrange
-        Klondike klondike = new Klondike();
+        KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         SerializadorSolitario serializadorSolitario = new SerializadorSolitario();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         //act
