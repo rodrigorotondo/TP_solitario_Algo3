@@ -2,6 +2,8 @@ package StackDeCartas;
 
 import Carta.Carta;
 import Carta.Palo;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import java.util.Collections;
 import java.util.Random;
@@ -27,5 +29,17 @@ public class Mazo extends StackDeCartas {
 
     public void pasarCartaADescarte(Descarte descarte){
         descarte.agregarCarta(this.robarUltimaCarta());
+    }
+
+    @Override
+    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
+        if(!this.estaVacia()) {
+            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
+        }else{
+            Button botonPedirCarta = new Button();
+            pane.getChildren().add(botonPedirCarta);
+            botonPedirCarta.setLayoutX(coordenadaX);
+            botonPedirCarta.setLayoutY(coordenadaY);
+        }
     }
 }

@@ -3,6 +3,7 @@ import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ public class FreeCell extends Solitario {
     protected ReglasFreeCell reglas;
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
-    public FreeCell(){
+    public FreeCell() {
         CANTIDADDEFUNDACIONES = 4;
         CANTIDADDECOLUMNAS = 8;
         this.mazo = new Mazo();
@@ -25,6 +26,7 @@ public class FreeCell extends Solitario {
         this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
         this.iniciarAuxiliares();
         this.reglas = new ReglasFreeCell();
+        this.iniciarMesa();
     }
     public FreeCell(Mazo mazo, ReglasFreeCell reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS){
         this.CANTIDADDECOLUMNAS = CANTIDADDECOLUMNAS;
@@ -37,6 +39,7 @@ public class FreeCell extends Solitario {
         this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
         this.iniciarAuxiliares();
         asignarReglas(reglas);
+        this.iniciarMesa();
     }
     public void asignarReglas(ReglasFreeCell reglas){
         this.reglas = reglas;
@@ -47,12 +50,17 @@ public class FreeCell extends Solitario {
         }
     }
     private void repartirCartas(){
+        int i = 0;
         while(!this.mazo.estaVacia()){
-            for(int i = 0; i < CANTIDADDECOLUMNAS; i++){
-                Carta cartaAAgregar = this.mazo.robarUltimaCarta();
-                this.tablero[i].agregarCarta(cartaAAgregar);
-                this.tablero[i].verUltimaCarta().cambiarVisibilidad();
+            Carta cartaAAgregar = this.mazo.robarUltimaCarta();
+            cartaAAgregar.cambiarVisibilidad();
+            this.tablero[i].agregarCarta(cartaAAgregar);
+
+            i++;
+            if(i == CANTIDADDECOLUMNAS){
+                i = 0;
             }
+
         }
     }
     @Override
@@ -137,6 +145,20 @@ public class FreeCell extends Solitario {
                 this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
             }
         }
+
+    }
+
+    protected void mostrarAuxiliares(Pane pane, double coordenadaX, double coordenadaY){
+        for(int auxiliar = 0; auxiliar < this.CANTIDADDEAUXILIARES; auxiliar++){
+            this.auxiliares[auxiliar].mostrar(pane,coordenadaX,coordenadaY);
+            coordenadaX = coordenadaX + 75;
+        }
+    }
+    public void  mostrar(Pane pane){
+
+        mostrarAuxiliares(pane,100,100);
+        mostrarFundaciones(pane,700,50);
+        mostrarColumnas(pane,50, 200);
 
     }
 

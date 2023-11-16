@@ -1,5 +1,8 @@
 package StackDeCartas;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+
 import java.util.Stack;
 public class Fundacion extends StackDeCartas {
     //-----------------------------------------------------Atributos---------------------------------------------------//
@@ -11,4 +14,6 @@ public class Fundacion extends StackDeCartas {
     public boolean estaCompleta(){
         return this.cartas.size() == FUNDACIONCOMPLETA;
     }
+
+
 }

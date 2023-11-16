@@ -1,5 +1,7 @@
 package StackDeCartas;
 import Carta.*;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 
 import java.util.Stack;
@@ -19,5 +21,12 @@ public class Descarte extends StackDeCartas {
     public void agregarCarta(Carta carta){
         carta.cambiarVisibilidad();
         this.cartas.push(carta);
+    }
+
+    @Override
+    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
+        if(!this.estaVacia()) {
+            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
+        }
     }
 }

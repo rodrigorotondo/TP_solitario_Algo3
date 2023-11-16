@@ -2,6 +2,7 @@ package Columna;
 
 import Carta.*;
 import StackDeCartas.*;
+import javafx.scene.layout.Pane;
 
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ public class ColumnaDeJuego implements Serializable {
     //-----------------------------------------------------Atributos---------------------------------------------------//
     private ArrayList<Carta> cartas;
     final private int TOPE = 0;
+
+    final private int ESPACIADOENTRECARTAS = 27;
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public ColumnaDeJuego(){
@@ -78,5 +81,13 @@ public class ColumnaDeJuego implements Serializable {
     }
     public boolean esCartaVisible(int indiceCarta){
         return this.cartas.get(indiceCarta).esVisible();
+    }
+
+    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
+        for(int i = 0; i < this.obtenerTamanio(); i++){
+            this.cartas.get(i).mostrarCarta(pane, coordenadaX, coordenadaY);
+            coordenadaY = coordenadaY + ESPACIADOENTRECARTAS;
+        }
+
     }
 }

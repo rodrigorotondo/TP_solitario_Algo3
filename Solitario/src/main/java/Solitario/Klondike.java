@@ -4,6 +4,7 @@ import Carta.*;
 import Columna.*;
 import Reglas.*;
 import StackDeCartas.*;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 public class Klondike extends Solitario {
@@ -22,6 +23,7 @@ public class Klondike extends Solitario {
         this.iniciarColumnas();
         this.descarte = new Descarte();
         this.reglas = new ReglasKlondike();
+        this.iniciarMesa();
     }
     public Klondike(Mazo mazo, ReglasKlondike reglas, int CANTIDADDEFUNDACIONES, int CANTIDADDECOLUMNAS) {
         this.CANTIDADDEFUNDACIONES = CANTIDADDEFUNDACIONES;
@@ -33,6 +35,7 @@ public class Klondike extends Solitario {
         this.iniciarColumnas();
         this.descarte = new Descarte();
         asignarReglas(reglas);
+        this.iniciarMesa();
     }
     public void asignarReglas(ReglasKlondike reglas){
         this.reglas = reglas;
@@ -127,6 +130,19 @@ public class Klondike extends Solitario {
                 this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
             }
         }
+    }
+
+
+
+
+
+    public void  mostrar(Pane pane){
+        this.mazo.mostrar(pane,50,50);
+        this.descarte.mostrar(pane,125,50);
+        mostrarFundaciones(pane,700,50);
+        mostrarColumnas(pane,50, 200);
+
+
     }
 }
 

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Stack;
 import Carta.*;
 import Columna.ColumnaDeJuego;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 public class StackDeCartas implements Serializable {
     protected Stack<Carta> cartas;
     public StackDeCartas(){
@@ -28,5 +30,16 @@ public class StackDeCartas implements Serializable {
     public void cambiarAStack(StackDeCartas stackDestino){
         Carta cartaCopia = this.robarUltimaCarta();
         stackDestino.agregarCarta(cartaCopia);
+    }
+
+    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
+        if(!this.estaVacia()) {
+            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
+        }else{
+            Button botonFundacion = new Button();
+            pane.getChildren().add(botonFundacion);
+            botonFundacion.setLayoutX(coordenadaX);
+            botonFundacion.setLayoutY(coordenadaY);
+        }
     }
 }

@@ -75,4 +75,6 @@ public class KlondikeTest {
         //assert
         assertTrue(klondikeCargado.juegoTerminado());
     }
+
+
 }
