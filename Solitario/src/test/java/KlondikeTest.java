@@ -1,6 +1,8 @@
 import Solitario.*;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -67,10 +69,11 @@ public class KlondikeTest {
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         //act
         //aca sabemos que si movemos una carta ganamos el juego, lo guardamos
-        klondike.guardarEstado("JuegoPrueba",serializadorSolitario);
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        klondike.guardarEstado(serializadorSolitario,bytes);
 
         Solitario klondikeCargado;
-        klondikeCargado = Klondike.cargarEstado("JuegoPrueba",serializadorSolitario);
+        klondikeCargado = Klondike.cargarEstado(serializadorSolitario, new ByteArrayInputStream(bytes.toByteArray()));
         klondikeCargado.jugadaColumnaAFundacion(0, 3);
         //assert
         assertTrue(klondikeCargado.juegoTerminado());

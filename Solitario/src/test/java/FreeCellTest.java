@@ -1,6 +1,10 @@
 import Solitario.*;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class FreeCellTest {
@@ -55,20 +59,16 @@ public class FreeCellTest {
         VisitorSerializador serializador = new SerializadorSolitario();
         freeCell.juegoAPuntoDeGanarConCartaEnAuxiliar();
         freeCell.jugadaAuxiliarAColumna(0,0);
-
         Solitario freeCellCargado;
         //act
-        freeCell.guardarEstado("testGuardadoFreecell",serializador);
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        freeCell.guardarEstado(serializador, bytes);
 
-        freeCellCargado = FreeCell.cargarEstado("testGuardadoFreecell",serializador);
+        freeCellCargado = FreeCell.cargarEstado(serializador, new ByteArrayInputStream(bytes.toByteArray()));
 
         freeCellCargado.jugadaColumnaAFundacion(0,3);
 
         //assert
         assertTrue(freeCellCargado.juegoTerminado());
-
-
-
-
     }
 }

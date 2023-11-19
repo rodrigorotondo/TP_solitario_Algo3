@@ -5,6 +5,7 @@ import Reglas.*;
 import StackDeCartas.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FreeCell extends Solitario {
 
@@ -217,7 +218,7 @@ public class FreeCell extends Solitario {
     public boolean juegoTerminado() {
         return this.reglas.juegoGanado(this.fundaciones);
     }
-    public static FreeCell cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
-        return visitorSerializador.cargarEstadoFreeCell(nombreArchivo);
+    public static FreeCell cargarEstado(VisitorSerializador visitorSerializador, InputStream in) throws IOException, ClassNotFoundException {
+        return visitorSerializador.cargarEstadoFreeCell(in);
     }
 }

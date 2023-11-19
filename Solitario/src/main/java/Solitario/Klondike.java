@@ -6,6 +6,9 @@ import Reglas.*;
 import StackDeCartas.*;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Klondike extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
@@ -159,8 +162,8 @@ public class Klondike extends Solitario {
         ultimaCarta.cambiarVisibilidad();
         this.descarte.agregarCarta(ultimaCarta);
     }
-    public static Klondike cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
-        return visitorSerializador.cargarEstadoKlondike(nombreArchivo);
+    public static Klondike cargarEstado(VisitorSerializador visitorSerializador, InputStream in) throws IOException, ClassNotFoundException {
+        return visitorSerializador.cargarEstadoKlondike(in);
     }
     @Override
     public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
