@@ -12,8 +12,8 @@ import java.io.OutputStream;
 public class Klondike extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
-    private Descarte descarte;
-    private ReglasKlondike reglas;
+    protected Descarte descarte;
+    protected ReglasKlondike reglas;
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public Klondike() {
         CANTIDADDEFUNDACIONES = 4;
