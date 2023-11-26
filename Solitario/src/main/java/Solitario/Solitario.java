@@ -26,20 +26,9 @@ public abstract class Solitario implements Serializable {
         }
     }
 
-    protected void mostrarFundaciones(Pane pane, double coordenadaX, double coordenadaY){
-        for(int fundacion = 0; fundacion < this.CANTIDADDEFUNDACIONES; fundacion++){
-            this.fundaciones[fundacion].mostrar(pane,coordenadaX,coordenadaY);
-            coordenadaX = coordenadaX + 75;
-        }
-    }
 
-    protected void mostrarColumnas(Pane pane, double coordenadaX, double coordenadaY){
-        for(int columna = 0; columna < this.CANTIDADDECOLUMNAS;columna++){
-            this.tablero[columna].mostrar(pane,coordenadaX,coordenadaY);
-            coordenadaX = coordenadaX + 75;
-        }
 
-    }
+
     public abstract void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception;
     public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino);
     public abstract void jugadaDescarteColumna(int indiceColumnaDestino) throws Exception;
@@ -58,5 +47,19 @@ public abstract class Solitario implements Serializable {
     }
     public abstract boolean juegoTerminado();
 
-    public abstract void  mostrar(Pane pane);
+    public Mazo obtenerMazo(){
+        return this.mazo;
+    }
+
+    public Fundacion[] obtenerFundaciones(){
+        return this.fundaciones;
+    }
+
+    public ColumnaDeJuego[] obtenerTablero(){
+        return this.tablero;
+    }
+
+    public abstract Descarte obtenerDescarte();
+
+    public abstract StackDeCartas[] obtenerAuxiliares();
 }

@@ -23,23 +23,26 @@ public class MenuPrincipal extends Application {
 
 
     public void iniciarSolitario(String nombreSolitario, Stage stage) throws FileNotFoundException{
-        var pane = new Pane();
-        FabricaDeSolitarios fabrica;
 
+        FabricaDeSolitarios fabricaDeSolitarios;
+        FabricaDeVistas fabricaDeVistas;
+        Solitario solitario;
+        Vista vista;
 
         var label = new Label();
         if(nombreSolitario.equals("Klondike")){
-            fabrica = new FabricaDeSolitariosKlondike();
-
+            fabricaDeSolitarios = new FabricaDeSolitariosKlondike();
+            fabricaDeVistas = new FabricaDeVistasKlondike();
 
         }else{
             label.setText(nombreSolitario);
-            fabrica = new FabricaDeSolitariosFreeCell();
-
+            fabricaDeSolitarios = new FabricaDeSolitariosFreeCell();
+            fabricaDeVistas = new FabricaDeVistasFreeCell();
         }
 
-        Solitario solitario = fabrica.crearSolitario();
-        solitario.mostrar(pane);
+        solitario = fabricaDeSolitarios.crearSolitario();
+
+        vista = fabricaDeVistas.crearVista(solitario);
 
         stage.setScene(new Scene(pane,1000,1000));
         stage.setFullScreen(true);

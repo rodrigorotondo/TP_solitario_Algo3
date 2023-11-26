@@ -5,27 +5,29 @@ import ManejoDeArchivos.ManejoDeArchivos;
 import StackDeCartas.Descarte;
 import StackDeCartas.Fundacion;
 import Carta.*;
+import Solitario.*;
 import StackDeCartas.Mazo;
 import StackDeCartas.StackDeCartas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-import java.io.FileNotFoundException;
 
-public class Vista {
+public abstract class Vista {
 
     final private int ESPACIADOENTRECARTAS = 27;
 
-    private Pane pane;
+    protected Pane pane;
+
+    protected Solitario solitario;
 
 
-    public Vista(){
+    public Vista(Solitario solitario){
         this.pane = new Pane();
+        this.solitario = solitario;
     }
     public void registrarListener(EventHandler<ActionEvent> eventEventHandler){
         for(javafx.scene.Node nodo: this.pane.getChildren()){
@@ -36,7 +38,7 @@ public class Vista {
 
 
 
-    public void moostrarColumnas(ColumnaDeJuego[] tablero, Pane pane, int coordenadaX, int coordenadaY){
+    public void mostrarColumnas(ColumnaDeJuego[] tablero, Pane pane, int coordenadaX, int coordenadaY){
         for(int columna = 0; columna < tablero.length; columna++){
             mostrarColumna(tablero[columna], pane,coordenadaX,coordenadaY);
             coordenadaX = coordenadaX + 75;
@@ -126,7 +128,7 @@ public class Vista {
         }
     }
 
-    public void mostrarStackGenerico(StackDeCartas stack, Pane pane, int coordenadaX, int coordenadaY){
+    public void mostrarStackGenerico(StackDeCartas stack, Pane pane, double coordenadaX, double coordenadaY){
         if(!stack.estaVacia()) {
             mostrarCarta(stack.verUltimaCarta(), pane, coordenadaX, coordenadaY);
         }else{
@@ -134,6 +136,13 @@ public class Vista {
             pane.getChildren().add(botonStack);
             botonStack.setLayoutX(coordenadaX);
             botonStack.setLayoutY(coordenadaY);
+        }
+    }
+
+    protected void mostrarAuxiliares(StackDeCartas[] auxiliares , Pane pane, double coordenadaX, double coordenadaY){
+        for(int auxiliar = 0; auxiliar < auxiliares.length; auxiliar++){
+            mostrarStackGenerico(auxiliares[auxiliar], pane,coordenadaX,coordenadaY);
+            coordenadaX = coordenadaX + 75;
         }
     }
 }

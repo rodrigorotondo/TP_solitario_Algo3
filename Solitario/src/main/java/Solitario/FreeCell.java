@@ -148,25 +148,25 @@ public class FreeCell extends Solitario {
 
     }
 
-    protected void mostrarAuxiliares(Pane pane, double coordenadaX, double coordenadaY){
-        for(int auxiliar = 0; auxiliar < this.CANTIDADDEAUXILIARES; auxiliar++){
-            this.auxiliares[auxiliar].mostrar(pane,coordenadaX,coordenadaY);
-            coordenadaX = coordenadaX + 75;
-        }
-    }
-    public void  mostrar(Pane pane){
 
-        mostrarAuxiliares(pane,100,100);
-        mostrarFundaciones(pane,700,50);
-        mostrarColumnas(pane,50, 200);
 
-    }
 
 
     @Override
     public boolean juegoTerminado() {
         return this.reglas.juegoGanado(this.fundaciones);
     }
+
+    @Override
+    public Descarte obtenerDescarte() {
+        return null;
+    }
+
+    @Override
+    public StackDeCartas[] obtenerAuxiliares() {
+        return this.auxiliares;
+    }
+
     public static FreeCell cargarEstado(String nombreArchivo, VisitorSerializador visitorSerializador) throws IOException, ClassNotFoundException {
         return visitorSerializador.cargarEstadoFreeCell(nombreArchivo);
     }

@@ -132,17 +132,12 @@ public class Klondike extends Solitario {
         }
     }
 
-
-
-
-
-    public void  mostrar(Pane pane){
-        this.mazo.mostrar(pane,50,50);
-        this.descarte.mostrar(pane,125,50);
-        mostrarFundaciones(pane,700,50);
-        mostrarColumnas(pane,50, 200);
-
-
+    public Descarte obtenerDescarte(){
+        return this.descarte;
     }
+
+
+
+
 }
 
