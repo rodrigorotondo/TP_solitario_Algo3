@@ -28,24 +28,35 @@ public class MenuPrincipal extends Application {
         FabricaDeVistas fabricaDeVistas;
         Solitario solitario;
         Vista vista;
+        Controlador controlador;
+
 
         var label = new Label();
         if(nombreSolitario.equals("Klondike")){
             fabricaDeSolitarios = new FabricaDeSolitariosKlondike();
             fabricaDeVistas = new FabricaDeVistasKlondike();
 
+
         }else{
             label.setText(nombreSolitario);
             fabricaDeSolitarios = new FabricaDeSolitariosFreeCell();
             fabricaDeVistas = new FabricaDeVistasFreeCell();
+
         }
 
         solitario = fabricaDeSolitarios.crearSolitario();
 
-        vista = fabricaDeVistas.crearVista(solitario);
+        vista = fabricaDeVistas.crearVista(solitario,stage);
 
-        stage.setScene(new Scene(pane,1000,1000));
-        stage.setFullScreen(true);
+        controlador = new Controlador(solitario,vista);
+
+        controlador.iniciar();
+
+
+        vista.mostrar();
+
+
+
 
 
 
@@ -84,8 +95,6 @@ public class MenuPrincipal extends Application {
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
-
-
             }
         };
 

@@ -136,7 +136,10 @@ public class Klondike extends Solitario {
         return this.descarte;
     }
 
-
+    @Override
+    public StackDeCartas[] obtenerAuxiliares() {
+        return null;
+    }
 
 
 }
