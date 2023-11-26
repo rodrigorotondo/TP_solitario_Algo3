@@ -31,15 +31,5 @@ public class Mazo extends StackDeCartas {
         descarte.agregarCarta(this.robarUltimaCarta());
     }
 
-    @Override
-    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
-        if(!this.estaVacia()) {
-            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
-        }else{
-            Button botonPedirCarta = new Button();
-            pane.getChildren().add(botonPedirCarta);
-            botonPedirCarta.setLayoutX(coordenadaX);
-            botonPedirCarta.setLayoutY(coordenadaY);
-        }
-    }
+
 }

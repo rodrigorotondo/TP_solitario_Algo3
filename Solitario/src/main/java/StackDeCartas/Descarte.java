@@ -23,10 +23,5 @@ public class Descarte extends StackDeCartas {
         this.cartas.push(carta);
     }
 
-    @Override
-    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
-        if(!this.estaVacia()) {
-            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
-        }
-    }
+
 }

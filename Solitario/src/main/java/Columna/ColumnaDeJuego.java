@@ -13,7 +13,7 @@ public class ColumnaDeJuego implements Serializable {
     private ArrayList<Carta> cartas;
     final private int TOPE = 0;
 
-    final private int ESPACIADOENTRECARTAS = 27;
+
 
     //-----------------------------------------------------Métodos----------------------------------------------------//
     public ColumnaDeJuego(){
@@ -30,6 +30,10 @@ public class ColumnaDeJuego implements Serializable {
     }
     public Carta verUltimaCarta(){
         return cartas.get(indiceUltimaCarta());
+    }
+
+    public Carta verCarta(int indice){
+        return cartas.get(indice);
     }
     private int indiceUltimaCarta(){
         return (cartas.size()-1);
@@ -83,11 +87,5 @@ public class ColumnaDeJuego implements Serializable {
         return this.cartas.get(indiceCarta).esVisible();
     }
 
-    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
-        for(int i = 0; i < this.obtenerTamanio(); i++){
-            this.cartas.get(i).mostrarCarta(pane, coordenadaX, coordenadaY);
-            coordenadaY = coordenadaY + ESPACIADOENTRECARTAS;
-        }
 
-    }
 }

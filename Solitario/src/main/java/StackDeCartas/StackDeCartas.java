@@ -32,14 +32,5 @@ public class StackDeCartas implements Serializable {
         stackDestino.agregarCarta(cartaCopia);
     }
 
-    public void mostrar(Pane pane, double coordenadaX, double coordenadaY){
-        if(!this.estaVacia()) {
-            this.cartas.peek().mostrarCarta(pane, coordenadaX, coordenadaY);
-        }else{
-            Button botonFundacion = new Button();
-            pane.getChildren().add(botonFundacion);
-            botonFundacion.setLayoutX(coordenadaX);
-            botonFundacion.setLayoutY(coordenadaY);
-        }
-    }
+
 }
