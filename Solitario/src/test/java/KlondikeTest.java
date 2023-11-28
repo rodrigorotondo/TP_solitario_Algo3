@@ -1,3 +1,5 @@
+import Excepciones.ExcepcionMoverColumnaVacia;
+import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import Solitario.*;
 import org.junit.Test;
 import utils.KlondikeTestingUtils;
@@ -16,14 +18,14 @@ public class KlondikeTest {
         assertFalse(klondike.juegoTerminado());
     }
     @Test
-    public void klondikeJuegoGanado1() {
+    public void klondikeJuegoGanado1() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         klondike.jugadaColumnaAFundacion(0, 3);
         assertTrue(klondike.juegoTerminado());
     }
     @Test
-    public void klondikeMovimientoDesdeColumnaVacia() {
+    public void klondikeMovimientoDesdeColumnaVacia() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
         klondike.jugadaColumnaAFundacion(4, 3);
@@ -37,7 +39,7 @@ public class KlondikeTest {
         assertFalse(klondike.juegoTerminado());
     }
     @Test
-    public void klondikeVariasJugadas() {
+    public void klondikeVariasJugadas() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
         klondike.jugadaDescarteColumna(3);
@@ -62,7 +64,7 @@ public class KlondikeTest {
         assertTrue(klondike.juegoTerminado());
     }
     @Test
-    public void klondikeCargarJuego() throws IOException, ClassNotFoundException {
+    public void klondikeCargarJuego() throws IOException, ClassNotFoundException ,ExcepcionMoverColumnaVacia {
         //arrange
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         SerializadorSolitario serializadorSolitario = new SerializadorSolitario();

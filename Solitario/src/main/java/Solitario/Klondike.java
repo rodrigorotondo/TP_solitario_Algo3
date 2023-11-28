@@ -2,13 +2,14 @@ package Solitario;
 
 import Carta.*;
 import Columna.*;
+import Excepciones.ExcepcionCartaNoVisible;
+import Excepciones.ExcepcionMoverColumnaVacia;
+import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import Reglas.*;
 import StackDeCartas.*;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 public class Klondike extends Solitario {
 
@@ -87,19 +88,29 @@ public class Klondike extends Solitario {
             }
         }
     }
-    public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception{
+
+    public void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws ExcepcionMoverColumnaVacia, ExcepcionCartaNoVisible, ExcepcionNoPuedoAgregarCarta {
+            verificarColumnaVacia(tablero[indiceColumnaOrigen]);
             ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
             ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
 
             ColumnaDeJuego auxiliar = columnaOrigen.obtenerSubColumna(indiceCartaOrigen);
 
-            if (this.reglas.esCartaVisible(columnaOrigen, indiceCartaOrigen) && this.reglas.puedoAgregarCartasAColumna(auxiliar, columnaDestino)) {
-                columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
-                if(!this.tablero[indiceColumnaOrigen].estaVacia()){
-                    if(!this.tablero[indiceColumnaOrigen].verUltimaCarta().esVisible()) {
-                        this.tablero[indiceColumnaOrigen].verUltimaCarta().cambiarVisibilidad();
+            if (this.reglas.esCartaVisible(columnaOrigen, indiceCartaOrigen) ) {
+                if(this.reglas.puedoAgregarCartasAColumna(auxiliar, columnaDestino)) {
+                    columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
+                    if (!this.tablero[indiceColumnaOrigen].estaVacia()) {
+                        if (!this.tablero[indiceColumnaOrigen].verUltimaCarta().esVisible()) {
+                            this.tablero[indiceColumnaOrigen].verUltimaCarta().cambiarVisibilidad();
+                        }
                     }
+                }else{
+                    throw new ExcepcionNoPuedoAgregarCarta();
+
                 }
+            }else{
+                throw new ExcepcionCartaNoVisible();
+
             }
     }
     public void jugadaSacarCartaDelMazo() {
@@ -131,7 +142,8 @@ public class Klondike extends Solitario {
         return visitorSerializador.cargarEstadoKlondike(in);
     }
     @Override
-    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
+    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
+        verificarColumnaVacia(tablero[indiceColumnaOrigen]);
         Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
         if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
             int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerNumero();
@@ -144,6 +156,8 @@ public class Klondike extends Solitario {
                         this.tablero[indiceColumnaOrigen].verUltimaCarta().cambiarVisibilidad();
                     }
                 }
+            }else{
+                throw new ExcepcionNoPuedoAgregarCarta();
             }
         }
     }

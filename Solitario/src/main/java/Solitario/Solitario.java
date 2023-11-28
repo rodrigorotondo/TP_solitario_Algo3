@@ -1,6 +1,8 @@
 package Solitario;
 
 import Columna.ColumnaDeJuego;
+import Excepciones.ExcepcionMoverColumnaVacia;
+import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import StackDeCartas.*;
 import javafx.scene.layout.Pane;
 
@@ -29,13 +31,19 @@ public abstract class Solitario implements Serializable {
 
     public abstract void jugadaSacarCartaDelMazo() throws Exception;
     public abstract void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception;
-    public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino);
+    public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta;
     public abstract void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception;
     public abstract void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws Exception;
     public abstract void jugadaDescarteColumna(int indiceColumnaDestino) throws Exception;
     public abstract void jugadaDescarteFundacion(int indiceFundacion) throws Exception;
     public abstract void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino) throws Exception;
     public abstract void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) throws Exception;
+
+    protected void verificarColumnaVacia(ColumnaDeJuego columna) throws ExcepcionMoverColumnaVacia{
+        if(columna.estaVacia()){
+            throw new ExcepcionMoverColumnaVacia();
+        }
+    }
     protected abstract void iniciarMesa();
 
     public void guardarEstado(VisitorSerializador visitorSerializador, OutputStream os) throws IOException {

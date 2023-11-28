@@ -1,6 +1,7 @@
 package Solitario;
 import Carta.*;
 import Columna.*;
+import Excepciones.ExcepcionMoverColumnaVacia;
 import Reglas.*;
 import StackDeCartas.*;
 import javafx.scene.layout.Pane;
@@ -81,11 +82,14 @@ public class FreeCell extends Solitario {
         this.mazo.mezclarMazo();
         this.repartirCartas();
     }
-    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception {
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws ExcepcionMoverColumnaVacia {
+        verificarColumnaVacia(tablero[indiceColumnaOrigen]);
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
         int espaciosVacios = cantidadEspaciosVacios();
-        if(this.reglas.puedoAgregarCartasAColumna(columnaOrigen, columnaDestino, espaciosVacios)){
+        ColumnaDeJuego auxiliar = columnaOrigen.obtenerSubColumna(indiceCartaOrigen);
+
+        if(this.reglas.puedoAgregarCartasAColumna(auxiliar, columnaDestino, espaciosVacios)){
             columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
         }
     }

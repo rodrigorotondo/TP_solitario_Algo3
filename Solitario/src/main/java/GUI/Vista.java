@@ -193,10 +193,9 @@ public abstract class Vista {
     }
 
     public void mensajeAlUsuario(String mensaje){
-        Alert alerta = new Alert(Alert.AlertType.WARNING);
-        alerta.setTitle("Movimiento invalido");
-        alerta.setHeaderText("Se ha producido un movimiento invalido");
-        alerta.setContentText(mensaje);
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Atencion!");
+        alerta.setHeaderText(mensaje);
         alerta.showAndWait();
 
     }
