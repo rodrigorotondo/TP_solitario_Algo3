@@ -11,18 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import java.io.FileNotFoundException;
+
 
 
 
 public class MenuPrincipal extends Application {
 
 
-    public void iniciarSolitario(String nombreSolitario, Stage stage) throws FileNotFoundException{
+    public void iniciarSolitario(String nombreSolitario, Stage stage) {
 
         FabricaDeSolitarios fabricaDeSolitarios;
         FabricaDeVistas fabricaDeVistas;
@@ -52,26 +50,13 @@ public class MenuPrincipal extends Application {
 
         controlador.iniciar();
 
-
-        vista.mostrar();
-
-
-
-
-
-
-
-
     }
 
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         stage.setTitle("Menu Principal");
         var stackPane = new StackPane();
-
-
-
 
         var opcionKlondike = new MenuItem("Klondike");
         var opcionFreeCell = new MenuItem("FreeCell");
@@ -90,11 +75,9 @@ public class MenuPrincipal extends Application {
             public void handle(ActionEvent evento){
                 String opcionElegida = ((MenuItem)evento.getSource()).getText();
                 menuDesplegable.setText(opcionElegida);
-                try {
-                    iniciarSolitario(opcionElegida,stage);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
+
+                iniciarSolitario(opcionElegida,stage);
+
             }
         };
 
@@ -102,5 +85,7 @@ public class MenuPrincipal extends Application {
         opcionFreeCell.setOnAction(pulsarBoton);
         stage.setScene(scene);
         stage.show();
+
+
     }
 }

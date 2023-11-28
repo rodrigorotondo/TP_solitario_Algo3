@@ -10,6 +10,7 @@ import StackDeCartas.Mazo;
 import StackDeCartas.StackDeCartas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,52 +43,61 @@ public abstract class Vista {
         this.pane = new Pane();
         this.solitario = solitario;
         this.stage = stage;
-        stage.setFullScreen(true);
 
-    }
-    protected void registrarListener(EventHandler<ActionEvent> eventEventHandler){
-        for(javafx.scene.Node nodo: this.pane.getChildren()){
-            Button boton = (Button) nodo;
-            boton.setOnAction(eventEventHandler);
-        }
+
     }
 
 
-
-    protected void mostrarColumnas(ColumnaDeJuego[] tablero, Pane pane, int coordenadaX, int coordenadaY){
+    protected void mostrarColumnas(ColumnaDeJuego[] tablero, Pane pane, int coordenadaX, int coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         for(int columna = 0; columna < tablero.length; columna++){
-            mostrarColumna(tablero[columna], pane,columna, coordenadaX,coordenadaY);
+            mostrarColumna(tablero[columna], pane,columna, coordenadaX,coordenadaY,pulsarCarta);
             coordenadaX = coordenadaX + 75;
         }
 
     }
 
-    protected void mostrarColumna(ColumnaDeJuego columna, Pane pane, int indiceEstructura, int coordenadaX, int coordenadaY){
-        for(int i = 0; i < columna.obtenerTamanio(); i++){
-            mostrarCarta(columna.verCarta(i),pane,COLUMNA,indiceEstructura,i, coordenadaX, coordenadaY);
-            coordenadaY = coordenadaY + ESPACIADOENTRECARTAS;
+    protected void mostrarColumna(ColumnaDeJuego columna, Pane pane, int indiceEstructura, int coordenadaX, int coordenadaY, EventHandler<ActionEvent> pulsarCarta){
+        if(!columna.estaVacia()) {
+            for (int i = 0; i < columna.obtenerTamanio(); i++) {
+                mostrarCarta(columna.verCarta(i), pane, COLUMNA, indiceEstructura, i, coordenadaX, coordenadaY, pulsarCarta);
+                coordenadaY = coordenadaY + ESPACIADOENTRECARTAS;
+            }
+        }else{
+            Button botonColumna = new Button();
+            botonColumna.getProperties().put("estructura",COLUMNA);
+            botonColumna.getProperties().put("indiceEstructura", indiceEstructura);
+            botonColumna.getProperties().put("indiceCarta", indiceEstructura);
+            botonColumna.setOnAction(pulsarCarta);
+            pane.getChildren().add(botonColumna);
+            botonColumna.setLayoutX(coordenadaX);
+            botonColumna.setLayoutY(coordenadaY);
+
         }
     }
 
-    protected void mostrarFundaciones(Fundacion[] fundaciones, Pane pane, int coordenadaX, int coordenadaY){
+    protected void mostrarFundaciones(Fundacion[] fundaciones, Pane pane, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         for(int fundacion = 0; fundacion < fundaciones.length; fundacion++){
-            mostrarFundacion(fundaciones[fundacion], pane,fundacion, coordenadaX,coordenadaY);
+            mostrarFundacion(fundaciones[fundacion], pane,fundacion, coordenadaX,coordenadaY, pulsarCarta);
             coordenadaX = coordenadaX + 75;
         }
     }
 
-    protected void mostrarFundacion(Fundacion fundacion,Pane pane,int indiceEstructura, double coordenadaX,double coordenadaY){
+    protected void mostrarFundacion(Fundacion fundacion,Pane pane,int indiceEstructura, double coordenadaX,double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         if(!fundacion.estaVacia()) {
-            mostrarCarta(fundacion.verUltimaCarta(), pane,FUNDACION,indiceEstructura, SININDICE , coordenadaX, coordenadaY);
+            mostrarCarta(fundacion.verUltimaCarta(), pane,FUNDACION,indiceEstructura, SININDICE , coordenadaX, coordenadaY, pulsarCarta);
         }else{
             Button botonFundacion = new Button();
+            botonFundacion.getProperties().put("estructura",FUNDACION);
+            botonFundacion.getProperties().put("indiceEstructura", indiceEstructura);
+            botonFundacion.getProperties().put("indiceCarta", SININDICE);
+            botonFundacion.setOnAction(pulsarCarta);
             pane.getChildren().add(botonFundacion);
             botonFundacion.setLayoutX(coordenadaX);
             botonFundacion.setLayoutY(coordenadaY);
         }
     }
 
-    protected void mostrarCarta(Carta carta, Pane pane, String estructura,int indiceEstructura, int indiceCarta, double coordenadaX, double coordenadaY){
+    protected void mostrarCarta(Carta carta, Pane pane, String estructura,int indiceEstructura, int indiceCarta, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         ImageView imagenCarta = new ImageView();
         if(carta.esVisible()){
 
@@ -109,6 +119,7 @@ public abstract class Vista {
         botonCarta.getProperties().put("estructura",estructura );
         botonCarta.getProperties().put("indiceEstructura", indiceEstructura);
         botonCarta.getProperties().put("indiceCarta", indiceCarta);
+        botonCarta.setOnAction(pulsarCarta);
         pane.getChildren().add(botonCarta);
 
         botonCarta.setLayoutX(coordenadaX);
@@ -129,37 +140,42 @@ public abstract class Vista {
     }
 
 
-    protected void mostrarMazo(Mazo mazo, Pane pane, double coordenadaX, double coordenadaY){
+    protected void mostrarMazo(Mazo mazo, Pane pane, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarMazo){
         if(!mazo.estaVacia()) {
-            mostrarCarta(mazo.verUltimaCarta(), pane,MAZO,SININDICE,SININDICE, coordenadaX, coordenadaY);
+            mostrarCarta(mazo.verUltimaCarta(), pane,MAZO,SININDICE,SININDICE, coordenadaX, coordenadaY,pulsarMazo);
         }else{
             Button botonPedirCarta = new Button();
+            botonPedirCarta.setOnAction(pulsarMazo);
             pane.getChildren().add(botonPedirCarta);
             botonPedirCarta.setLayoutX(coordenadaX);
             botonPedirCarta.setLayoutY(coordenadaY);
         }
     }
 
-    protected void mostrarDescarte(Descarte descarte, Pane pane, int coordenadaX, int coordenadaY){
+    protected void mostrarDescarte(Descarte descarte, Pane pane, int coordenadaX, int coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         if(!descarte.estaVacia()) {
-            mostrarCarta(descarte.verUltimaCarta(),pane, DESCARTE,SININDICE,SININDICE,coordenadaX, coordenadaY);
+            mostrarCarta(descarte.verUltimaCarta(),pane, DESCARTE,SININDICE,SININDICE,coordenadaX, coordenadaY, pulsarCarta);
         }
     }
 
-    protected void mostrarStackGenerico(StackDeCartas stack, Pane pane, String nombreEstructura, int indiceEstructura, double coordenadaX, double coordenadaY){
+    protected void mostrarStackGenerico(StackDeCartas stack, Pane pane, String nombreEstructura, int indiceEstructura, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         if(!stack.estaVacia()) {
-            mostrarCarta(stack.verUltimaCarta(), pane,nombreEstructura,indiceEstructura,SININDICE, coordenadaX, coordenadaY);
+            mostrarCarta(stack.verUltimaCarta(), pane,nombreEstructura,indiceEstructura,SININDICE, coordenadaX, coordenadaY, pulsarCarta);
         }else{
             Button botonStack = new Button();
+            botonStack.getProperties().put("estructura",nombreEstructura);
+            botonStack.getProperties().put("indiceEstructura",indiceEstructura);
+            botonStack.getProperties().put("indiceCarta",SININDICE);
+            botonStack.setOnAction(pulsarCarta);
             pane.getChildren().add(botonStack);
             botonStack.setLayoutX(coordenadaX);
             botonStack.setLayoutY(coordenadaY);
         }
     }
 
-    protected void mostrarAuxiliares(StackDeCartas[] auxiliares , Pane pane, double coordenadaX, double coordenadaY){
+    protected void mostrarAuxiliares(StackDeCartas[] auxiliares , Pane pane, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         for(int auxiliar = 0; auxiliar < auxiliares.length; auxiliar++){
-            mostrarStackGenerico(auxiliares[auxiliar], pane,AUXILIAR,auxiliar, coordenadaX,coordenadaY);
+            mostrarStackGenerico(auxiliares[auxiliar], pane,AUXILIAR,auxiliar, coordenadaX,coordenadaY, pulsarCarta);
             coordenadaX = coordenadaX + 75;
         }
     }
@@ -168,5 +184,16 @@ public abstract class Vista {
         pane.getChildren().clear();
     }
 
-    public abstract void mostrar();
+    public void mensajeError(Exception excepcion){
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle("Movimiento invalido");
+        alerta.setHeaderText("Se ha producido un movimiento invalido");
+        alerta.setContentText(excepcion.getMessage());
+        alerta.showAndWait();
+    }
+
+    public abstract void mostrar(EventHandler<ActionEvent> pulsarCarta, EventHandler<ActionEvent> pulsarMazo);
+
+
+
 }

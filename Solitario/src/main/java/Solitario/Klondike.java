@@ -88,15 +88,24 @@ public class Klondike extends Solitario {
             ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
             ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
 
-            if (this.reglas.esCartaVisible(columnaOrigen, indiceCartaOrigen) && this.reglas.puedoAgregarCartasAColumna(columnaOrigen, columnaDestino)) {
+            ColumnaDeJuego auxiliar = columnaOrigen.obtenerSubColumna(indiceCartaOrigen);
+
+            if (this.reglas.esCartaVisible(columnaOrigen, indiceCartaOrigen) && this.reglas.puedoAgregarCartasAColumna(auxiliar, columnaDestino)) {
                 columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
+                if(!this.tablero[indiceColumnaOrigen].estaVacia()){
+                    if(!this.tablero[indiceColumnaOrigen].verUltimaCarta().esVisible()) {
+                        this.tablero[indiceColumnaOrigen].verUltimaCarta().cambiarVisibilidad();
+                    }
+                }
             }
     }
     public void jugadaSacarCartaDelMazo() {
             if (this.reglas.puedoSacarCartaDelMazo(this.mazo)) {
                 this.mazo.pasarCartaADescarte(this.descarte);
+            }else {
+                this.descarte.vaciarDescarte(this.mazo);
+
             }
-            this.descarte.vaciarDescarte(this.mazo);
     }
     @Override
     public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws Exception {
@@ -128,6 +137,11 @@ public class Klondike extends Solitario {
 
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
+                if(!this.tablero[indiceColumnaOrigen].estaVacia()){
+                    if(!this.tablero[indiceColumnaOrigen].verUltimaCarta().esVisible()) {
+                        this.tablero[indiceColumnaOrigen].verUltimaCarta().cambiarVisibilidad();
+                    }
+                }
             }
         }
     }

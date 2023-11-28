@@ -19,20 +19,18 @@ public class ReglasKlondike extends Reglas {
         if(columnaExtraer.estaVacia()){
             throw new Exception("No podes mover una columna vacia…");
         }
-        if(columnaDepositar.estaVacia()){
-            return columnaExtraer.verPrimeraCarta().obtenerNumero() == REY;
-        } else {
+
+         else {
             Carta primeraCartaExtraer = columnaExtraer.verPrimeraCarta();
-            Carta ultimaCartaDepositar = columnaDepositar.verUltimaCarta();
-            return(primeraCartaExtraer.obtenerNumero() < ultimaCartaDepositar.obtenerNumero()) &&
-                    primeraCartaExtraer.obtenerColor() != ultimaCartaDepositar.obtenerColor();
+
+            return(puedoAgregarCarta(primeraCartaExtraer.obtenerNumero(),primeraCartaExtraer.obtenerPalo(),columnaDepositar));
         }
     }
     public boolean puedoAgregarCarta(int numeroCarta, Palo paloCarta, ColumnaDeJuego columna){//columna a columna
         if(columna.estaVacia()){
             return numeroCarta == REY; // si la carta es igual a 13 devuelve true
         } else {
-            return(numeroCarta < columna.verUltimaCarta().obtenerNumero() &&
+            return(numeroCarta == columna.verUltimaCarta().obtenerNumero()-1 &&
                     (paloCarta.obtenerColor() != columna.verUltimaCarta().obtenerColor()));
         }
     }

@@ -71,6 +71,16 @@ public class ColumnaDeJuego implements Serializable {
 
         this.cambiarVisibilidadUltimaCarta();
     }
+
+    public ColumnaDeJuego obtenerSubColumna(int indice){
+        ColumnaDeJuego subColumna = new ColumnaDeJuego();
+
+        for(int i = indice ; i < this.obtenerTamanio(); i++ ){
+            subColumna.agregarCarta(this.cartas.get(i));
+        }
+
+        return subColumna;
+    }
     private void cambiarVisibilidadUltimaCarta(){
         if(!this.estaVacia()){
             if(!this.verUltimaCarta().esVisible()){

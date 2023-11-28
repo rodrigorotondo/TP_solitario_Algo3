@@ -32,33 +32,49 @@ public class Controlador {
     protected int indiceCarta;
 
 
-    public Controlador(Solitario solitario, Vista vistar){
+    public Controlador(Solitario solitario, Vista vista){
         this.solitario = solitario;
         this.vista = vista;
         this.esperandoDestino = false;
     }
 
     public void iniciar(){
-
-        vista.registrarListener(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Button botonFuente = (Button) actionEvent.getSource();
+        vista.mostrar(pulsarCarta -> {
+            try {
+                Button botonFuente = (Button) pulsarCarta.getSource();
                 String estructura = (String) botonFuente.getProperties().get("estructura");
                 int indiceEstructura = (int) botonFuente.getProperties().get("indiceEstructura");
                 int indiceCarta = (int) botonFuente.getProperties().get("indiceCarta");
-                if(esperandoDestino){
-                    setDestino(estructura,indiceEstructura);
+
+
+                if (esperandoDestino) {
+                    setDestino(estructura, indiceEstructura);
+                } else {
+                    setOrigen(estructura, indiceEstructura, indiceCarta);
+
                 }
-                else{
-                    setOrigen(estructura,indiceEstructura,indiceCarta);
-                }
-
-
-
+            }catch(Exception E){
+                vista.mensajeError(E);
             }
+
+
+        }, pulsarMazo -> {
+            try {
+                solitario.jugadaSacarCartaDelMazo();
+                iniciar();
+
+            }catch(Exception E){
+                vista.mensajeError(E);
+            }
+
+
         });
+
     }
+
+
+
+
 
     public void setOrigen(String estructuraOrigen, int indiceOrigen, int indiceCarta){
         this.esperandoDestino = true;
@@ -69,17 +85,22 @@ public class Controlador {
     }
 
 
-    public void setDestino(String estructuraDestino, int indiceEstructuraDestino){
+    public void setDestino(String estructuraDestino, int indiceEstructuraDestino) throws Exception{
         this.esperandoDestino = false;
-        this.estructuraDestino = estructuraDestino;
-        this.indiceEstructuraDestino= indiceEstructuraDestino;
-        try {
+        if(destinoValido(estructuraDestino,indiceEstructuraDestino)) {
+            this.estructuraDestino = estructuraDestino;
+            this.indiceEstructuraDestino = indiceEstructuraDestino;
+
             procesar(estructuraOrigen, indiceEstructuraOrigen, indiceCarta, this.estructuraDestino, this.indiceEstructuraDestino);
-        }catch(Exception e){
-            //aca deberiamos llamar a la vista y pasarle el error para que lo visualice
+
+            iniciar();
+        }else{
+            vista.mensajeError(new Exception("El destino no es valido"));
         }
     }
-
+public boolean destinoValido(String estructuraDestino, int indiceEstructuraDestino ){
+    return !this.estructuraOrigen.equals(estructuraDestino) || indiceEstructuraDestino != indiceEstructuraOrigen;
+}
     public void procesar(String estructuraOrigen,int indiceEstructuraOrigen,int indiceCarta, String estructuraDestino, int indiceEstructuraDestino) throws Exception {
 
         switch(estructuraOrigen){
