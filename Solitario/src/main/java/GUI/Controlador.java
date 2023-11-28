@@ -1,7 +1,7 @@
 package GUI;
+import Excepciones.ExcepcionDestinoInvalido;
+import Excepciones.ExcepcionOrigenInvalido;
 import Solitario.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 
@@ -73,9 +73,6 @@ public class Controlador {
     }
 
 
-
-
-
     public void setOrigen(String estructuraOrigen, int indiceOrigen, int indiceCarta){
         this.esperandoDestino = true;
         this.estructuraOrigen = estructuraOrigen;
@@ -94,10 +91,16 @@ public class Controlador {
             procesar(estructuraOrigen, indiceEstructuraOrigen, indiceCarta, this.estructuraDestino, this.indiceEstructuraDestino);
 
             iniciar();
+            verificarJuegoGanado();
         }else{
-            vista.mensajeError(new Exception("El destino no es valido"));
+            vista.mensajeError(new ExcepcionDestinoInvalido());
         }
     }
+public void verificarJuegoGanado(){
+        if(this.solitario.juegoTerminado()){
+            vista.mensajeAlUsuario("Felicitaciones ganaste!");
+        }
+}
 public boolean destinoValido(String estructuraDestino, int indiceEstructuraDestino ){
     return !this.estructuraOrigen.equals(estructuraDestino) || indiceEstructuraDestino != indiceEstructuraOrigen;
 }
@@ -117,7 +120,9 @@ public boolean destinoValido(String estructuraDestino, int indiceEstructuraDesti
 
             case AUXILIAR:
                 procesarMovimientosAuxiliar(indiceEstructuraOrigen,estructuraDestino,indiceEstructuraDestino);
-
+                break;
+            default:
+                vista.mensajeError(new ExcepcionOrigenInvalido());
         }
 
     }
@@ -137,6 +142,9 @@ public boolean destinoValido(String estructuraDestino, int indiceEstructuraDesti
                 solitario.jugadaColumnaAAuxiliar(indiceEstructuraOrigen,indiceEstructuraDestino);
                 break;
 
+            default:
+                vista.mensajeError(new ExcepcionDestinoInvalido());
+
 
         }
     }
@@ -148,6 +156,9 @@ public boolean destinoValido(String estructuraDestino, int indiceEstructuraDesti
                 break;
             case FUNDACION:
                 solitario.jugadaDescarteFundacion(indiceEstructuraDestino);
+                break;
+            default:
+                vista.mensajeError(new ExcepcionDestinoInvalido());
         }
     }
 
@@ -159,6 +170,10 @@ public boolean destinoValido(String estructuraDestino, int indiceEstructuraDesti
 
             case FUNDACION:
                 solitario.jugadaAuxiliarAFundacion(indiceEstructuraOrigen,indiceEstructuraDestino);
+                break;
+
+            default:
+                vista.mensajeError(new ExcepcionDestinoInvalido());
         }
     }
 
