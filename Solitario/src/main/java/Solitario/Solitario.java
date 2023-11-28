@@ -27,8 +27,6 @@ public abstract class Solitario implements Serializable {
     }
 
 
-
-
     public abstract void jugadaSacarCartaDelMazo() throws Exception;
     public abstract void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception;
     public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino);
@@ -39,7 +37,7 @@ public abstract class Solitario implements Serializable {
     public abstract void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino) throws Exception;
     public abstract void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) throws Exception;
     protected abstract void iniciarMesa();
-    public abstract void juegoAPuntoDeGanarConCartaEnColumna();
+
     public void guardarEstado(VisitorSerializador visitorSerializador, OutputStream os) throws IOException {
         visitorSerializador.guardarEstado(this, os);
     }
