@@ -5,6 +5,7 @@ import Columna.*;
 import Excepciones.ExcepcionCartaNoVisible;
 import Excepciones.ExcepcionMoverColumnaVacia;
 import Excepciones.ExcepcionNoPuedoAgregarCarta;
+import Excepciones.ExcepcionNoPuedoSacarCartaDelDescarte;
 import Reglas.*;
 import StackDeCartas.*;
 
@@ -56,7 +57,7 @@ public class Klondike extends Solitario {
         this.mazo.mezclarMazo();
         iniciarTablero(new int[]{1, 2, 3, 4, 5, 6, 7}, mazo);
     }
-    public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) {
+    public void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws ExcepcionNoPuedoAgregarCarta {
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         int numeroCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerNumero();
         Palo paloCartaAAgregar = this.fundaciones[indiceFundacionOrigen].verUltimaCarta().obtenerPalo();
@@ -64,8 +65,11 @@ public class Klondike extends Solitario {
         if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, columnaDestino)) {
             this.fundaciones[indiceFundacionOrigen].cambiarAColumna(columnaDestino);
         }
+        else {
+            throw new ExcepcionNoPuedoAgregarCarta();
+        }
     }
-    public void jugadaDescarteColumna(int indiceColumnaDestino){
+    public void jugadaDescarteColumna(int indiceColumnaDestino) throws ExcepcionNoPuedoSacarCartaDelDescarte {
         if(reglas.puedoSacarCartaDelDescarte(descarte)) {
 
             Carta cartaDescarte = this.descarte.verUltimaCarta();
@@ -75,9 +79,15 @@ public class Klondike extends Solitario {
             if (reglas.puedoAgregarCarta(numeroCartaDescarte, paloCartaDescarte, this.tablero[indiceColumnaDestino])) {
                 this.descarte.cambiarAColumna(this.tablero[indiceColumnaDestino]);
             }
+
+        }
+        else {
+
+            throw new ExcepcionNoPuedoSacarCartaDelDescarte();
+
         }
     }
-    public void jugadaDescarteFundacion(int indiceFundacion) {
+    public void jugadaDescarteFundacion(int indiceFundacion) throws ExcepcionNoPuedoSacarCartaDelDescarte, ExcepcionNoPuedoAgregarCarta {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
         if (this.reglas.puedoSacarCartaDelDescarte(this.descarte)) {
             int numeroCartaAAgregar = this.descarte.verUltimaCarta().obtenerNumero();
@@ -86,6 +96,12 @@ public class Klondike extends Solitario {
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.descarte.cambiarAStack(fundacionDestino);
             }
+            else {
+                throw new ExcepcionNoPuedoAgregarCarta();
+            }
+        }
+        else {
+            throw new ExcepcionNoPuedoSacarCartaDelDescarte();
         }
     }
 

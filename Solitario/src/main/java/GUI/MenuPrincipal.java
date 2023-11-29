@@ -14,11 +14,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import ManejoDeArchivos.*;
 
+import static ManejoDeArchivos.ManejoDeArchivos.existeArchivo;
+import static ManejoDeArchivos.ManejoDeArchivos.obtenerPathRaiz;
 
 
 public class MenuPrincipal extends Application {
-
 
     public void iniciarSolitario(String nombreSolitario, Stage stage) {
 
@@ -28,12 +30,10 @@ public class MenuPrincipal extends Application {
         Vista vista;
         Controlador controlador;
 
-
         var label = new Label();
         if(nombreSolitario.equals("Klondike")){
             fabricaDeSolitarios = new FabricaDeSolitariosKlondike();
             fabricaDeVistas = new FabricaDeVistasKlondike();
-
 
         }else{
             label.setText(nombreSolitario);
@@ -55,37 +55,37 @@ public class MenuPrincipal extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Menu Principal");
-        var stackPane = new StackPane();
+        if (!existeArchivo(obtenerPathRaiz())) {
+            stage.setTitle("Menu Principal");
+            var stackPane = new StackPane();
 
-        var opcionKlondike = new MenuItem("Klondike");
-        var opcionFreeCell = new MenuItem("FreeCell");
-
-
-        var menuDesplegable = new MenuButton("Seleccione un solitario");
-        menuDesplegable.getItems().addAll(opcionKlondike, opcionFreeCell);
-
-        stackPane.getChildren().add(menuDesplegable);
-        stackPane.setAlignment(menuDesplegable, Pos.CENTER);
+            var opcionKlondike = new MenuItem("Klondike");
+            var opcionFreeCell = new MenuItem("FreeCell");
 
 
-        var scene = new Scene(stackPane, 640, 500);
+            var menuDesplegable = new MenuButton("Seleccione un solitario");
+            menuDesplegable.getItems().addAll(opcionKlondike, opcionFreeCell);
 
-        EventHandler<ActionEvent> pulsarBoton = new EventHandler<ActionEvent>(){
-            public void handle(ActionEvent evento){
-                String opcionElegida = ((MenuItem)evento.getSource()).getText();
-                menuDesplegable.setText(opcionElegida);
+            stackPane.getChildren().add(menuDesplegable);
+            stackPane.setAlignment(menuDesplegable, Pos.CENTER);
 
-                iniciarSolitario(opcionElegida,stage);
+            var scene = new Scene(stackPane, 640, 500);
+            EventHandler<ActionEvent> pulsarBoton = new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent evento) {
+                    String opcionElegida = ((MenuItem) evento.getSource()).getText();
+                    menuDesplegable.setText(opcionElegida);
 
-            }
-        };
+                    iniciarSolitario(opcionElegida, stage);
 
-        opcionKlondike.setOnAction(pulsarBoton);
-        opcionFreeCell.setOnAction(pulsarBoton);
-        stage.setScene(scene);
-        stage.show();
+                }
+            };
 
-
+            opcionKlondike.setOnAction(pulsarBoton);
+            opcionFreeCell.setOnAction(pulsarBoton);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
+
+
 }

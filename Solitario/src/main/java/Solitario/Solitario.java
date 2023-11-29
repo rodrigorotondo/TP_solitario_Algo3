@@ -48,6 +48,7 @@ public abstract class Solitario implements Serializable {
 
     public void guardarEstado(VisitorSerializador visitorSerializador, OutputStream os) throws IOException {
         visitorSerializador.guardarEstado(this, os);
+
     }
     public void asignarMazo(Mazo mazo){
         this.mazo = mazo;
