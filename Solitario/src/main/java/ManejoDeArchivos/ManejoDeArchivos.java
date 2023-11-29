@@ -1,6 +1,9 @@
 package ManejoDeArchivos;
 
+import GUI.Vista;
+import GUI.VistaFreeCell;
 import Solitario.*;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.nio.file.FileSystems;
@@ -29,20 +32,21 @@ public class ManejoDeArchivos {
 
         bytes.writeTo(solitarioSalida);
     }
-    public static Klondike cargarSolitarioKlondike( String nombreArchivo) throws IOException, ClassNotFoundException {
+    public static Klondike cargarSolitarioKlondike(String nombreSolitario) throws IOException, ClassNotFoundException {
 
         SerializadorSolitario serializador = new SerializadorSolitario();
 
-        InputStream solitarioEntrada= new FileInputStream(nombreArchivo);
+        InputStream solitarioEntrada= new FileInputStream(nombreSolitario);
+
 
         return Klondike.cargarEstado(serializador, solitarioEntrada);
     }
 
-    public static FreeCell cargarSolitarioFreecell( String nombreArchivo) throws IOException, ClassNotFoundException {
+    public static FreeCell cargarSolitarioFreecell( String nombreSolitario) throws IOException, ClassNotFoundException {
 
         SerializadorSolitario serializador = new SerializadorSolitario();
 
-        InputStream solitarioEntrada= new FileInputStream(nombreArchivo);
+        InputStream solitarioEntrada= new FileInputStream(nombreSolitario);
 
         return FreeCell.cargarEstado(serializador, solitarioEntrada);
     }

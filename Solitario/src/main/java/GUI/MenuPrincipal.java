@@ -124,12 +124,13 @@ public class MenuPrincipal extends Application {
     @Override
     public void start(Stage stage) {
         try{
-            if(existeArchivo(obtenerPathRaiz() + "FreeCell")){
+            if(existeArchivo(obtenerPathRaiz() + "/FreeCell")){
 
                 FreeCell solitario = ManejoDeArchivos.cargarSolitarioFreecell("FreeCell");
                 continuarSolitarioFreeCell(solitario, stage);
 
-            }else if(existeArchivo(obtenerPathRaiz() + "Klondike")){
+            }else if(existeArchivo(obtenerPathRaiz() + "/Klondike")){
+
                 Klondike solitario = ManejoDeArchivos.cargarSolitarioKlondike("Klondike");
                 continuarSolitarioKlondike(solitario, stage);
             }
@@ -137,6 +138,7 @@ public class MenuPrincipal extends Application {
                 menuPrincipal(stage);
             }
         }catch(IOException | ClassNotFoundException errorLectura){
+
             menuPrincipal(stage);
         }
     }
