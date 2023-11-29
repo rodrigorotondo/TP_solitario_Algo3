@@ -1,6 +1,7 @@
 package Solitario;
 
 import Columna.ColumnaDeJuego;
+import Excepciones.ExcepcionCartaNoVisible;
 import Excepciones.ExcepcionMoverColumnaVacia;
 import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import StackDeCartas.*;
@@ -32,7 +33,7 @@ public abstract class Solitario implements Serializable {
     public abstract void jugadaSacarCartaDelMazo() throws Exception;
     public abstract void jugadaFundacionAColumna(int indiceColumnaDestino, int indiceFundacionOrigen) throws Exception;
     public abstract void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta;
-    public abstract void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws Exception;
+    public abstract void jugadaColumnaAColumna (int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta, ExcepcionCartaNoVisible;
     public abstract void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws Exception;
     public abstract void jugadaDescarteColumna(int indiceColumnaDestino) throws Exception;
     public abstract void jugadaDescarteFundacion(int indiceFundacion) throws Exception;

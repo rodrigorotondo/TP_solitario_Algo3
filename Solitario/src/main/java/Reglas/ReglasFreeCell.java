@@ -12,9 +12,9 @@ public class ReglasFreeCell extends Reglas{
     public boolean puedoAgregarCartasAColumna(ColumnaDeJuego columnaExtraer, ColumnaDeJuego columnaDepositar, int espaciosVacios){
 
         if(columnaDepositar.estaVacia()){ // si esta vacia y
-            return columnaExtraer.obtenerTamanio() < espaciosVacios;
+            return columnaExtraer.obtenerTamanio() <= espaciosVacios;
         }
-        else if(esDescendenteYAlternada(columnaExtraer) && columnaExtraer.obtenerTamanio() <= (espaciosVacios + 1)){ // la primer carta siempre tiene lugar
+        else if(esDescendenteYAlternada(columnaExtraer) && columnaExtraer.obtenerTamanio() <= (espaciosVacios)){
             Carta primeraCartaExtraer = columnaExtraer.verPrimeraCarta();
             Carta ultimaCartaDepositar = columnaDepositar.verUltimaCarta();
             return primeraCartaExtraer.obtenerNumero() == (ultimaCartaDepositar.obtenerNumero()-1) &&

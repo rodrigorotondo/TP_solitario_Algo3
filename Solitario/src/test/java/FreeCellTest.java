@@ -1,3 +1,6 @@
+import Excepciones.ExcepcionAuxiliarVacio;
+import Excepciones.ExcepcionMoverColumnaVacia;
+import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import Solitario.*;
 import org.junit.Test;
 import utils.FreeCellTestingUtils;
@@ -16,7 +19,7 @@ public class FreeCellTest {
         assertFalse(freeCell.juegoTerminado());
     }
     @Test
-    public void freeCellJuegoGanado() {
+    public void freeCellJuegoGanado() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
 
         FreeCellTestingUtils freeCell = new FreeCellTestingUtils();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
@@ -24,14 +27,14 @@ public class FreeCellTest {
         assertTrue(freeCell.juegoTerminado());
     }
     @Test
-    public void freeCellMovimientoDesdeColumnaVacia() {
+    public void freeCellMovimientoDesdeColumnaVacia() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         FreeCellTestingUtils freeCell = new FreeCellTestingUtils();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
         freeCell.jugadaColumnaAFundacion(4, 3);
         assertFalse(freeCell.juegoTerminado());
     }
     @Test
-    public void freeCellMovimientoDesdeAuxiliar() {
+    public void freeCellMovimientoDesdeAuxiliar() throws ExcepcionAuxiliarVacio, ExcepcionNoPuedoAgregarCarta {
         FreeCellTestingUtils freeCell = new FreeCellTestingUtils();
         freeCell.juegoAPuntoDeGanarConCartaEnAuxiliar();
         freeCell.jugadaAuxiliarAFundacion(0, 3);

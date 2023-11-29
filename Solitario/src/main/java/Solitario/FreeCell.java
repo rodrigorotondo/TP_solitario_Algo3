@@ -1,7 +1,9 @@
 package Solitario;
 import Carta.*;
 import Columna.*;
+import Excepciones.ExcepcionAuxiliarVacio;
 import Excepciones.ExcepcionMoverColumnaVacia;
+import Excepciones.ExcepcionNoPuedoAgregarCarta;
 import Reglas.*;
 import StackDeCartas.*;
 import javafx.scene.layout.Pane;
@@ -82,7 +84,7 @@ public class FreeCell extends Solitario {
         this.mazo.mezclarMazo();
         this.repartirCartas();
     }
-    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws ExcepcionMoverColumnaVacia {
+    public void jugadaColumnaAColumna(int indiceColumnaDestino, int indiceColumnaOrigen, int indiceCartaOrigen) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         verificarColumnaVacia(tablero[indiceColumnaOrigen]);
         ColumnaDeJuego columnaDestino = this.tablero[indiceColumnaDestino];
         ColumnaDeJuego columnaOrigen = this.tablero[indiceColumnaOrigen];
@@ -91,28 +93,36 @@ public class FreeCell extends Solitario {
 
         if(this.reglas.puedoAgregarCartasAColumna(auxiliar, columnaDestino, espaciosVacios)){
             columnaOrigen.cambiarDeColumna(columnaDestino, indiceCartaOrigen);
+        }else{
+            throw new ExcepcionNoPuedoAgregarCarta();
         }
     }
     @Override
     public void jugadaSacarCartaDelMazo() throws Exception {
         throw new Exception("Las cartas ya fueron repartidas");
     }
-    public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino){
+    public void jugadaAuxiliarAColumna(int indiceAuxiliar, int indiceColumnaDestino) throws ExcepcionAuxiliarVacio, ExcepcionNoPuedoAgregarCarta {
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Carta cartaAuxiliar = this.auxiliares[indiceAuxiliar].verUltimaCarta();
             Palo paloCarta = cartaAuxiliar.obtenerPalo();
             int numeroCarta = cartaAuxiliar.obtenerNumero();
             if (reglas.puedoAgregarCarta(numeroCarta, paloCarta, this.tablero[indiceColumnaDestino])) {
                 this.auxiliares[indiceAuxiliar].cambiarAColumna(this.tablero[indiceColumnaDestino]);
+            }else{
+                throw new ExcepcionNoPuedoAgregarCarta();
             }
+        }else{
+            throw new ExcepcionAuxiliarVacio();
         }
     }
-    public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar){
+    public void jugadaColumnaAAuxiliar(int indiceColumnaOrigen, int indiceAuxiliar) throws ExcepcionNoPuedoAgregarCarta {
         if (reglas.puedoAgregarCartaAlAuxiliar(auxiliares[indiceAuxiliar])) {
             this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(auxiliares[indiceAuxiliar]);
+        }else{
+            throw new ExcepcionNoPuedoAgregarCarta();
         }
     }
-    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) {
+    public void jugadaAuxiliarAFundacion(int indiceAuxiliar, int indiceFundacion) throws ExcepcionAuxiliarVacio, ExcepcionNoPuedoAgregarCarta {
         if (this.reglas.puedoSacarCartaDelAuxiliar(auxiliares[indiceAuxiliar])) {
             Fundacion fundacionDestino = this.fundaciones[indiceFundacion];
             Carta carta = auxiliares[indiceAuxiliar].verUltimaCarta();
@@ -120,7 +130,11 @@ public class FreeCell extends Solitario {
             Palo paloCartaAAgregar = carta.obtenerPalo();
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.auxiliares[indiceAuxiliar].cambiarAStack(fundacionDestino);
+            }else{
+                throw new ExcepcionNoPuedoAgregarCarta();
             }
+        }else{
+            throw new ExcepcionAuxiliarVacio();
         }
     }
     private int cantidadEspaciosVacios(){
@@ -135,20 +149,26 @@ public class FreeCell extends Solitario {
                 espaciosVacios++;
             }
         }
-        return espaciosVacios;
+        return espaciosVacios + 1 ; // +1 porque la primer carta a colocar en otro lado siempre tiene lugar
     }
 
 
     @Override
-    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) {
+    public void jugadaColumnaAFundacion(int indiceColumnaOrigen, int indiceFundacionDestino) throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         Fundacion fundacionDestino = this.fundaciones[indiceFundacionDestino];
-        if (this.reglas.puedoExtraerDeColumna(tablero[indiceColumnaOrigen])) {
+        if (!tablero[indiceColumnaOrigen].estaVacia()) {
             int numeroCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerNumero();
             Palo paloCartaAAgregar = this.tablero[indiceColumnaOrigen].verUltimaCarta().obtenerPalo();
 
             if (this.reglas.puedoAgregarCarta(numeroCartaAAgregar, paloCartaAAgregar, fundacionDestino)) {
                 this.tablero[indiceColumnaOrigen].cambiarAStackDeCartas(fundacionDestino);
             }
+            else{
+                throw new ExcepcionNoPuedoAgregarCarta();
+            }
+        }else{
+            throw new ExcepcionMoverColumnaVacia();
+
         }
 
     }
