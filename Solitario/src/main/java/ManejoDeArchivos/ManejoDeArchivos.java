@@ -29,7 +29,7 @@ public class ManejoDeArchivos {
 
         bytes.writeTo(solitarioSalida);
     }
-    public static Solitario cargarSolitarioKlondike( String nombreArchivo) throws IOException, ClassNotFoundException {
+    public static Klondike cargarSolitarioKlondike( String nombreArchivo) throws IOException, ClassNotFoundException {
 
         SerializadorSolitario serializador = new SerializadorSolitario();
 
@@ -38,7 +38,7 @@ public class ManejoDeArchivos {
         return Klondike.cargarEstado(serializador, solitarioEntrada);
     }
 
-    public static Solitario cargarSolitarioFreecell( String nombreArchivo) throws IOException, ClassNotFoundException {
+    public static FreeCell cargarSolitarioFreecell( String nombreArchivo) throws IOException, ClassNotFoundException {
 
         SerializadorSolitario serializador = new SerializadorSolitario();
 
