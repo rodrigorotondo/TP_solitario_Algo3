@@ -43,6 +43,8 @@ public abstract class Vista {
         this.pane = new Pane();
         this.solitario = solitario;
         this.stage = stage;
+        pane.setStyle("-fx-background-color: #025928;");
+
 
 
     }
@@ -68,6 +70,7 @@ public abstract class Vista {
             botonColumna.getProperties().put("indiceEstructura", indiceEstructura);
             botonColumna.getProperties().put("indiceCarta", indiceEstructura);
             botonColumna.setOnAction(pulsarCarta);
+            botonColumna.setPrefSize(68,80);
             pane.getChildren().add(botonColumna);
             botonColumna.setLayoutX(coordenadaX);
             botonColumna.setLayoutY(coordenadaY);
@@ -91,6 +94,7 @@ public abstract class Vista {
             botonFundacion.getProperties().put("indiceEstructura", indiceEstructura);
             botonFundacion.getProperties().put("indiceCarta", SININDICE);
             botonFundacion.setOnAction(pulsarCarta);
+            botonFundacion.setPrefSize(68,80);
             pane.getChildren().add(botonFundacion);
             botonFundacion.setLayoutX(coordenadaX);
             botonFundacion.setLayoutY(coordenadaY);
@@ -100,7 +104,6 @@ public abstract class Vista {
     protected void mostrarCarta(Carta carta, Pane pane, String estructura,int indiceEstructura, int indiceCarta, double coordenadaX, double coordenadaY, EventHandler<ActionEvent> pulsarCarta){
         ImageView imagenCarta = new ImageView();
         if(carta.esVisible()){
-
             imagenCarta.setImage(devolverImagenCarta(carta.obtenerNumero(),carta.obtenerPalo()));
         }else{
             imagenCarta.setImage(new Image("file:" + ManejoDeArchivos.obtenerCarpetaAssets() + "cartas/dorso/card_back.png"));
@@ -111,8 +114,6 @@ public abstract class Vista {
         Button botonCarta = new Button();
         imagenCarta.setFitWidth(50);
         imagenCarta.setFitHeight(100);
-        imagenCarta.setPreserveRatio(true);
-
         imagenCarta.setPreserveRatio(true);
 
         botonCarta.setGraphic(imagenCarta);
@@ -146,6 +147,7 @@ public abstract class Vista {
         }else{
             Button botonPedirCarta = new Button();
             botonPedirCarta.setOnAction(pulsarMazo);
+            botonPedirCarta.setPrefSize(68,80);
             pane.getChildren().add(botonPedirCarta);
             botonPedirCarta.setLayoutX(coordenadaX);
             botonPedirCarta.setLayoutY(coordenadaY);
@@ -166,6 +168,7 @@ public abstract class Vista {
             botonStack.getProperties().put("estructura",nombreEstructura);
             botonStack.getProperties().put("indiceEstructura",indiceEstructura);
             botonStack.getProperties().put("indiceCarta",SININDICE);
+            botonStack.setPrefSize(68,80);
             botonStack.setOnAction(pulsarCarta);
             pane.getChildren().add(botonStack);
             botonStack.setLayoutX(coordenadaX);

@@ -21,7 +21,7 @@ import static ManejoDeArchivos.ManejoDeArchivos.existeArchivo;
 import static ManejoDeArchivos.ManejoDeArchivos.obtenerPathRaiz;
 
 
-public class MenuPrincipal extends Application {
+public class Aplicacion extends Application {
 
     private FabricaDeSolitarios fabricaDeSolitarios;
     private FabricaDeVistas fabricaDeVistas;
@@ -59,21 +59,31 @@ public class MenuPrincipal extends Application {
     }
 
     public void continuarSolitarioKlondike(Klondike klondike, Stage stage){
-        solitario = klondike;
-        fabricaDeVistas = new FabricaDeVistasKlondike();
-        vista = fabricaDeVistas.crearVista(solitario,stage);
-        controlador = new Controlador(solitario,vista);
 
-        controlador.iniciar();
+        solitario = klondike;
+        if(!solitario.juegoTerminado()) {
+            fabricaDeVistas = new FabricaDeVistasKlondike();
+            vista = fabricaDeVistas.crearVista(solitario, stage);
+            controlador = new Controlador(solitario, vista);
+
+            controlador.iniciar();
+        }
+        else{
+            menuPrincipal(stage);
+        }
     }
 
     public void continuarSolitarioFreeCell(FreeCell freeCell, Stage stage){
         solitario = freeCell;
+        if(!solitario.juegoTerminado()){
         fabricaDeVistas = new FabricaDeVistasFreeCell();
         vista = fabricaDeVistas.crearVista(solitario,stage);
         controlador = new Controlador(solitario,vista);
 
-        controlador.iniciar();
+        controlador.iniciar();}
+        else{
+            menuPrincipal(stage);
+        }
     }
 
     public void guardarEstado(){
@@ -93,6 +103,7 @@ public class MenuPrincipal extends Application {
     public void menuPrincipal(Stage stage){
         stage.setTitle("Menu Principal");
         var stackPane = new StackPane();
+        stackPane.setStyle("-fx-background-color: #025928;");
 
         var opcionKlondike = new MenuItem("Klondike");
         var opcionFreeCell = new MenuItem("FreeCell");
@@ -102,7 +113,7 @@ public class MenuPrincipal extends Application {
         menuDesplegable.getItems().addAll(opcionKlondike, opcionFreeCell);
 
         stackPane.getChildren().add(menuDesplegable);
-        stackPane.setAlignment(menuDesplegable, Pos.CENTER);
+        StackPane.setAlignment(menuDesplegable, Pos.CENTER);
 
         var scene = new Scene(stackPane, 640, 500);
         EventHandler<ActionEvent> pulsarBoton = new EventHandler<ActionEvent>() {

@@ -1,10 +1,8 @@
 
-import GUI.MenuPrincipal;
+import GUI.Aplicacion;
 import javafx.application.Application;
 
 
-import static ManejoDeArchivos.ManejoDeArchivos.existeArchivo;
-import static ManejoDeArchivos.ManejoDeArchivos.obtenerPathRaiz;
 import static javafx.application.Application.launch;
 
 public class Main{
@@ -12,7 +10,7 @@ public static void main(String[]args){
 
 
 
-    Application.launch(MenuPrincipal.class,args);
+    Application.launch(Aplicacion.class,args);
     //System.out.println(obtenerPathRaiz() + "/Solitario/Klondike");
         }
 

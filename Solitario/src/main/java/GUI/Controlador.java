@@ -45,8 +45,7 @@ public class Controlador {
                 String estructura = (String) botonFuente.getProperties().get("estructura");
                 int indiceEstructura = (int) botonFuente.getProperties().get("indiceEstructura");
                 int indiceCarta = (int) botonFuente.getProperties().get("indiceCarta");
-
-
+                
                 if (esperandoDestino) {
                     setDestino(estructura, indiceEstructura);
                 } else {
