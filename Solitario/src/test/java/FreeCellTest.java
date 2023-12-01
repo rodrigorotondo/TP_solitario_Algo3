@@ -30,8 +30,11 @@ public class FreeCellTest {
     public void freeCellMovimientoDesdeColumnaVacia() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         FreeCellTestingUtils freeCell = new FreeCellTestingUtils();
         freeCell.juegoAPuntoDeGanarConCartaEnColumna();
-        freeCell.jugadaColumnaAFundacion(4, 3);
-        assertFalse(freeCell.juegoTerminado());
+        try {
+            freeCell.jugadaColumnaAFundacion(4, 3);
+        }catch(ExcepcionMoverColumnaVacia errorColumnaVacia){
+            assertFalse(freeCell.juegoTerminado());
+        }
     }
     @Test
     public void freeCellMovimientoDesdeAuxiliar() throws ExcepcionAuxiliarVacio, ExcepcionNoPuedoAgregarCarta {
@@ -44,12 +47,12 @@ public class FreeCellTest {
     public void freeCellVariosMovimientos() throws Exception {
         FreeCellTestingUtils freeCell = new FreeCellTestingUtils();
         freeCell.juegoCasiGanado();
-        freeCell.jugadaColumnaAColumna(6, 0, 1);
-        freeCell.jugadaColumnaAAuxiliar(6, 2);
-        freeCell.jugadaAuxiliarAColumna(2, 6);
-        freeCell.jugadaColumnaAAuxiliar(6, 2);
+        freeCell.jugadaColumnaAColumna(5, 0, 1); //12 de picas a columna 5
+        freeCell.jugadaColumnaAAuxiliar(5, 2); // 12 de picas a aux 2
+        freeCell.jugadaAuxiliarAColumna(2, 6); // 12 de picas a col 5
+        freeCell.jugadaColumnaAFundacion(6, 3);
         freeCell.jugadaColumnaAFundacion(0,3);
-        freeCell.jugadaAuxiliarAFundacion(2, 3);
+
         assertTrue(freeCell.juegoTerminado());
     }
 

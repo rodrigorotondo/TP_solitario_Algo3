@@ -15,7 +15,7 @@ public class FreeCell extends Solitario {
 
     //-----------------------------------------------------Atributos---------------------------------------------------//
     final protected int CANTIDADDEAUXILIARES = 4;
-    protected final StackDeCartas[] auxiliares;
+    protected StackDeCartas[] auxiliares;
     protected ReglasFreeCell reglas;
 
     //-----------------------------------------------------Métodos----------------------------------------------------//

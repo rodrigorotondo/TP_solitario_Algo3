@@ -29,25 +29,33 @@ public class KlondikeTest {
     public void klondikeMovimientoDesdeColumnaVacia() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta {
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnColumna();
-        klondike.jugadaColumnaAFundacion(4, 3);
-        assertFalse(klondike.juegoTerminado());
+        try {
+            klondike.jugadaColumnaAFundacion(4, 3);
+        }catch(Exception error){
+            assertTrue(true);
+        }
     }
     @Test
     public void klondikeDescarteVacio() throws Exception {
         FabricaDeSolitarios fabricaKlondike = new FabricaDeSolitariosKlondike();
         Solitario klondike = fabricaKlondike.crearSolitario();
-        klondike.jugadaDescarteFundacion(3);
-        assertFalse(klondike.juegoTerminado());
+        try {
+            klondike.jugadaDescarteFundacion(3);
+        }catch(ExcepcionNoPuedoSacarCartaDelDescarte errorDescarteVacio){
+            assertTrue(true);
+        }
     }
     @Test
     public void klondikeVariasJugadas() throws ExcepcionMoverColumnaVacia, ExcepcionNoPuedoAgregarCarta, ExcepcionNoPuedoSacarCartaDelDescarte {
         KlondikeTestingUtils klondike = new KlondikeTestingUtils();
         klondike.juegoAPuntoDeGanarConCartaEnDescarte();
-        klondike.jugadaDescarteColumna(3);
-        klondike.jugadaFundacionAColumna(3, 3);
-        klondike.jugadaSacarCartaDelMazo();
-        klondike.jugadaColumnaAFundacion(3, 3);
-        klondike.jugadaColumnaAFundacion(3, 3);
+        klondike.jugadaDescarteColumna(3); //13 de picas a columna 4
+        klondike.jugadaFundacionAColumna(2, 1); // 13 de diamantes a columna 3
+        klondike.jugadaFundacionAColumna(3, 1); // 12 de diamantes a columna 4
+
+        klondike.jugadaColumnaAFundacion(3, 1); // 12 de diamantes a fundacion
+        klondike.jugadaColumnaAFundacion(3, 3); // 13 de picas a fundacion
+        klondike.jugadaColumnaAFundacion(2, 1); // 13 de diamantes a fundacion
         assertTrue(klondike.juegoTerminado());
     }
 

@@ -1,13 +1,27 @@
 package utils;
 
 import Carta.Carta;
+import Columna.ColumnaDeJuego;
+import Reglas.ReglasKlondike;
 import Solitario.Klondike;
 import Carta.*;
+import StackDeCartas.Descarte;
+import StackDeCartas.Fundacion;
+import StackDeCartas.Mazo;
 
 public class KlondikeTestingUtils extends Klondike {
 
     public KlondikeTestingUtils(){
-        super();
+        CANTIDADDEFUNDACIONES = 4;
+        CANTIDADDECOLUMNAS = 7;
+        this.mazo = new Mazo();
+        this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
+        this.iniciarFundaciones();
+        this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
+        this.iniciarColumnas();
+        this.descarte = new Descarte();
+        this.reglas = new ReglasKlondike();
+
     }
     public void juegoAPuntoDeGanarConCartaEnDescarte() {
         while (!mazo.estaVacia()) {//tener mazo vacio

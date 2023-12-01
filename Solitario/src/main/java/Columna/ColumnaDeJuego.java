@@ -29,6 +29,7 @@ public class ColumnaDeJuego implements Serializable {
         return cartas.get(TOPE);
     }
     public Carta verUltimaCarta(){
+
         return cartas.get(indiceUltimaCarta());
     }
 

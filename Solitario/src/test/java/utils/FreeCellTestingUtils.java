@@ -1,12 +1,27 @@
 package utils;
 
 import Carta.*;
+import Columna.ColumnaDeJuego;
+import Reglas.ReglasFreeCell;
 import Solitario.FreeCell;
+import StackDeCartas.Fundacion;
+import StackDeCartas.Mazo;
+import StackDeCartas.StackDeCartas;
 
 public class FreeCellTestingUtils extends FreeCell {
 
     public FreeCellTestingUtils(){
-        super();
+        CANTIDADDEFUNDACIONES = 4;
+        CANTIDADDECOLUMNAS = 8;
+        this.mazo = new Mazo();
+        this.fundaciones = new Fundacion[CANTIDADDEFUNDACIONES];
+        this.iniciarFundaciones();
+        this.tablero = new ColumnaDeJuego[CANTIDADDECOLUMNAS];
+        this.iniciarColumnas();
+        this.auxiliares = new StackDeCartas[CANTIDADDEAUXILIARES];
+        this.iniciarAuxiliares();
+        this.reglas = new ReglasFreeCell();
+
     }
     public void juegoAPuntoDeGanarConCartaEnColumna() {
         while (!mazo.estaVacia()) {//tener mazo vacio
@@ -81,7 +96,7 @@ public class FreeCellTestingUtils extends FreeCell {
         anteUltimaCarta.cambiarVisibilidad();
         Carta ultimaCarta = new Carta(13, Palo.PICAS);
         ultimaCarta.cambiarVisibilidad();
-        this.tablero[0].agregarCarta(anteUltimaCarta);
         this.tablero[0].agregarCarta(ultimaCarta);
+        this.tablero[0].agregarCarta(anteUltimaCarta);
     }
 }

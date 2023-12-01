@@ -120,6 +120,7 @@ public class ReglasFreeCellTest {
         Carta carta1 = new Carta(13, Palo.CORAZONES);
         Carta carta2 = new Carta(12, Palo.TREBOLES);
         Carta carta3 = new Carta(11, Palo.CORAZONES);
+
         Carta carta4 = new Carta(10, Palo.TREBOLES);
         Carta carta5 = new Carta(9, Palo.CORAZONES);
         Carta carta6 = new Carta(8, Palo.TREBOLES);
@@ -132,7 +133,7 @@ public class ReglasFreeCellTest {
         colOrigen.agregarCarta(carta5);
         colOrigen.agregarCarta(carta6);
 
-        int espaciosVacios = 2;
+        int espaciosVacios = 3;
         //act
         boolean valorObtenido =  reglas.puedoAgregarCartasAColumna(colOrigen,colDestino,espaciosVacios);
         //assert

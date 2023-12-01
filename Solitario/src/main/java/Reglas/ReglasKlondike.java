@@ -26,7 +26,7 @@ public class ReglasKlondike extends Reglas {
             return numeroCarta == REY; // si la carta es igual a 13 devuelve true
         } else {
             return(numeroCarta == columna.verUltimaCarta().obtenerNumero()-1 &&
-                    (paloCarta.obtenerColor() != columna.verUltimaCarta().obtenerColor()));
+                    (paloCarta.obtenerColor() != columna.verUltimaCarta().obtenerPalo().obtenerColor()));
         }
     }
 }
